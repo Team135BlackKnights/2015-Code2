@@ -1,27 +1,31 @@
 #include "OI.h"
 #include "RobotMap.h"
+#include "Commands/DriveJ.h"
 
-OI::OI():
-	stick(JOYSTICK)
+OI::OI()
 {
 	// Process operator interface input here.
-	for (int i = 0; i < MAX_JOYSTICK_BUTTONS; i++) {
+	stick = new Joystick(JOYSTICK);
+
+	for (int i = 0; i < MAX_JOYSTICK_BUTTONS; i++)
+	{
 		buttons[i] = new JoystickButton(stick, i);
 	}
+	//buttons[11]->WhenPressed(new DriveJ());
 
 }
 
-int OI::GetStickX()
+float OI::GetStickX()
 {
 	return stick->GetX();
 }
 
-int OI::GetStickY()
+float OI::GetStickY()
 {
 	return stick->GetY();
 }
 
-int OI::GetStickZ()
+float OI::GetStickZ()
 {
 	return stick->GetZ();
 }

@@ -4,10 +4,10 @@
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class DriveTeleop: public CommandBase
+class DriveJ: public CommandBase
 {
 public:
-	DriveTeleop();
+	DriveJ();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

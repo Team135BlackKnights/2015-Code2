@@ -1,7 +1,7 @@
-#include "DriveTeleop.h"
-#include "../Subsystems/MecanumDrive.h"
+#include <Commands/DriveJ.h>
+//#include "../Subsystems/MecanumDrive.h"
 
-DriveTeleop::DriveTeleop()
+DriveJ::DriveJ()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -9,32 +9,32 @@ DriveTeleop::DriveTeleop()
 }
 
 // Called just before this Command runs the first time
-void DriveTeleop::Initialize()
+void DriveJ::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveTeleop::Execute()
+void DriveJ::Execute()
 {
 	mecanumDrive->DriveJoysticks(oi->GetStickX(), oi->GetStickY(), oi->GetStickZ());
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveTeleop::IsFinished()
+bool DriveJ::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void DriveTeleop::End()
+void DriveJ::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveTeleop::Interrupted()
+void DriveJ::Interrupted()
 {
 
 }

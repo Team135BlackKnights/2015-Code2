@@ -7,13 +7,13 @@ class OI
 {
 private:
 	Joystick* stick;
-	JoystickButton* buttons;
+	JoystickButton* buttons[12];
 public:
 	static const int MAX_JOYSTICK_BUTTONS = 12;
 	OI();
-	int GetStickX();
-	int GetStickY();
-	int GetStickZ();
+	float GetStickX();
+	float GetStickY();
+	float GetStickZ();
 };
 
 #endif

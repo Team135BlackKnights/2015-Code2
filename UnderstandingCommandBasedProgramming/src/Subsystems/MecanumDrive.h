@@ -3,8 +3,7 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#include "../Commands/DriveTeleop.h"
-#include "../CommandBase.h"
+//#include "../Commands/DriveJ.h"
 
 class MecanumDrive: public Subsystem
 {
@@ -15,7 +14,7 @@ private:
 public:
 	MecanumDrive();
 	void InitDefaultCommand();
-	void DriveJoysticks(int, int, int);
+	void DriveJoysticks(float, float, float);
 };
 
 #endif
