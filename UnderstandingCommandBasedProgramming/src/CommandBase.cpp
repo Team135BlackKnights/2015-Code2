@@ -5,6 +5,7 @@
 // Initialize a single static instance of all of your subsystems to NULL
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
+MecanumDrive* CommandBase::mecanumDrive = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -24,4 +25,6 @@ void CommandBase::init()
 	examplesubsystem = new ExampleSubsystem();
 
 	oi = new OI();
+
+	mecanumDrive = new MecanumDrive();
 }

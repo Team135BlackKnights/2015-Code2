@@ -1,13 +1,14 @@
 #include "OI.h"
 #include "RobotMap.h"
 
-OI::OI()
+OI::OI():
+	stick(JOYSTICK)
 {
 	// Process operator interface input here.
-	stick = new Joystick(JOYSTICK);
-	Button button11 = new JoystickButton(stick, 11);
-	Button button12 = new JoystickButton(stick, 12);
-	button11.WhenPressed(new SendSerialData('U'));
+	for (int i = 0; i < MAX_JOYSTICK_BUTTONS; i++) {
+		buttons[i] = new JoystickButton(stick, i);
+	}
+
 }
 
 int OI::GetStickX()
