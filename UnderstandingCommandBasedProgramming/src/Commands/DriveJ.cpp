@@ -17,7 +17,22 @@ void DriveJ::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveJ::Execute()
 {
-	mecanumDrive->DriveJoysticks(oi->GetStickX(), oi->GetStickY(), oi->GetStickZ());
+	float x = 0, y = 0, rotation = 0;
+	switch (mecanumDrive->GetDriveMode())
+	{
+	case mecanumDrive->SRX_SRY_SRZ:
+	case mecanumDrive->SRX_SRY_SLZ:
+		x = oi->GetStickX();
+		y = oi->GetStickY();
+		rotation = oi->GetStickTwist();
+	break;
+	default:
+		x = oi->GetStickX();
+		y = oi->GetStickY();
+		rotation = oi->GetStickTwist();
+		break;
+	}
+	mecanumDrive->DriveJoysticks(x, y, rotation);
 }
 
 // Make this return true when this Command no longer needs to run execute()

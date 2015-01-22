@@ -24,6 +24,7 @@
 //const int RANGE_FINDER_PORT = 1;
 //const int RANGE_FINDER_MODULE = 1;
 
-    const int JOYSTICK = 0;
+    const int JOYSTICK_LEFT = 0;
+    const int JOYSTICK_RIGHT = 1;
 
 #endif

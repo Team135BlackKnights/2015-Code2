@@ -11,10 +11,15 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	RobotDrive* chassis;
+	int driveMode;
 public:
+	static const int 	SRX_SRY_SRZ = 0,
+						SRX_SRY_SLZ = 1;
 	MecanumDrive();
 	void InitDefaultCommand();
 	void DriveJoysticks(float, float, float);
+	int GetDriveMode();
+	int SetDriveMode(int);
 };
 
 #endif
