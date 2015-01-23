@@ -7,6 +7,8 @@ MecanumDrive::MecanumDrive() :
 {
 		chassis = new RobotDrive(MOTOR_FRONT_LEFT, MOTOR_REAR_LEFT, MOTOR_FRONT_RIGHT, MOTOR_REAR_RIGHT);
 		driveMode = this->SRX_SRY_SRZ;
+		chassis->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
+		chassis->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 }
 
 void MecanumDrive::InitDefaultCommand()
@@ -19,7 +21,7 @@ void MecanumDrive::InitDefaultCommand()
 // here. Call these from Commands.
 void MecanumDrive::DriveJoysticks(float x, float y, float z)
 {
-	chassis->MecanumDrive_Cartesian(-x, y, z);
+	chassis->MecanumDrive_Cartesian(x, y, z);
 }
 
 int MecanumDrive::GetDriveMode()
