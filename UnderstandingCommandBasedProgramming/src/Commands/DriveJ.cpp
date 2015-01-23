@@ -21,15 +21,19 @@ void DriveJ::Execute()
 	switch (mecanumDrive->GetDriveMode())
 	{
 	case mecanumDrive->SRX_SRY_SRZ:
+		x = oi->GetStickX(oi->RIGHT);
+		y = oi->GetStickY(oi->RIGHT);
+		rotation = oi->GetStickTwist(oi->RIGHT);
+		break;
 	case mecanumDrive->SRX_SRY_SLZ:
-		x = oi->GetStickX();
-		y = oi->GetStickY();
-		rotation = oi->GetStickTwist();
+		x = oi->GetStickX(oi->RIGHT);
+		y = oi->GetStickY(oi->RIGHT);
+		rotation = oi->GetStickTwist(oi->LEFT);
 	break;
 	default:
-		x = oi->GetStickX();
-		y = oi->GetStickY();
-		rotation = oi->GetStickTwist();
+		x = oi->GetStickX(oi->RIGHT);
+		y = oi->GetStickY(oi->RIGHT);
+		rotation = oi->GetStickTwist(oi->RIGHT);
 		break;
 	}
 	mecanumDrive->DriveJoysticks(x, y, rotation);
