@@ -6,6 +6,7 @@
 #include "Commands/Command.h"
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/MecanumDrive.h"
+#include "Subsystems/InternalCollect.h"
 #include "OI.h"
 #include "WPILib.h"
 
@@ -24,6 +25,7 @@ public:
 	static ExampleSubsystem *examplesubsystem;
 	static OI *oi;
 	static MecanumDrive *mecanumDrive;
+	static InternalCollect *internalCollect;
 };
 
 #endif

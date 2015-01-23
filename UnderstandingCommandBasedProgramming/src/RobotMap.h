@@ -19,6 +19,9 @@
     const int MOTOR_FRONT_RIGHT	= 1;
     const int MOTOR_REAR_RIGHT	= 0;
 
+    const int MOTOR_INTERNAL_COLLECT_LEFT = 5;
+    const int MOTOR_INTERNAL_COLLECT_RIGHT = 4;
+
 // If you are using multiple modules, make sure to define both the port
 // number and the module. For example you with a rangefinder:
 //const int RANGE_FINDER_PORT = 1;

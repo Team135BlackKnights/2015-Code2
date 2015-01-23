@@ -6,6 +6,7 @@
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
 MecanumDrive* CommandBase::mecanumDrive = NULL;
+InternalCollect* CommandBase::internalCollect = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -27,4 +28,6 @@ void CommandBase::init()
 	oi = new OI();
 
 	mecanumDrive = new MecanumDrive();
+
+	internalCollect = new InternalCollect();
 }
