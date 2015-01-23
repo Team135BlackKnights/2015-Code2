@@ -18,7 +18,6 @@ OI::OI()
 	}
 	buttons[LEFT][9]->WhenPressed(new ChangeDriveMode(0));
 	buttons[LEFT][4]->WhenPressed(new ChangeDriveMode(1));
-
 }
 
 float OI::GetStickX(int hand)

@@ -11,19 +11,18 @@ ChangeDriveMode::ChangeDriveMode(int mode)
 // Called just before this Command runs the first time
 void ChangeDriveMode::Initialize()
 {
-
+	mecanumDrive->SetDriveMode(driveMode);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ChangeDriveMode::Execute()
 {
-	mecanumDrive->SetDriveMode(driveMode);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ChangeDriveMode::IsFinished()
 {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
