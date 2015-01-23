@@ -13,7 +13,6 @@ void MecanumDrive::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new DriveJ());
 }
 
 // Put methods for controlling this subsystem
