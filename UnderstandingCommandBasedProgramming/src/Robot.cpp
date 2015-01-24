@@ -1,18 +1,21 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "CommandBase.h"
+#include "Commands/SerialCommunication.h"
 
 class Robot: public IterativeRobot
 {
 private:
 	//Command *autonomousCommand;
 	LiveWindow *lw;
+	Command *serialCommunication;
 
 	void RobotInit()
 	{
 		CommandBase::init();
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
+
 	}
 	
 	void DisabledPeriodic()
@@ -22,8 +25,9 @@ private:
 
 	void AutonomousInit()
 	{
+		serialCommunication = new SerialCommunication();
 		//if (autonomousCommand != NULL)
-			//autonomousCommand->Start();
+		//autonomousCommand->Start();
 	}
 
 	void AutonomousPeriodic()

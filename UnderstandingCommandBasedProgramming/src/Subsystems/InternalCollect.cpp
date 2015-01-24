@@ -7,7 +7,7 @@ InternalCollect::InternalCollect() :
 {
 	motors[LEFT] = new Talon(MOTOR_INTERNAL_COLLECT_LEFT);
 	motors[RIGHT] = new Talon(MOTOR_INTERNAL_COLLECT_RIGHT);
-	inverted = LEFT;
+	inverted = -1;
 }
 
 void InternalCollect::InitDefaultCommand()

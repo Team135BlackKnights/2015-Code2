@@ -3,11 +3,17 @@
 
 #include "../CommandBase.h"
 #include "WPILib.h"
+#include <string.h>
 
-class SendSerialData: public CommandBase
+class SerialCommunication: public CommandBase
 {
+private:
+	const char *sentData = 'G';
+	char receivedData[8];
+	double finalData;
+	SerialPort *dataPort;
 public:
-	SendSerialData();
+	SerialCommunication();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

@@ -25,7 +25,9 @@ public:
 	static ExampleSubsystem *examplesubsystem;
 	static OI *oi;
 	static MecanumDrive *mecanumDrive;
+	static MecanumDrive *mecanumDrive2;
 	static InternalCollect *internalCollect;
+	static SmartDashboard *smartDashboard;
 };
 
 #endif

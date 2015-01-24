@@ -6,6 +6,9 @@ DriveJ::DriveJ()
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(mecanumDrive);
+	dataPort = mecanumDrive->GetGryoPort();
+	receivedData = NULL;
+	finalData = 0;
 }
 
 // Called just before this Command runs the first time
@@ -17,6 +20,7 @@ void DriveJ::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveJ::Execute()
 {
+
 	float x = 0, y = 0, rotation = 0;
 	switch (mecanumDrive->GetDriveMode())
 	{
