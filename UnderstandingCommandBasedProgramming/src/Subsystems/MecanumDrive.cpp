@@ -47,11 +47,6 @@ double MecanumDrive::GetGyroAngle()
 	return gyroAngle;
 }
 
-SerialPort* MecanumDrive::GetGryoPort()
-{
-	return gyroPort;
-}
-
 double MecanumDrive::SetGyroAngle(double angle)
 {
 	return gyroAngle = angle;

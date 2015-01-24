@@ -6,14 +6,16 @@ SerialCommunication::SerialCommunication()
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(mecanumDrive2);
-	dataPort = mecanumDrive2->GetGryoPort();
-	receivedData = NULL;
-	finalData = NULL;
+	dataPort = mecanumDrive2->GetGyroPort();
+	sentData = new char('G');
+	finalData = 0;
+	needToWrite = true;
 }
 
 // Called just before this Command runs the first time
 void SerialCommunication::Initialize()
 {
+	needToWrite = false;
 	dataPort->Write(sentData, 1);
 }
 
@@ -22,24 +24,31 @@ void SerialCommunication::Execute()
 {
 	while (dataPort->GetBytesReceived() > 0)
 	{
+		needToWrite = true;
 		int i = 0;
 		char *incomingData;
+		char *newLine;
 		dataPort->Read(incomingData, 1);
-		if (incomingData == '/n')
+		if (incomingData == newLine)
 			return;
 		else
 		{
-			receivedData[i] = incomingData;
+			receivedData[i] = *incomingData;
 			i++;
 		}
 	}
-	if (receivedData != NULL)
+
+	//dataPort->Read(receivedData, 8);
+	if (needToWrite == true)
 	{
 		finalData = atof(receivedData);
 		mecanumDrive2->SetGyroAngle(finalData);
-		smartDashboard->PutNumber("gyro Value", finalData);
-		finalData = NULL;
-		receivedData = NULL;
+		SmartDashboard::PutNumber("gyro Value", finalData);
+		finalData = 0;
+		for(int i = 0; i < MAX_CHARS; i++)
+		{
+			receivedData[i] = NULL;
+		}
 		dataPort->Write(sentData, 1);
 	}
 }

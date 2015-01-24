@@ -8,7 +8,6 @@ OI* CommandBase::oi = NULL;
 MecanumDrive* CommandBase::mecanumDrive = NULL;
 MecanumDrive* CommandBase::mecanumDrive2 = NULL;
 InternalCollect* CommandBase::internalCollect = NULL;
-SmartDashboard* CommandBase::smartDashboard = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -33,6 +32,4 @@ void CommandBase::init()
 	mecanumDrive2 = mecanumDrive;
 
 	internalCollect = new InternalCollect();
-
-	smartDashboard = new SmartDashboard();
 }

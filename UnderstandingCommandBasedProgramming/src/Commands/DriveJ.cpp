@@ -6,9 +6,6 @@ DriveJ::DriveJ()
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(mecanumDrive);
-	dataPort = mecanumDrive->GetGryoPort();
-	receivedData = NULL;
-	finalData = 0;
 }
 
 // Called just before this Command runs the first time

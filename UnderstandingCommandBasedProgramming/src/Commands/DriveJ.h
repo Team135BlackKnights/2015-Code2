@@ -6,11 +6,6 @@
 
 class DriveJ: public CommandBase
 {
-private:
-	const char *sentData = 'G';
-	char receivedData[8];
-	double finalData;
-	SerialPort *dataPort;
 public:
 	DriveJ();
 	void Initialize();

@@ -27,7 +27,6 @@ public:
 	static MecanumDrive *mecanumDrive;
 	static MecanumDrive *mecanumDrive2;
 	static InternalCollect *internalCollect;
-	static SmartDashboard *smartDashboard;
 };
 
 #endif

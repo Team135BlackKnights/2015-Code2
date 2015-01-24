@@ -15,7 +15,7 @@ private:
 		CommandBase::init();
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
-
+		SmartDashboard::PutString("testing", "IT WORKS");
 	}
 	
 	void DisabledPeriodic()
