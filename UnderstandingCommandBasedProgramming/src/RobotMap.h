@@ -30,4 +30,8 @@
     const int JOYSTICK_LEFT = 0;
     const int JOYSTICK_RIGHT = 1;
 
+    const std::string SERIAL_RUNNING = "Serial Running";
+    const std::string DRIVE_J_RUNNING = "DriveJ Running";
+    const std::string DRIVE_INTERNAL_RUNNING = "Drive Internal Running";
+
 #endif

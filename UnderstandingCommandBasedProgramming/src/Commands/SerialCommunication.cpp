@@ -17,7 +17,7 @@ void SerialCommunication::Initialize()
 {
 	needToWrite = false;
 	dataPort->Write(sentData, 1);
-	SmartDashboard::PutBoolean("Serial", true);
+	SmartDashboard::PutBoolean(SERIAL_RUNNING, true);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -63,12 +63,12 @@ bool SerialCommunication::IsFinished()
 // Called once after isFinished returns true
 void SerialCommunication::End()
 {
-	SmartDashboard::PutBoolean("Serial", false);
+	SmartDashboard::PutBoolean(SERIAL_RUNNING, false);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void SerialCommunication::Interrupted()
 {
-	SmartDashboard::PutBoolean("Serial", false);
+	SmartDashboard::PutBoolean(SERIAL_RUNNING, false);
 }
