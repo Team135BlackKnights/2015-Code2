@@ -1,12 +1,12 @@
 #include <Commands/SerialCommunication.h>
-#include <stdlib.h>
+#include "RobotMap.h"
 
 SerialCommunication::SerialCommunication()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(mecanumDrive2);
-	dataPort = mecanumDrive2->GetGyroPort();
+	Requires(mecanumDrive);
+	dataPort = mecanumDrive->GetGyroPort();
 	sentData = new char('G');
 	finalData = 0;
 	needToWrite = true;

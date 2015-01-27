@@ -29,7 +29,7 @@ void CommandBase::init()
 	oi = new OI();
 
 	mecanumDrive = new MecanumDrive();
-	mecanumDrive2 = mecanumDrive;
+	//mecanumDrive2 = mecanumDrive;
 
 	internalCollect = new InternalCollect();
 }

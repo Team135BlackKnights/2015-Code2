@@ -1,4 +1,5 @@
 #include <Commands/DriveInternalCollect.h>
+#include "RobotMap.h"
 
 DriveInternalCollect::DriveInternalCollect()
 {
