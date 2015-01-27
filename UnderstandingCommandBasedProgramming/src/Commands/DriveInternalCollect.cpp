@@ -17,6 +17,7 @@ void DriveInternalCollect::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveInternalCollect::Execute()
 {
+	SmartDashboard::PutString(DRIVE_INTERNAL_RUNNING, "Running");
 	internalCollect->SetMotorPower(oi->GetStickY(oi->LEFT));
 }
 

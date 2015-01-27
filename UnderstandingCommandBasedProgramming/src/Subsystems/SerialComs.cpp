@@ -17,6 +17,7 @@ void SerialComs::InitDefaultCommand()
 
 void SerialComs::WaitForData()
 {
+	SmartDashboard::PutBoolean("Trying to possibly get potential readings from the gyroscope", true);
 	if (gyroPort->GetBytesReceived() > 0)
 	{
 		char *incomingData;
