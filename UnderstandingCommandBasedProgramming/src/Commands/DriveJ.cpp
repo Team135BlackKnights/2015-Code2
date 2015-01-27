@@ -12,13 +12,13 @@ DriveJ::DriveJ()
 // Called just before this Command runs the first time
 void DriveJ::Initialize()
 {
-	SmartDashboard::PutBoolean(DRIVE_J_RUNNING, true);
+	SmartDashboard::PutString(DRIVE_J_RUNNING, "Initialized");
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveJ::Execute()
 {
-
+	SmartDashboard::PutString(DRIVE_J_RUNNING, "Running");
 	float x = 0, y = 0, rotation = 0;
 	switch (mecanumDrive->GetDriveMode())
 	{
@@ -50,12 +50,12 @@ bool DriveJ::IsFinished()
 // Called once after isFinished returns true
 void DriveJ::End()
 {
-	SmartDashboard::PutBoolean(DRIVE_J_RUNNING, false);
+	SmartDashboard::PutString(DRIVE_J_RUNNING, "Ended");
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void DriveJ::Interrupted()
 {
-	SmartDashboard::PutBoolean(DRIVE_J_RUNNING, false);
+	SmartDashboard::PutString(DRIVE_J_RUNNING, "Interrupted");
 }

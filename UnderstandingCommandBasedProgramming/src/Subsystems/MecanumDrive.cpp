@@ -11,7 +11,6 @@ MecanumDrive::MecanumDrive() :
 		chassis->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 		gyroPort = new SerialPort(BAUD_RATE, SerialPort::kMXP);
 		gyroAngle = 0;
-		chassis->SetSafetyEnabled(false);
 }
 
 void MecanumDrive::InitDefaultCommand()

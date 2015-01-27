@@ -11,7 +11,7 @@ DriveInternalCollect::DriveInternalCollect()
 // Called just before this Command runs the first time
 void DriveInternalCollect::Initialize()
 {
-	SmartDashboard::PutBoolean(DRIVE_INTERNAL_RUNNING, true);
+	SmartDashboard::PutString(DRIVE_INTERNAL_RUNNING, "Initialized");
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -36,5 +36,5 @@ void DriveInternalCollect::End()
 // subsystems is scheduled to run
 void DriveInternalCollect::Interrupted()
 {
-	SmartDashboard::PutBoolean(DRIVE_INTERNAL_RUNNING, false);
+	SmartDashboard::PutString(DRIVE_INTERNAL_RUNNING, "Interrupted");
 }
