@@ -5,8 +5,8 @@ SerialCommunication::SerialCommunication()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(mecanumDrive);
-	dataPort = mecanumDrive->GetGyroPort();
+	Requires(mecanumDrive2);
+	dataPort = mecanumDrive2->GetGyroPort();
 	sentData = new char('G');
 	finalData = 0;
 	needToWrite = true;
@@ -23,6 +23,7 @@ void SerialCommunication::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void SerialCommunication::Execute()
 {
+	SmartDashboard::PutBoolean(SERIAL_RUNNING, true);
 	while (dataPort->GetBytesReceived() > 0)
 	{
 		needToWrite = true;
