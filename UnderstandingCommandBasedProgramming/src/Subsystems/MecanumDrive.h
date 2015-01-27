@@ -12,8 +12,6 @@ private:
 	// for methods that implement subsystem capabilities
 	RobotDrive* chassis;
 	int driveMode;
-	const int BAUD_RATE = 9600;
-	SerialPort *gyroPort;
 	double gyroAngle;
 public:
 	static const int 	SRX_SRY_SRZ = 0,
@@ -23,7 +21,6 @@ public:
 	void DriveJoysticks(float, float, float);
 	int GetDriveMode();
 	int SetDriveMode(int);
-	SerialPort *GetGyroPort();
 	double GetGyroAngle();
 	double SetGyroAngle(double);
 };

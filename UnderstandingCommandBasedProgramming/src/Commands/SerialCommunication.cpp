@@ -5,54 +5,21 @@ SerialCommunication::SerialCommunication()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(mecanumDrive2);
-	dataPort = mecanumDrive2->GetGyroPort();
-	sentData = new char('G');
-	finalData = 0;
-	needToWrite = true;
+	Requires(serialComs);
 }
 
 // Called just before this Command runs the first time
 void SerialCommunication::Initialize()
 {
-	needToWrite = false;
-	dataPort->Write(sentData, 1);
-	SmartDashboard::PutBoolean(SERIAL_RUNNING, true);
+	SmartDashboard::PutString(SERIAL_RUNNING, "Initialized");
+	//serialComs->SendData(new char('G'));
 }
 
 // Called repeatedly when this Command is scheduled to run
 void SerialCommunication::Execute()
 {
-	SmartDashboard::PutBoolean(SERIAL_RUNNING, true);
-	while (dataPort->GetBytesReceived() > 0)
-	{
-		needToWrite = true;
-		int i = 0;
-		char *incomingData;
-		char *newLine;
-		dataPort->Read(incomingData, 1);
-		if (incomingData == newLine)
-			return;
-		else
-		{
-			receivedData[i] = *incomingData;
-			i++;
-		}
-	}
-
-	//dataPort->Read(receivedData, 8);
-	if (needToWrite == true)
-	{
-		finalData = atof(receivedData);
-		mecanumDrive2->SetGyroAngle(finalData);
-		SmartDashboard::PutNumber("gyro Value", finalData);
-		finalData = 0;
-		for(int i = 0; i < MAX_CHARS; i++)
-		{
-			receivedData[i] = NULL;
-		}
-		dataPort->Write(sentData, 1);
-	}
+	SmartDashboard::PutString(SERIAL_RUNNING, "Running");
+	serialComs->WaitForData();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -64,12 +31,12 @@ bool SerialCommunication::IsFinished()
 // Called once after isFinished returns true
 void SerialCommunication::End()
 {
-	SmartDashboard::PutBoolean(SERIAL_RUNNING, false);
+	SmartDashboard::PutString(SERIAL_RUNNING, "Ended");
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void SerialCommunication::Interrupted()
 {
-	SmartDashboard::PutBoolean(SERIAL_RUNNING, false);
+	SmartDashboard::PutString(SERIAL_RUNNING, "Interrupted");
 }

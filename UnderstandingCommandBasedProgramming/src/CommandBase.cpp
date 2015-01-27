@@ -6,8 +6,9 @@
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
 MecanumDrive* CommandBase::mecanumDrive = NULL;
-MecanumDrive* CommandBase::mecanumDrive2 = NULL;
+//MecanumDrive* CommandBase::mecanumDrive2 = NULL;
 InternalCollect* CommandBase::internalCollect = NULL;
+SerialComs* CommandBase::serialComs = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -29,7 +30,9 @@ void CommandBase::init()
 	oi = new OI();
 
 	mecanumDrive = new MecanumDrive();
-	mecanumDrive2 = mecanumDrive;
+	//mecanumDrive2 = mecanumDrive;
 
 	internalCollect = new InternalCollect();
+
+	serialComs = new SerialComs();
 }

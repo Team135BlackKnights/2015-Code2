@@ -9,7 +9,6 @@ MecanumDrive::MecanumDrive() :
 		driveMode = this->SRX_SRY_SRZ;
 		chassis->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
 		chassis->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
-		gyroPort = new SerialPort(BAUD_RATE, SerialPort::kMXP);
 		gyroAngle = 0;
 }
 
@@ -37,10 +36,6 @@ int MecanumDrive::SetDriveMode(int mode)
 	return driveMode = mode;
 }
 
-SerialPort *MecanumDrive::GetGyroPort()
-{
-	return gyroPort;
-}
 
 double MecanumDrive::GetGyroAngle()
 {
