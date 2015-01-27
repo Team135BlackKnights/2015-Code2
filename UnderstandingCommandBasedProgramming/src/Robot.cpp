@@ -16,6 +16,7 @@ private:
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 		SmartDashboard::PutString("testing", "IT WORKS");
+		serialCommunication = new SerialCommunication();
 	}
 	
 	void DisabledPeriodic()
@@ -25,7 +26,7 @@ private:
 
 	void AutonomousInit()
 	{
-		serialCommunication = new SerialCommunication();
+		serialCommunication->Start();
 		//if (autonomousCommand != NULL)
 		//autonomousCommand->Start();
 	}

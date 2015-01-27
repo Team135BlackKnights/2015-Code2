@@ -11,7 +11,7 @@ DriveJ::DriveJ()
 // Called just before this Command runs the first time
 void DriveJ::Initialize()
 {
-
+	SmartDashboard::PutBoolean("DriveJ Running", true);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -56,5 +56,5 @@ void DriveJ::End()
 // subsystems is scheduled to run
 void DriveJ::Interrupted()
 {
-
+	SmartDashboard::PutBoolean("DriveJ Running", false);
 }
