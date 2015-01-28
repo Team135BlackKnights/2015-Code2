@@ -34,4 +34,6 @@
     const std::string DRIVE_J_RUNNING = "DriveJ Running";
     const std::string DRIVE_INTERNAL_RUNNING = "Drive Internal Running";
 
+    const double NO_DATA = -9642;
+
 #endif

@@ -44,5 +44,6 @@ double MecanumDrive::GetGyroAngle()
 
 double MecanumDrive::SetGyroAngle(double angle)
 {
+	SmartDashboard::PutNumber("MecanumDrive Gyro Angle", angle);
 	return gyroAngle = angle;
 }

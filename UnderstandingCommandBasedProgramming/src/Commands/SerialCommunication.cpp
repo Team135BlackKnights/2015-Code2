@@ -19,7 +19,11 @@ void SerialCommunication::Initialize()
 void SerialCommunication::Execute()
 {
 	SmartDashboard::PutString(SERIAL_RUNNING, "Running");
-	serialComs->WaitForData();
+	double value = serialComs->WaitForData();
+	if (value != NO_DATA)
+	{
+		mecanumDrive->SetGyroAngle(value);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
