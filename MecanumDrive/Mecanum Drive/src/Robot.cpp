@@ -35,9 +35,9 @@ robotDrive(rearRightChannel, frontRightChannel,frontLeftChannel, rearLeftChannel
 	}
 
 	void RobotInit() override {
-			CameraServer::GetInstance()->SetQuality(50);
+			//CameraServer::GetInstance()->SetQuality(50);
 			//the camera name (ex "cam0") can be found through the roborio web interface
-			CameraServer::GetInstance()->StartAutomaticCapture("cam0");
+			//CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 		}
 
 	void OperatorControl()
@@ -45,7 +45,10 @@ robotDrive(rearRightChannel, frontRightChannel,frontLeftChannel, rearLeftChannel
 		robotDrive.SetSafetyEnabled(false);
 		while (IsOperatorControl() && IsEnabled())
 		{
-
+			//if(stickRight.GetRawButton(8))
+			//{
+			//robotDrive.MecanumDrive_Cartesian(-stickRight.GetX(), -stickRight.GetZ(), stickRight.GetY());
+			//}
 
 			//Single joystick control
 			//robotDrive.MecanumDrive_Cartesian(-stickRight.GetX(), -stickRight.GetZ(), stickRight.GetY());
