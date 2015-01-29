@@ -47,3 +47,8 @@ double MecanumDrive::SetGyroAngle(double angle)
 	SmartDashboard::PutNumber("MecanumDrive Gyro Angle", angle);
 	return gyroAngle = angle;
 }
+
+void MecanumDrive::Rotate(float power)
+{
+	chassis->MecanumDrive_Cartesian(0, 0, power);
+}

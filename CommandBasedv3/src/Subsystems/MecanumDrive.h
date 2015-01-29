@@ -23,6 +23,7 @@ public:
 	int SetDriveMode(int);
 	double GetGyroAngle();
 	double SetGyroAngle(double);
+	void Rotate(float);
 };
 
 #endif

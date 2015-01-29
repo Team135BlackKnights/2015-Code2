@@ -2,6 +2,7 @@
 #include "RobotMap.h"
 #include "Commands/DriveJ.h"
 #include "Commands/ChangeDriveMode.h"
+#include "Commands/AlignRobot.h"
 
 OI::OI()
 {
@@ -16,8 +17,7 @@ OI::OI()
 			buttons[i][j] = new JoystickButton(sticks[i], j);
 		}
 	}
-	buttons[LEFT][9]->WhenPressed(new ChangeDriveMode(0));
-	buttons[LEFT][4]->WhenPressed(new ChangeDriveMode(1));
+	buttons[LEFT][4]->WhenPressed(new AlignRobot(45));
 }
 
 float OI::GetStickX(int hand)
