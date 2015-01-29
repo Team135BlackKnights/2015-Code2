@@ -15,7 +15,7 @@ private:
 		CommandBase::init();
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
-		serialCommunication = new SerialCommunication();
+		//serialCommunication = new SerialCommunication();
 		SmartDashboard::PutString("test", "IT WORKDS");
 	}
 	
