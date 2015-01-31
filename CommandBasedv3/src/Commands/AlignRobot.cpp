@@ -2,10 +2,10 @@
 
 AlignRobot::AlignRobot(double angle) {
 	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
+
 	Requires(mecanumDrive);
-	desiredAngle = angle;
-	power = 0;
+	desiredAngle = angle; // Sets the desired angle value to the angle
+	power = 0; //power is motor rotate power
 }
 
 // Called just before this Command runs the first time
@@ -17,13 +17,14 @@ void AlignRobot::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AlignRobot::Execute() {
 	SmartDashboard::PutString("Align Robot", "Running");
-	mecanumDrive->Rotate(power);
+	mecanumDrive->Rotate(power); // Calls mecanumDrive to Rotate the necesseary degrees at set power
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AlignRobot::IsFinished() {
-	double currentAngle = mecanumDrive->GetGyroAngle();
-	return desiredAngle > currentAngle;
+	double currentAngle = mecanumDrive->GetGyroAngle(); //Gathers the current angle from the gyro from the mecanum drive object
+	return desiredAngle > currentAngle; //if the desired Angle is > than current angle
 }
 
 // Called once after isFinished returns true

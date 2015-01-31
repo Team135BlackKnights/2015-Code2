@@ -5,7 +5,7 @@
 
 class OI
 {
-private:
+public:
 	Joystick* sticks[2]; //0 is Left, 1 is Right
 	JoystickButton* buttons[2][12];
 public:

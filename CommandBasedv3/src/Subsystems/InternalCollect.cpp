@@ -5,9 +5,16 @@
 InternalCollect::InternalCollect() :
 		Subsystem("InternalCollect")
 {
-	motors[LEFT] = new Talon(MOTOR_INTERNAL_COLLECT_LEFT);
-	motors[RIGHT] = new Talon(MOTOR_INTERNAL_COLLECT_RIGHT);
-	inverted = -1;
+	liftMotor = new Talon(5);
+	liftMotorInverted = -1;
+
+	collectMotor = new Talon(4);
+	collectMotorInverted = 1;
+
+	liftSolenoid = new Solenoid(0);
+	liftSolenoidEngaged = false;
+
+	collectSolenoid = new Solenoid(1);
 }
 
 void InternalCollect::InitDefaultCommand()
@@ -17,12 +24,38 @@ void InternalCollect::InitDefaultCommand()
 	SetDefaultCommand(new DriveInternalCollect());
 }
 
-void InternalCollect::SetMotorPower(float power)
+void InternalCollect::DriveLift(float power)
 {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-	for (int i = 0; i < 2; i++)
-	{
-		motors[i]->Set(power * (inverted == i ? -1 : 1));
-	}
+	liftMotor->Set(power * liftMotorInverted);
+}
+
+void InternalCollect::DriveCollect(float power)
+{
+	collectMotor->Set(power);
+}
+
+void InternalCollect::DriveCollectOut()
+{
+	DriveCollect(COLLECT_OUT_POWER);
+}
+
+void InternalCollect::DriveCollectIn() {
+	DriveCollect(COLLECT_IN_POWER);
+}
+
+void InternalCollect::SetLiftSolenoid(bool engaged)
+{
+	liftSolenoidEngaged = engaged;
+}
+
+void InternalCollect::ControlLiftSolenoid()
+{
+	liftSolenoid->Set(liftSolenoidEngaged);
+}
+
+void InternalCollect::SetControlSolenoid(bool engaged)
+{
+	collectSolenoid->Set(engaged);
 }

@@ -16,14 +16,14 @@ void MecanumDrive::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new DriveJ());
+	//SetDefaultCommand(new DriveJ());
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void MecanumDrive::DriveJoysticks(float x, float y, float z)
 {
-	chassis->MecanumDrive_Cartesian(x, y, z, gyroAngle);
+	//chassis->MecanumDrive_Cartesian(x, y, z, gyroAngle);
 }
 
 int MecanumDrive::GetDriveMode()

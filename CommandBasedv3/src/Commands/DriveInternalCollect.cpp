@@ -18,7 +18,25 @@ void DriveInternalCollect::Initialize()
 void DriveInternalCollect::Execute()
 {
 	SmartDashboard::PutString(DRIVE_INTERNAL_RUNNING, "Running");
-	internalCollect->SetMotorPower(oi->GetStickY(oi->LEFT));
+	internalCollect->DriveLift(oi->GetStickY(oi->LEFT));
+
+
+	if (oi->sticks[oi->LEFT]->GetRawButton(7) == 1)
+		internalCollect->DriveCollectOut();
+	else if (oi->sticks[oi->LEFT]->GetRawButton(8) == 1)
+		internalCollect->DriveCollectIn();
+	else
+		internalCollect->DriveCollect(0);
+
+	if (oi->sticks[oi->LEFT]->GetRawButton(9))
+		internalCollect->SetLiftSolenoid(true);
+	if (oi->sticks[oi->LEFT]->GetRawButton(10))
+		internalCollect->SetLiftSolenoid(false);
+
+	if (oi->sticks[oi->LEFT]->GetRawButton(11) == 1)
+		internalCollect->SetControlSolenoid(true);
+	if (oi->sticks[oi->LEFT]->GetRawButton(12) == 1)
+		internalCollect->SetControlSolenoid(false);
 }
 
 // Make this return true when this Command no longer needs to run execute()

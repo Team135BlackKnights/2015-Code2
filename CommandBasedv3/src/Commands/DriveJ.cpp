@@ -20,8 +20,8 @@ void DriveJ::Execute()
 {
 	SmartDashboard::PutString(DRIVE_J_RUNNING, "Running");
 	float x = 0, y = 0, rotation = 0;
-	switch (mecanumDrive->GetDriveMode())
-	{
+	switch (mecanumDrive->GetDriveMode()) //Different forms of Driving used in the Change Drive Mode
+	{									  //command not currently implemented
 	case mecanumDrive->SRX_SRY_SRZ:
 		x = oi->GetStickX(oi->RIGHT);
 		y = oi->GetStickY(oi->RIGHT);
@@ -38,7 +38,9 @@ void DriveJ::Execute()
 		rotation = oi->GetStickTwist(oi->RIGHT);
 		break;
 	}
-	mecanumDrive->DriveJoysticks(x, y, rotation);
+	mecanumDrive->DriveJoysticks(x, y, rotation); //Drives the Robot depending on x-y-z speed values
+
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
