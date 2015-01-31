@@ -1,5 +1,6 @@
 #include <Commands/SerialCommunication.h>
 #include "RobotMap.h"
+#include "Compressor.h"
 
 SerialCommunication::SerialCommunication()
 {

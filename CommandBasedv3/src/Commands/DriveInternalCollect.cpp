@@ -21,12 +21,17 @@ void DriveInternalCollect::Execute()
 	internalCollect->DriveLift(oi->GetStickY(oi->LEFT));
 
 
+	/*
 	if (oi->sticks[oi->LEFT]->GetRawButton(7) == 1)
 		internalCollect->DriveCollectOut();
 	else if (oi->sticks[oi->LEFT]->GetRawButton(8) == 1)
 		internalCollect->DriveCollectIn();
 	else
 		internalCollect->DriveCollect(0);
+	*/
+
+	internalCollect->DriveCollect(oi->GetStickY(oi->RIGHT));
+
 
 	if (oi->sticks[oi->LEFT]->GetRawButton(9))
 		internalCollect->SetLiftSolenoid(true);

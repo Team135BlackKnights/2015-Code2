@@ -10,6 +10,7 @@ MecanumDrive::MecanumDrive() :
 		chassis->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
 		chassis->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 		gyroAngle = 0;
+		compressor = new Compressor(0);
 }
 
 void MecanumDrive::InitDefaultCommand()

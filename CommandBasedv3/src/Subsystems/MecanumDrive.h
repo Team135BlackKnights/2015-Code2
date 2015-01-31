@@ -13,6 +13,7 @@ private:
 	RobotDrive* chassis;
 	int driveMode;
 	double gyroAngle;
+	Compressor *compressor;
 public:
 	static const int 	SRX_SRY_SRZ = 0,
 						SRX_SRY_SLZ = 1;
@@ -24,6 +25,8 @@ public:
 	double GetGyroAngle();
 	double SetGyroAngle(double);
 	void Rotate(float);
+
+
 };
 
 #endif

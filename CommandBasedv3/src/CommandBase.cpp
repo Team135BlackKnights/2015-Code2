@@ -9,6 +9,7 @@ MecanumDrive* CommandBase::mecanumDrive = NULL;
 //MecanumDrive* CommandBase::mecanumDrive2 = NULL;
 InternalCollect* CommandBase::internalCollect = NULL;
 SerialComs* CommandBase::serialComs = NULL;
+AirCompressor* CommandBase::airCompressor = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -35,4 +36,6 @@ void CommandBase::init()
 	internalCollect = new InternalCollect();
 
 	serialComs = new SerialComs();
+
+	airCompressor = new AirCompressor();
 }

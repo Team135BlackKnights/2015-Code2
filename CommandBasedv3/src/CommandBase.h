@@ -8,6 +8,7 @@
 #include "Subsystems/MecanumDrive.h"
 #include "Subsystems/InternalCollect.h"
 #include "Subsystems/SerialComs.h"
+#include "Subsystems/AirCompressor.h"
 #include "OI.h"
 #include "WPILib.h"
 
@@ -29,6 +30,7 @@ public:
 	//static MecanumDrive *mecanumDrive2;
 	static InternalCollect *internalCollect;
 	static SerialComs *serialComs;
+	static AirCompressor *airCompressor;
 };
 
 #endif
