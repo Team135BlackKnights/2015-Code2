@@ -19,15 +19,13 @@ InternalCollect::InternalCollect() :
 
 void InternalCollect::InitDefaultCommand()
 {
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+
 	SetDefaultCommand(new DriveInternalCollect());
 }
 
 void InternalCollect::DriveLift(float power)
 {
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+
 	liftMotor->Set(power * liftMotorInverted);
 }
 

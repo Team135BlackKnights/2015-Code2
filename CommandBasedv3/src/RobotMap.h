@@ -36,4 +36,6 @@
 
     const double NO_DATA = -9642;
 
+    const std::string AXIS_CAMERA_IP = "192.168.0.90";
+
 #endif

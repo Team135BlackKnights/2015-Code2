@@ -9,6 +9,7 @@ private:
 	//Command *autonomousCommand;
 	LiveWindow *lw;
 	Command *serialCommunication;
+	CameraServer* camera;
 
 	void RobotInit()
 	{
@@ -17,6 +18,11 @@ private:
 		lw = LiveWindow::GetInstance();
 		//serialCommunication = new SerialCommunication();
 		SmartDashboard::PutString("test", "IT WORKDS");
+
+		//camera = CameraServer::GetInstance();
+
+		//camera->SetQuality(50);
+		//camera->StartAutomaticCapture("cam0");
 	}
 	
 	void DisabledPeriodic()

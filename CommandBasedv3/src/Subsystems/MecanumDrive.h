@@ -10,6 +10,9 @@ class MecanumDrive: public Subsystem
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
+	//TalonSRX* motorSRX;
+	CANTalon* motorCan;
+	Talon* motorTalons[4];
 	RobotDrive* chassis;
 	int driveMode;
 	double gyroAngle;
