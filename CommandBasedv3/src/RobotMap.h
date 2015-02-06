@@ -14,10 +14,10 @@
 // following variables to use with your drivetrain subsystem.
 //const int LEFTMOTOR = 1;
 //const int RIGHTMOTOR = 2;
-    const int MOTOR_FRONT_LEFT	= 2;
-    const int MOTOR_REAR_LEFT	= 3;
-    const int MOTOR_FRONT_RIGHT	= 1;
-    const int MOTOR_REAR_RIGHT	= 0;
+    const int MOTOR_FRONT_LEFT	= 10;
+    const int MOTOR_REAR_LEFT	= 11;
+    const int MOTOR_FRONT_RIGHT	= 12;
+    const int MOTOR_REAR_RIGHT	= 13;
 
     const int MOTOR_INTERNAL_COLLECT_LEFT = 5;
     const int MOTOR_INTERNAL_COLLECT_RIGHT = 4;
@@ -30,9 +30,12 @@
     const int JOYSTICK_LEFT = 0;
     const int JOYSTICK_RIGHT = 1;
 
-    const std::string SERIAL_RUNNING = "Serial Running";
-    const std::string DRIVE_J_RUNNING = "DriveJ Running";
-    const std::string DRIVE_INTERNAL_RUNNING = "Drive Internal Running";
+    const std::string T_SERIAL_RUNNING = "Serial Command Status";
+    const std::string T_DRIVE_J_RUNNING = "DriveJ Command Status";
+    const std::string T_DRIVE_INTERNAL_RUNNING = "Drive Internal Status";
+    const std::string T_LIDAR_RUNNING = "LIDAR Command Status";
+    const std::string T_LIDAR_DISTANCE = "LIDAR Distance";
+    const std::string T_LIDAR_STEP = "LIDAR Step";
 
     const double NO_DATA = -9642;
 

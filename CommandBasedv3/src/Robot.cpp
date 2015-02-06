@@ -8,7 +8,6 @@ class Robot: public IterativeRobot
 private:
 	//Command *autonomousCommand;
 	LiveWindow *lw;
-	Command *serialCommunication;
 	CameraServer* camera;
 
 	void RobotInit()
@@ -32,8 +31,6 @@ private:
 
 	void AutonomousInit()
 	{
-		if (serialCommunication != NULL)
-			serialCommunication->Start();
 		//if (autonomousCommand != NULL)
 		//autonomousCommand->Start();
 	}
@@ -45,8 +42,8 @@ private:
 
 	void TeleopInit()
 	{
-		if (serialCommunication != NULL)
-			serialCommunication->Start();
+		//if (serialCommunication != NULL)
+			//serialCommunication->Start();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove

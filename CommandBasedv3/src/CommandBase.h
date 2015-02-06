@@ -9,6 +9,7 @@
 #include "Subsystems/InternalCollect.h"
 #include "Subsystems/SerialComs.h"
 #include "Subsystems/AirCompressor.h"
+#include "Subsystems/LIDAR.h"
 #include "OI.h"
 #include "WPILib.h"
 
@@ -31,6 +32,7 @@ public:
 	static InternalCollect *internalCollect;
 	static SerialComs *serialComs;
 	static AirCompressor *airCompressor;
+	static LIDAR *lidar;
 };
 
 #endif

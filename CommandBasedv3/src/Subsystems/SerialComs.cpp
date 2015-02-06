@@ -3,18 +3,26 @@
 #include "../Commands/SerialCommunication.h"
 
 SerialComs::SerialComs() :
-		Subsystem("ExampleSubsystem")
+		Subsystem("SerialComs")
 {
 	gyroPort = new SerialPort(BAUD_RATE, SerialPort::kMXP);
 	//dataToSend = 'G';
 	gyroPort->EnableTermination('\n');
 	//gyroPort->
+	gyroPort->SetTimeout(20);
 }
 
 void SerialComs::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	SetDefaultCommand(new SerialCommunication());
+}
+
+void SerialComs::SendData(const char* buffer, int32_t count)
+{
+	gyroPort->Write(buffer, count);
+	//gyroPort->
+	SmartDashboard::PutString("Lights data output", buffer);
 }
 
 double SerialComs::WaitForData()

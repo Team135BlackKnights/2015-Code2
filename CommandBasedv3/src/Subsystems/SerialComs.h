@@ -14,7 +14,7 @@ private:
 public:
 	SerialComs();
 	void InitDefaultCommand();
-	void SendData(const char*);
+	void SendData(const char*, int32_t);
 	double WaitForData();
 };
 
