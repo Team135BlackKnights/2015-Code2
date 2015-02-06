@@ -29,6 +29,7 @@
 
     const int JOYSTICK_LEFT = 0;
     const int JOYSTICK_RIGHT = 1;
+    const int JOYSTICK_BUTTON = 2;
 
     const std::string T_SERIAL_RUNNING = "Serial Command Status";
     const std::string T_DRIVE_J_RUNNING = "DriveJ Command Status";
