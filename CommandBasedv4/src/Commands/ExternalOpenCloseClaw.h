@@ -4,12 +4,12 @@
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class ExternalClaw: public CommandBase
+class ExternalOpenCloseClaw: public CommandBase
 {
 private:
 	bool isOpen;
 public:
-	ExternalClaw(bool);
+	ExternalOpenCloseClaw(bool);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
