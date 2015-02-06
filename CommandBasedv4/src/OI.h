@@ -11,6 +11,7 @@ public:
 public:
 	static const int LEFT = 0;
 	static const int RIGHT = 1;
+	static const int BUTTON = 2;
 	static const int MAX_JOYSTICK_BUTTONS = 12;
 	OI();
 	float GetStickX(int=RIGHT);
