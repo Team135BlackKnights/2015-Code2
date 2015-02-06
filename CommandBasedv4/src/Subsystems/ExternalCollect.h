@@ -9,17 +9,21 @@ class ExternalCollect: public Subsystem
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	Solenoid* clawOpenClose;
+	Solenoid* openCloseClaw;
+	Solenoid* hingeClaw;
 	VictorSP* winch;
-	bool clawState;
+	bool openCloseClawState;
+	bool hingeClawState;
 public:
-	static bool CLAW_OPEN = true;
-	static bool CLAW_CLOSED = false;
+	static const bool CLAW_OPEN = true;
+	static const bool CLAW_CLOSED = false;
 
 	ExternalCollect();
 	void InitDefaultCommand();
 	void SetOpenCloseClawState(bool);
-	void PowerOpenCloseClaw();
+	void SetHingeClawState(bool);
+	void PowerClaw();
+
 	void DriveWinch(float);
 };
 

@@ -3,6 +3,9 @@
 #include "Commands/DriveJ.h"
 #include "Commands/ChangeDriveMode.h"
 #include "Commands/AlignRobot.h"
+#include "Commands/ExternalOpenCloseClaw.h"
+#include "Commands/ExternalHingeClaw.h"
+#include "Commands/LeftyModeJustForRiley.h"
 
 OI::OI()
 {
@@ -20,8 +23,12 @@ OI::OI()
 		}
 	}
 	buttons[LEFT][10]->WhenPressed(new AlignRobot(45)); // When pressed Robot Aligns to 45 degrees
-	buttons[BUTTON][BUTTON_CLAW_OPEN_CLOSE]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
-	buttons[BUTTON][BUTTON_CLAW_OPEN_CLOSE]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+	buttons[BUTTON][BUTTON_OPEN_CLOSE_CLAW]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
+	buttons[BUTTON][BUTTON_OPEN_CLOSE_CLAW]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+
+	buttons[BUTTON][BUTTON_HINGE_CLAW]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
+	buttons[BUTTON][BUTTON_HINGE_CLAW]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+
 	buttons[BUTTON][BUTTON_LEFTY_FLIP]->WhenPressed(new LeftyModeJustForRiley());
 
 }

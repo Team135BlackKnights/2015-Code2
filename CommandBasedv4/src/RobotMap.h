@@ -24,6 +24,7 @@
 
     const int MOTOR_EXTERNAL_WINCH = 5;
     const int SOLENOID_EXTERNAL_OPEN_CLOSE_CLAW = 0;
+    const int SOLENOID_EXTERNAL_HINGE_CLAW = 1;
 
 // If you are using multiple modules, make sure to define both the port
 // number and the module. For example you with a rangefinder:
@@ -42,6 +43,7 @@
     const std::string T_LIDAR_STEP = "LIDAR Step";
     const std::string T_DRIVE_EXTERNAL_RUNNING = "Drive External Status";
     const std::string T_EXTERNAL_OPEN_CLOSE_CLAW = "Open Close Claw Status";
+    const std::string T_EXTERNAL_HINGE_CLAW = "Hinge Claw Status";
 
     const double NO_DATA = -9642;
 

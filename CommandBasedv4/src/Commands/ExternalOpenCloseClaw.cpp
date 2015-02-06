@@ -1,4 +1,5 @@
 #include <Commands/ExternalOpenCloseClaw.h>
+#include "RobotMap.h"
 
 ExternalOpenCloseClaw::ExternalOpenCloseClaw(bool status)
 {

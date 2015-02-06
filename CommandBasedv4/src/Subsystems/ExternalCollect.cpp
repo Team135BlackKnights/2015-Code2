@@ -1,12 +1,15 @@
 #include "ExternalCollect.h"
 #include "../RobotMap.h"
+#include "Commands/DriveExternalCollect.h"
 
 ExternalCollect::ExternalCollect() :
 		Subsystem("ExternalCollect")
 {
-	clawOpenClose = new Solenoid(SOLENOID_EXTERNAL_OPEN_CLOSE_CLAW);
+	openCloseClaw = new Solenoid(SOLENOID_EXTERNAL_OPEN_CLOSE_CLAW);
+	hingeClaw = new Solenoid(SOLENOID_EXTERNAL_HINGE_CLAW);
 	winch = new VictorSP(MOTOR_EXTERNAL_WINCH);
-	clawState = CLAW_CLOSED;
+	openCloseClawState = CLAW_CLOSED;
+	hingeClawState = CLAW_CLOSED;
 }
 
 void ExternalCollect::InitDefaultCommand()
@@ -19,12 +22,18 @@ void ExternalCollect::InitDefaultCommand()
 // here. Call these from Commands.
 void ExternalCollect::SetOpenCloseClawState(bool state)
 {
-	clawState = state;
+	openCloseClawState = state;
 }
 
-void ExternalCollect::PowerOpenCloseClaw()
+void ExternalCollect::PowerClaw()
 {
-	clawOpenClose->Set(clawState);
+	openCloseClaw->Set(openCloseClawState);
+	hingeClaw->Set(hingeClawState);
+}
+
+void ExternalCollect::SetHingeClawState(bool state)
+{
+	hingeClawState = state;
 }
 
 void ExternalCollect::DriveWinch(float power)
