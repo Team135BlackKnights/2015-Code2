@@ -16,6 +16,8 @@ void DriveExternalCollect::Initialize()
 void DriveExternalCollect::Execute()
 {
 	SmartDashboard::PutString(T_DRIVE_EXTERNAL_RUNNING, "Running");
+	externalCollect->DriveWinch(oi->GetStickY(OI::LEFT));
+	externalCollect->PowerOpenCloseClaw();
 }
 
 // Make this return true when this Command no longer needs to run execute()

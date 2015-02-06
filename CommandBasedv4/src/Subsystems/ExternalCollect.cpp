@@ -26,3 +26,8 @@ void ExternalCollect::PowerOpenCloseClaw()
 {
 	clawOpenClose->Set(clawState);
 }
+
+void ExternalCollect::DriveWinch(float power)
+{
+	winch->Set(power);
+}

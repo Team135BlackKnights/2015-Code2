@@ -22,8 +22,10 @@ private:
 						FRONT_RIGHT = 2,
 						REAR_RIGHT = 3;
 public:
-	static const int 	SRX_SRY_SRZ = 0,
-						SRX_SRY_SLZ = 1;
+	static const int 	DRIVE_MODE_A = 0,
+						DRIVE_MODE_B = 1,
+						DRIVE_MODE_C = 2,
+						DRIVE_MODE_D = 3;
 	MecanumDrive();
 	void InitDefaultCommand();
 	void DriveJoysticks(float, float, float);

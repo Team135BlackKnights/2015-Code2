@@ -20,6 +20,7 @@ public:
 	void InitDefaultCommand();
 	void SetOpenCloseClawState(bool);
 	void PowerOpenCloseClaw();
+	void DriveWinch(float);
 };
 
 #endif

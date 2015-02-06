@@ -22,20 +22,40 @@ void DriveJ::Execute()
 	float x = 0, y = 0, rotation = 0;
 	switch (mecanumDrive->GetDriveMode()) //Different forms of Driving used in the Change Drive Mode
 	{									  //command not currently implemented
-	case mecanumDrive->SRX_SRY_SRZ:
-		x = oi->GetStickX(oi->RIGHT);
-		y = oi->GetStickY(oi->RIGHT);
-		rotation = oi->GetStickTwist(oi->RIGHT);
+
+	//FORWARDS: Right Y
+	//SIDEWAYS: Right X
+	//ROTATION: RIGHT Twist
+	case MecanumDrive::DRIVE_MODE_A:
+		x = oi->GetStickX(OI::RIGHT);
+		y = oi->GetStickY(OI::RIGHT);
+		rotation = oi->GetStickTwist(OI::RIGHT);
 		break;
-	case mecanumDrive->SRX_SRY_SLZ:
-		x = oi->GetStickX(oi->LEFT);
-		y = oi->GetStickY(oi->RIGHT);
-		rotation = oi->GetStickTwist(oi->RIGHT);
+
+	//FORWARDS: Right Y
+	//SIDEWAYS: Left X
+	//ROTATION: RIGHT Twist
+	case MecanumDrive::DRIVE_MODE_B:
+		x = oi->GetStickX(OI::LEFT);
+		y = oi->GetStickY(OI::RIGHT);
+		rotation = oi->GetStickTwist(OI::RIGHT);
+		break;
+
+	//FORWARDS: Right Y
+	//SIDEWAYS: Right X
+	//ROTATION: Left Twist
+	case MecanumDrive::DRIVE_MODE_C:
+		x = oi->GetStickX(OI::RIGHT);
+		y = oi->GetStickY(OI::RIGHT);
+		rotation = oi->GetStickTwist(OI::LEFT);
+		break;
 	break;
+
+	//same as DRIVE_MODE_A
 	default:
-		x = oi->GetStickX(oi->RIGHT);
-		y = oi->GetStickY(oi->RIGHT);
-		rotation = oi->GetStickTwist(oi->RIGHT);
+		x = oi->GetStickX(OI::RIGHT);
+		y = oi->GetStickY(OI::RIGHT);
+		rotation = oi->GetStickTwist(OI::RIGHT);
 		break;
 	}
 	mecanumDrive->DriveJoysticks(x, y, rotation); //Drives the Robot depending on x-y-z speed values

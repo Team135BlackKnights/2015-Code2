@@ -20,8 +20,9 @@ OI::OI()
 		}
 	}
 	buttons[LEFT][10]->WhenPressed(new AlignRobot(45)); // When pressed Robot Aligns to 45 degrees
-	buttons[BUTTON][CLAW_OPEN_CLOSE]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
-	buttons[BUTTON][CLAW_OPEN_CLOSE]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+	buttons[BUTTON][BUTTON_CLAW_OPEN_CLOSE]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
+	buttons[BUTTON][BUTTON_CLAW_OPEN_CLOSE]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+	buttons[BUTTON][BUTTON_LEFTY_FLIP]->WhenPressed(new LeftyModeJustForRiley());
 
 }
 
@@ -38,4 +39,11 @@ float OI::GetStickY(int hand)
 float OI::GetStickTwist(int hand)
 {
 	return sticks[hand]->GetTwist(); // Returns Twist or Z Axis of Joysticks
+}
+
+void OI::LeftyFlip()
+{
+	int temp = LEFT;
+	LEFT = RIGHT;
+	RIGHT = temp;
 }

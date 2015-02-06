@@ -11,7 +11,7 @@ MecanumDrive::MecanumDrive() :
 		motors[REAR_RIGHT] = new CANTalon(MOTOR_REAR_RIGHT);
 
 		chassis = new RobotDrive(motors[FRONT_LEFT], motors[REAR_LEFT], motors[FRONT_RIGHT], motors[REAR_RIGHT]);
-		driveMode = this->SRX_SRY_SLZ;
+		driveMode = this->DRIVE_MODE_B;
 		chassis->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
 		chassis->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 		gyroAngle = 0;
