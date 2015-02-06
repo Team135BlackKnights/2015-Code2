@@ -18,7 +18,8 @@ public:
 
 	ExternalCollect();
 	void InitDefaultCommand();
-	void SetClawState(bool);
+	void SetOpenCloseClawState(bool);
+	void PowerOpenCloseClaw();
 };
 
 #endif

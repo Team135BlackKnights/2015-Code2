@@ -40,6 +40,8 @@
     const std::string T_LIDAR_RUNNING = "LIDAR Command Status";
     const std::string T_LIDAR_DISTANCE = "LIDAR Distance";
     const std::string T_LIDAR_STEP = "LIDAR Step";
+    const std::string T_DRIVE_EXTERNAL_RUNNING = "Drive External Status";
+    const std::string T_EXTERNAL_OPEN_CLOSE_CLAW = "Open Close Claw Status";
 
     const double NO_DATA = -9642;
 

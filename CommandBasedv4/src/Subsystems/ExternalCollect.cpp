@@ -12,12 +12,17 @@ ExternalCollect::ExternalCollect() :
 void ExternalCollect::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand()
+	SetDefaultCommand(new DriveExternalCollect());
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-void ExternalCollect::SetClawState(bool state)
+void ExternalCollect::SetOpenCloseClawState(bool state)
 {
 	clawState = state;
+}
+
+void ExternalCollect::PowerOpenCloseClaw()
+{
+	clawOpenClose->Set(clawState);
 }
