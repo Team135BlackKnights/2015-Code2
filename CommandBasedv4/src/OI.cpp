@@ -20,7 +20,8 @@ OI::OI()
 		}
 	}
 	buttons[LEFT][10]->WhenPressed(new AlignRobot(45)); // When pressed Robot Aligns to 45 degrees
-	buttons[BUTTON][CLAW_OPEN_CLOSE]->WhenPressed(new ExternalOpenCloseClaw);
+	buttons[BUTTON][CLAW_OPEN_CLOSE]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
+	buttons[BUTTON][CLAW_OPEN_CLOSE]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
 
 }
 
