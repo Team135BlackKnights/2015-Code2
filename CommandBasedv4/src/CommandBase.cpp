@@ -11,6 +11,7 @@ InternalCollect* CommandBase::internalCollect = NULL;
 SerialComs* CommandBase::serialComs = NULL;
 AirCompressor* CommandBase::airCompressor = NULL;
 LIDAR* CommandBase::lidar = NULL;
+ExternalCollect* CommandBase::externalCollect = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -41,4 +42,6 @@ void CommandBase::init()
 	airCompressor = new AirCompressor();
 
 	lidar = new LIDAR();
+
+	externalCollect = new ExternalCollect();
 }
