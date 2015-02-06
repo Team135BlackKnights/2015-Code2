@@ -9,11 +9,16 @@ class ExternalCollect: public Subsystem
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	Solenoid* claw;
+	Solenoid* clawOpenClose;
 	VictorSP* winch;
+	bool clawState;
 public:
+	static bool CLAW_OPEN = true;
+	static bool CLAW_CLOSED = false;
+
 	ExternalCollect();
 	void InitDefaultCommand();
+	void SetClawState(bool);
 };
 
 #endif

@@ -11,6 +11,7 @@ ExternalOpenCloseClaw::ExternalOpenCloseClaw(bool status)
 // Called just before this Command runs the first time
 void ExternalOpenCloseClaw::Initialize()
 {
+
 }
 
 // Called repeatedly when this Command is scheduled to run
