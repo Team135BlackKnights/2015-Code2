@@ -22,16 +22,35 @@ void DriveJ::Execute()
 	float x = 0, y = 0, rotation = 0;
 	switch (mecanumDrive->GetDriveMode()) //Different forms of Driving used in the Change Drive Mode
 	{									  //command not currently implemented
-	case mecanumDrive->SRX_SRY_SRZ:
+	//FORWARDS: Right Y
+	//SIDEWAYS: Right X
+	//ROTATION: RIGHT Twist
+	case MecanumDrive::DRIVE_MODE_A:
 		x = oi->GetStickX(oi->RIGHT);
 		y = oi->GetStickY(oi->RIGHT);
 		rotation = oi->GetStickTwist(oi->RIGHT);
 		break;
-	case mecanumDrive->SRX_SRY_SLZ:
-		x = oi->GetStickX(oi->RIGHT);//LEFT
+
+	//FORWARDS: Right Y
+	//SIDEWAYS: Left X
+	//ROTATION: RIGHT Twist
+	case MecanumDrive::DRIVE_MODE_B:
+		x = oi->GetStickX(oi->LEFT);
 		y = oi->GetStickY(oi->RIGHT);
 		rotation = oi->GetStickTwist(oi->RIGHT);
+		break;
+
+	//FORWARDS: Right Y
+	//SIDEWAYS: Right X
+	//ROTATION: Left Twist
+	case MecanumDrive::DRIVE_MODE_C:
+		x = oi->GetStickX(oi->RIGHT);
+		y = oi->GetStickY(oi->RIGHT);
+		rotation = oi->GetStickTwist(oi->LEFT);
+		break;
 	break;
+
+	//same as DRIVE_MODE_A
 	default:
 		x = oi->GetStickX(oi->RIGHT);
 		y = oi->GetStickY(oi->RIGHT);

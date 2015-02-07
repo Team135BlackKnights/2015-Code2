@@ -1,6 +1,6 @@
 #include "AirCompressor.h"
 #include "../RobotMap.h"
-#include "../Commands/Pneumatics.h"
+
 
 AirCompressor::AirCompressor() :
 		Subsystem("AirCompressor")

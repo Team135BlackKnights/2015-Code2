@@ -44,6 +44,7 @@
     const std::string T_LIDAR_DISTANCE = "LIDAR Distance";
     const std::string T_LIDAR_STEP = "LIDAR Step";
     const std::string T_DRIVE_EXTERNAL_RUNNING = "Drive External Status";
+    const std::string T_LEFTY_MODE = "Lefty Mode Enabled";
 
     const double NO_DATA = -9642;
 
