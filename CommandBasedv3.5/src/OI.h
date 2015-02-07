@@ -8,7 +8,7 @@ class OI
 public:
 	static const int MAX_JOYSTICK_BUTTONS = 12;
 	Joystick* sticks[2]; //0 is Left, 1 is Right
-	JoystickButton* buttons[2][MAX_JOYSTICK_BUTTONS];
+	JoystickButton* buttons[2][MAX_JOYSTICK_BUTTONS + 1];
 
 public:
 	int LEFT = 0;
