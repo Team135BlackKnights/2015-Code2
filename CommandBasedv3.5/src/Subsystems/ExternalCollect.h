@@ -14,9 +14,10 @@ private:
 	VictorSP* winch;
 	bool openCloseClawState;
 	bool hingeClawState;
+	DigitalInput* switches[1];
 public:
-	static const bool CLAW_OPEN = !false;
-	static const bool CLAW_CLOSED = !true;
+	static const bool CLAW_OPEN = false;
+	static const bool CLAW_CLOSED = true;
 
 	static const bool CLAW_UP = true;
 	static const bool CLAW_DOWN = false;
@@ -28,6 +29,8 @@ public:
 	void PowerClaw();
 
 	void DriveWinch(float);
+
+	bool GetLimitSwitchValue(int port);
 };
 
 #endif

@@ -7,7 +7,9 @@
 //#include "Commands/ExternalHingeClaw.h"
 #include "Commands/LeftyModeJustForRiley.h"
 #include "Commands/ExternalHingeClaw.h"
+#include "Commands/RunWinchUntilStopped.h"
 #include "Subsystems/ExternalCollect.h"
+#include "CommandBase.h"
 
 
 OI::OI()
@@ -38,6 +40,10 @@ OI::OI()
 	buttons[LEFT][8]->WhenReleased(new ExternalOpenCloseClaw(true));
 
 	buttons[LEFT][3]->WhenPressed(new LeftyModeJustForRiley());
+
+	//buttons[LEFT][9]->WhenPressed(new RunWinchUntilStopped(.5, externalCollect->GetUpperSwitchValue()))
+	buttons[LEFT][9]->WhenPressed(new RunWinchUntilStopped(-1, 0));
+
 	//buttons[RIGHT][10]->WhenPressed(new ExternalOpenCloseClaw(false));
 	//buttons[RIGHT][10]->WhenReleased(new ExternalOpenCloseClaw(true));
 	//buttons[BUTTON][BUTTON_LEFTY_FLIP]->WhenPressed(new LeftyModeJustForRiley());

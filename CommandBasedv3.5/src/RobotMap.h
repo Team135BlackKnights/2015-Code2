@@ -45,6 +45,7 @@
     const std::string T_LIDAR_STEP = "LIDAR Step";
     const std::string T_DRIVE_EXTERNAL_RUNNING = "Drive External Status";
     const std::string T_LEFTY_MODE = "Lefty Mode Enabled";
+    const std::string T_RUN_WINCH_UNTIL_STOPPED = "Run Winch Until Stop";
 
     const double NO_DATA = -9642;
 

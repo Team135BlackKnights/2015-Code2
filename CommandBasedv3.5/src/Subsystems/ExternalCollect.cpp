@@ -11,6 +11,8 @@ ExternalCollect::ExternalCollect() :
 	winch = new VictorSP(MOTOR_EXTERNAL_WINCH);//MOTOR_EXTERNAL_WINCH);
 	openCloseClawState = CLAW_OPEN;
 	hingeClawState = CLAW_UP;
+
+	switches[0] = new DigitalInput(0);
 }
 
 void ExternalCollect::InitDefaultCommand()
@@ -40,4 +42,9 @@ void ExternalCollect::SetHingeClawState(bool state)
 void ExternalCollect::DriveWinch(float power)
 {
 	winch->Set(power);
+}
+
+bool ExternalCollect::GetLimitSwitchValue(int port)
+{
+	return switches[port]->Get();
 }
