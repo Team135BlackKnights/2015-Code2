@@ -15,7 +15,8 @@ private:
 	RobotDrive* chassis;
 	int driveMode;
 	double gyroAngle;
-	int lidarValue;
+	int lidarValueOne;
+	int lidarValueTwo;
 	Compressor *compressor;
 	static const int 	FRONT_LEFT = 0,
 						REAR_LEFT = 1,
@@ -34,8 +35,9 @@ public:
 	double GetGyroAngle();
 	double SetGyroAngle(double);
 
-	int GetLidarValue();
-	int SetLidarValue(int);
+	int GetLidarValueOne();
+	int GetLidarValueTwo();
+	void SetLidarValues(int, int);
 
 	void Rotate(float);
 

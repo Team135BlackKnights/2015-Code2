@@ -19,15 +19,18 @@ private:
 	I2C *I2CPort;
 	//SerialPort *serialPort;
 	unsigned char *distance;
+	DigitalOutput* powerEnable;
+	std::string debugOutputKey;
 public:
-	LIDAR();
+	LIDAR(int port);
 	void InitDefaultCommand();
-	void StepOne_Write();
-	void StepTwo_Read();
-	int StepThree_GetData();
+	void Write();
+	void Read();
+	int GetData();
 	//int ReadDistance();
 	int GetDistance();
 	void WriteToLights(const char*, int32_t);
+	void SetPowerEnable(bool enable);
 };
 
 #endif

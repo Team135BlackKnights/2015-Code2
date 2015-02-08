@@ -1,9 +1,9 @@
 #include "RunWinchUntilStopped.h"
 #include "RobotMap.h"
 
-RunWinchUntilStopped::RunWinchUntilStopped(float power, int limitPort)//(*fptr)())
+RunWinchUntilStopped::RunWinchUntilStopped(float power, int limitPort)
 {
-	// Use Requires() here to declare subsystem dependencies
+
 	Requires(externalCollect);
 	this->power = power;
 	this->limitPort = limitPort;

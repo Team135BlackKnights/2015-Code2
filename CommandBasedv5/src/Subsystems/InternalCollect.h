@@ -7,6 +7,8 @@
 class InternalCollect: public Subsystem
 {
 private:
+
+
 	Talon *liftMotor;
 	int liftMotorInverted;
 
@@ -27,6 +29,7 @@ public:
 	InternalCollect();
 	void InitDefaultCommand();
 
+
 	void DriveLift(float);
 
 	void DriveCollect(float);
@@ -37,6 +40,10 @@ public:
 	void ControlLiftSolenoid();
 
 	void SetControlSolenoid(bool);
+
+
+
+
 };
 
 #endif

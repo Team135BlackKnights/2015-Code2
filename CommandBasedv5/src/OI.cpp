@@ -4,7 +4,6 @@
 #include "Commands/ChangeDriveMode.h"
 #include "Commands/AlignRobot.h"
 #include "Commands/ExternalOpenCloseClaw.h"
-//#include "Commands/ExternalHingeClaw.h"
 #include "Commands/LeftyModeJustForRiley.h"
 #include "Commands/ExternalHingeClaw.h"
 #include "Commands/RunWinchUntilStopped.h"
@@ -28,21 +27,34 @@ OI::OI()
 		}
 	}
 	//checked
-	buttons[BUTTON][BUTTON_OPEN_CLOSE_CLAW]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
-	buttons[BUTTON][BUTTON_OPEN_CLOSE_CLAW]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+
+	//buttons[BUTTON][BUTTON_OPEN_CLOSE_CLAW]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
+	//SmartDashboard::PutBoolean(T_CLAW_OPEN_CLOSE, true);
+	//buttons[BUTTON][BUTTON_OPEN_CLOSE_CLAW]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+	//SmartDashboard::PutBoolean(T_CLAW_OPEN_CLOSE, false);
+
+	buttons[LEFT][11]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
+		//SmartDashboard::PutBoolean(T_CLAW_OPEN_CLOSE, true);
+	buttons[LEFT][12]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+		//SmartDashboard::PutBoolean(T_CLAW_OPEN_CLOSE, false);
+
+
 
 	//checked
-	buttons[BUTTON][BUTTON_HINGE_CLAW]->WhenPressed(new ExternalHingeClaw(ExternalCollect::CLAW_UP));
-	buttons[BUTTON][BUTTON_HINGE_CLAW]->WhenReleased(new ExternalHingeClaw(ExternalCollect::CLAW_DOWN));
+	//buttons[BUTTON][BUTTON_HINGE_CLAW]->WhenPressed(new ExternalHingeClaw(ExternalCollect::CLAW_UP));
+	//buttons[BUTTON][BUTTON_HINGE_CLAW]->WhenReleased(new ExternalHingeClaw(ExternalCollect::CLAW_DOWN));
+
+	buttons[LEFT][11]->WhenPressed(new ExternalHingeClaw(ExternalCollect::CLAW_UP));
+	buttons[LEFT][12]->WhenReleased(new ExternalHingeClaw(ExternalCollect::CLAW_DOWN));
 
 	//checked
-	buttons[BUTTON][BUTTON_LEFTY_FLIP]->WhenPressed(new LeftyModeJustForRiley());
-
+	//buttons[BUTTON][BUTTON_LEFTY_FLIP]->WhenPressed(new LeftyModeJustForRiley());
+	//SmartDashboard::PutBoolean(T_LEFTY_MODE, flipped);
 
 	//buttons[BUTTON][BUTTON_RUN_WINCH_UNTIL_STOPPED]->WhenPressed(new RunWinchUntilStopped(-1, 0));
 
 	//buttons[BUTTON][BUTTON_LEFTY_FLIP]->WhenPressed(new LeftyModeJustForRiley());
-	SmartDashboard::PutBoolean(T_LEFTY_MODE, flipped);
+
 
 }
 

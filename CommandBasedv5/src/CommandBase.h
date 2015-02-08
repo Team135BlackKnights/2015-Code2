@@ -33,7 +33,8 @@ public:
 	static InternalCollect *internalCollect;
 	static SerialComs *serialComs;
 	static AirCompressor *airCompressor;
-	static LIDAR *lidar;
+	static LIDAR *lidarOne;
+	static LIDAR *lidarTwo;
 	static ExternalCollect *externalCollect;
 };
 

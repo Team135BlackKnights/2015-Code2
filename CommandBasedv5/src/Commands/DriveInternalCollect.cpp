@@ -32,7 +32,7 @@ void DriveInternalCollect::Execute()
 
 	internalCollect->DriveCollect(oi->GetStickY(oi->RIGHT));
 
-
+/*
 	if (oi->sticks[oi->LEFT]->GetRawButton(9))
 		internalCollect->SetLiftSolenoid(true);
 	if (oi->sticks[oi->LEFT]->GetRawButton(10))
@@ -42,6 +42,7 @@ void DriveInternalCollect::Execute()
 		internalCollect->SetControlSolenoid(true);
 	if (oi->sticks[oi->LEFT]->GetRawButton(12) == 1)
 		internalCollect->SetControlSolenoid(false);
+		*/
 }
 
 // Make this return true when this Command no longer needs to run execute()

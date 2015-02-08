@@ -9,7 +9,9 @@ class LIDARCommunication: public CommandBase
 private:
 	int i;
 	int step;
-	const int FRAMES_PER_STEP = 10;
+	int valueOne;
+	int valueTwo;
+	const int FRAMES_PER_STEP = 3;
 public:
 	LIDARCommunication();
 	void Initialize();

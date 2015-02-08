@@ -16,7 +16,8 @@ MecanumDrive::MecanumDrive() :
 		chassis->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 		gyroAngle = 0;
 		compressor = new Compressor(0);
-		lidarValue = 0;
+		lidarValueOne = 0;
+		lidarValueTwo = 0;
 }
 
 void MecanumDrive::InitDefaultCommand()
@@ -57,15 +58,21 @@ double MecanumDrive::SetGyroAngle(double angle)
 	return gyroAngle = angle;
 }
 
-int MecanumDrive::GetLidarValue()
+int MecanumDrive::GetLidarValueOne()
 {
-	return lidarValue;
+	return lidarValueOne;
 }
 
-int MecanumDrive::SetLidarValue(int value)
+int MecanumDrive::GetLidarValueTwo()
 {
-	SmartDashboard::PutNumber(T_LIDAR_DISTANCE, value);
-	return lidarValue = value;
+	return lidarValueTwo;
+}
+
+void MecanumDrive::SetLidarValues(int valueOne, int valueTwo)
+{
+	//SmartDashboard::PutNumber(T_LIDAR_DISTANCE_ONE, value);
+	lidarValueOne = valueOne;
+	lidarValueTwo = valueTwo;
 }
 
 void MecanumDrive::Rotate(float power)

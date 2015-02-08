@@ -1,6 +1,7 @@
 #include "CommandBase.h"
 //#include "Subsystems/ExampleSubsystem.h"
 #include "Commands/Scheduler.h"
+#include "RobotMap.h"
 
 // Initialize a single static instance of all of your subsystems to NULL
 //ExampleSubsystem* CommandBase::examplesubsystem = NULL;
@@ -10,7 +11,8 @@ MecanumDrive* CommandBase::mecanumDrive = NULL;
 InternalCollect* CommandBase::internalCollect = NULL;
 SerialComs* CommandBase::serialComs = NULL;
 AirCompressor* CommandBase::airCompressor = NULL;
-LIDAR* CommandBase::lidar = NULL;
+LIDAR* CommandBase::lidarOne = NULL;
+LIDAR* CommandBase::lidarTwo = NULL;
 ExternalCollect* CommandBase::externalCollect = NULL;
 
 CommandBase::CommandBase(char const *name) :
@@ -41,7 +43,8 @@ void CommandBase::init()
 
 	airCompressor = new AirCompressor();
 
-	lidar = new LIDAR();
+	lidarOne = new LIDAR(DIGITAL_LIDAR_ONE);
+	lidarTwo = new LIDAR(DIGITAL_LIDAR_TWO);
 
 	externalCollect = new ExternalCollect();
 }

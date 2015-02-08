@@ -37,16 +37,21 @@
     const int JOYSTICK_RIGHT = 1;
     const int JOYSTICK_BUTTON = 2;
 
+    const int DIGITAL_LIDAR_ONE = 8;
+    const int DIGITAL_LIDAR_TWO= 9;
+
     const std::string T_SERIAL_RUNNING = "Serial Command Status";
     const std::string T_DRIVE_J_RUNNING = "DriveJ Command Status";
     const std::string T_DRIVE_INTERNAL_RUNNING = "Drive Internal Status";
     const std::string T_LIDAR_RUNNING = "LIDAR Command Status";
-    const std::string T_LIDAR_DISTANCE = "LIDAR Distance";
+    const std::string T_LIDAR_DISTANCE_ONE = "LIDAR One Distance";
+    const std::string T_LIDAR_DISTANCE_TWO = "LIDAR Two Distance";
     const std::string T_LIDAR_STEP = "LIDAR Step";
     const std::string T_DRIVE_EXTERNAL_RUNNING = "Drive External Status";
     const std::string T_LEFTY_MODE = "Lefty Mode Enabled";
     const std::string T_RUN_WINCH_UNTIL_STOPPED = "Run Winch Until Stop";
-
+    const std::string T_HINGE_CLAW = "External Hinge Status";
+    const std::string T_CLAW_OPEN_CLOSE = "External Claw Status";
     const double NO_DATA = -9642;
 
     //const std::string AXIS_CAMERA_IP = "192.168.0.90";
