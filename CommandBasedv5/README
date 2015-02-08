@@ -1,0 +1,3 @@
+Joystick on left DS  should be 2
+Joystick on right DS should be 1 
+Joystick not attached to DS should be 0
