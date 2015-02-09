@@ -18,7 +18,7 @@ void DriveInternalCollect::Initialize()
 void DriveInternalCollect::Execute()
 {
 	SmartDashboard::PutString(T_DRIVE_INTERNAL_RUNNING, "Running");
-	internalCollect->DriveLift(oi->GetStickY(oi->LEFT)); //THIS NEEDS TO BE CHANGED
+	internalCollect->DriveLift(oi->GetStickY(oi->EXTERNAL_CONTROL)); //THIS NEEDS TO BE CHANGED
 
 
 	/*

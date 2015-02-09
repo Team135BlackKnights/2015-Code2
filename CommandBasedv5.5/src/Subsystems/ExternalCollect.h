@@ -10,17 +10,17 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	Solenoid* openCloseClaw;
-	Solenoid* hingeClaw;
+	//Solenoid* hingeClaw;
 	VictorSP* winch;
 	bool openCloseClawState;
-	bool hingeClawState;
+	//bool hingeClawState;
 	DigitalInput* switches[1];
 public:
 	static const bool CLAW_OPEN = false;
 	static const bool CLAW_CLOSED = true;
 
-	static const bool CLAW_UP = true;
-	static const bool CLAW_DOWN = false;
+	//static const bool CLAW_UP = true;
+	//static const bool CLAW_DOWN = false;
 
 	ExternalCollect();
 	void InitDefaultCommand();

@@ -7,6 +7,7 @@
 #include "Commands/LeftyModeJustForRiley.h"
 #include "Commands/ExternalHingeClaw.h"
 #include "Commands/RunWinchUntilStopped.h"
+#include "Commands/InternalCollection.h"
 #include "Subsystems/ExternalCollect.h"
 #include "CommandBase.h"
 
@@ -17,43 +18,36 @@ OI::OI()
 	// Process operator interface input here.
 	sticks[LEFT] = new Joystick(JOYSTICK_LEFT); //Declares new Joysticks
 	sticks[RIGHT] = new Joystick(JOYSTICK_RIGHT);
-	sticks[EXTERNAL_CONTROL] = new Joystick(JOYSTICK_EXTERNAL_CONTROL);
+	if (NUMBER_O_JOYSTICKS > 2)
+		sticks[EXTERNAL_CONTROL] = new Joystick(JOYSTICK_EXTERNAL_CONTROL);
+	if (NUMBER_O_JOYSTICKS > 3)
+		sticks[BUTTON_BOX] = new Joystick(JOYSTICK_BUTTON_BOX);
 
-	for (int i = 0; i < 3; i++) //Declares new buttons for Joysticks max # of buttons is 12
+	for (int i = 0; i < NUMBER_O_JOYSTICKS; i++) //Declares new buttons for Joysticks max # of buttons is 12
 	{
 		for (int j = 1; j <= MAX_JOYSTICK_BUTTONS; j++)
 		{
 			buttons[i][j] = new JoystickButton(sticks[i], j);
 		}
 	}
-	//checked
 
-	//buttons[BUTTON][BUTTON_OPEN_CLOSE_CLAW]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
-	//SmartDashboard::PutBoolean(T_CLAW_OPEN_CLOSE, true);
-	//buttons[BUTTON][BUTTON_OPEN_CLOSE_CLAW]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
-	//SmartDashboard::PutBoolean(T_CLAW_OPEN_CLOSE, false);
+///////////////////////////////////INITIALIZE SPECAILTY BUTTONS//////
+	clawOpen = GetSpecialtyButton(EXTERNAL_CONTROL, 11);/////////////
+	clawClose = GetSpecialtyButton(EXTERNAL_CONTROL, 12);////////////
+	leftyMode = GetSpecialtyButton(LEFT, 12);////////////////////////
+	collectIn = GetSpecialtyButton(EXTERNAL_CONTROL, 1);/////////////
+	collectOut = GetSpecialtyButton(EXTERNAL_CONTROL, 2);////////////
+	collectStop = GetSpecialtyButton(EXTERNAL_CONTROL, 3);///////////
+/////////////////////////////////////////////////////////////////////
 
-	buttons[LEFT][11]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
-		//SmartDashboard::PutBoolean(T_CLAW_OPEN_CLOSE, true);
-	buttons[LEFT][12]->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
-		//SmartDashboard::PutBoolean(T_CLAW_OPEN_CLOSE, false);
+	clawOpen->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
+	clawClose->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
 
+	collectIn->WhenPressed(new InternalCollection(InternalCollect::COLLECT_ENGAGED, .6));
+	collectOut->WhenPressed(new InternalCollection(InternalCollect::COLLECT_DISENGAGED, .8));
+	collectStop->WhenPressed(new InternalCollection(InternalCollect::COLLECT_DISENGAGED, 0));
 
-
-	//checked
-	//buttons[BUTTON][BUTTON_HINGE_CLAW]->WhenPressed(new ExternalHingeClaw(ExternalCollect::CLAW_UP));
-	//buttons[BUTTON][BUTTON_HINGE_CLAW]->WhenReleased(new ExternalHingeClaw(ExternalCollect::CLAW_DOWN));
-
-	buttons[LEFT][11]->WhenPressed(new ExternalHingeClaw(ExternalCollect::CLAW_UP));
-	buttons[LEFT][12]->WhenReleased(new ExternalHingeClaw(ExternalCollect::CLAW_DOWN));
-
-	//checked
-	//buttons[BUTTON][BUTTON_LEFTY_FLIP]->WhenPressed(new LeftyModeJustForRiley());
-	//SmartDashboard::PutBoolean(T_LEFTY_MODE, flipped);
-
-	//buttons[BUTTON][BUTTON_RUN_WINCH_UNTIL_STOPPED]->WhenPressed(new RunWinchUntilStopped(-1, 0));
-
-	//buttons[BUTTON][BUTTON_LEFTY_FLIP]->WhenPressed(new LeftyModeJustForRiley());
+	leftyMode->WhenPressed(new LeftyModeJustForRiley());
 
 
 }
@@ -85,4 +79,9 @@ void OI::LeftyFlip()
 	int temp = LEFT;
 	LEFT = RIGHT;
 	RIGHT = temp;
+}
+
+JoystickButton* OI::GetSpecialtyButton(int stick, int button)
+{
+	return this->buttons[stick][button];
 }

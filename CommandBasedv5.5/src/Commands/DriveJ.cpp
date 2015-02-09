@@ -26,7 +26,7 @@ void DriveJ::Execute()
 	//SIDEWAYS: Right X
 	//ROTATION: RIGHT Twist
 	case MecanumDrive::DRIVE_MODE_A:
-		x = oi->GetStickX(oi->EXTERNAL_CONTROL);
+		x = oi->GetStickX(oi->RIGHT);
 		y = oi->GetStickY(oi->RIGHT);
 		rotation = oi->GetStickTwist(oi->RIGHT);
 		break;
@@ -35,7 +35,7 @@ void DriveJ::Execute()
 	//SIDEWAYS: Left X
 	//ROTATION: RIGHT Twist
 	case MecanumDrive::DRIVE_MODE_B:
-		x = oi->GetStickX(oi->EXTERNAL_CONTROL);
+		x = oi->GetStickX(oi->LEFT);
 		y = oi->GetStickY(oi->RIGHT);
 		rotation = oi->GetStickTwist(oi->RIGHT);
 		break;
@@ -44,15 +44,15 @@ void DriveJ::Execute()
 	//SIDEWAYS: Right X
 	//ROTATION: Left Twist
 	case MecanumDrive::DRIVE_MODE_C:
-		x = oi->GetStickX(oi->EXTERNAL_CONTROL);
+		x = oi->GetStickX(oi->RIGHT);
 		y = oi->GetStickY(oi->RIGHT);
-		rotation = oi->GetStickTwist(oi->RIGHT);
+		rotation = oi->GetStickTwist(oi->LEFT);
 		break;
 	break;
 
 	//same as DRIVE_MODE_A
 	default:
-		x = oi->GetStickX(oi->EXTERNAL_CONTROL);
+		x = oi->GetStickX(oi->RIGHT);
 		y = oi->GetStickY(oi->RIGHT);
 		rotation = oi->GetStickTwist(oi->RIGHT);
 		break;

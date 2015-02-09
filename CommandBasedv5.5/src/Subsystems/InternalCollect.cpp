@@ -5,12 +5,12 @@
 InternalCollect::InternalCollect() :
 		Subsystem("InternalCollect")
 {
-	liftMotor = new VictorSP(7);
-	//liftMotor = new Talon(5);
-	//liftMotorInverted = -1;
+	liftMotor = new VictorSP(MOTOR_INTERNAL_WINCH);
+	collectLeftMotor = new VictorSP(MOTOR_INTERNAL_COLLECT_LEFT);
+	collectRightMotor = new VictorSP(MOTOR_INTERNAL_COLLECT_RIGHT);
 
-	//collectMotor = new Talon(4);
-	//collectMotorInverted = 1;
+	collectSolenoid = new Solenoid(SOLENOID_INTERNAL_COLLECT);
+	collectEngaged = COLLECT_DISENGAGED;
 
 	//liftSolenoid = new Solenoid(0);
 	//liftSolenoidEngaged = false;
@@ -29,33 +29,24 @@ void InternalCollect::DriveLift(float power)
 
 	liftMotor->Set(power);
 }
-/*
+
 void InternalCollect::DriveCollect(float power)
 {
-	//collectMotor->Set(power);
+	collectLeftMotor->Set(power * COLLECT_LEFT_INVERTED);
+	collectRightMotor->Set(power * COLLECT_RIGHT_INVERTED);
 }
 
 void InternalCollect::DriveCollectOut()
 {
-	//DriveCollect(COLLECT_OUT_POWER);
+	DriveCollect(.8);
 }
 
 void InternalCollect::DriveCollectIn() {
-	//DriveCollect(COLLECT_IN_POWER);
+	DriveCollect(.6);
 }
 
-void InternalCollect::SetLiftSolenoid(bool engaged)
+void InternalCollect::SetCollectSolenoid(bool engaged)
 {
-	//liftSolenoidEngaged = engaged;
+	collectEngaged = engaged;
+	collectSolenoid->Set(engaged);
 }
-
-void InternalCollect::ControlLiftSolenoid()
-{
-	//liftSolenoid->Set(liftSolenoidEngaged);
-}
-
-void InternalCollect::SetControlSolenoid(bool engaged)
-{
-	//collectSolenoid->Set(engaged);
-}
-*/
