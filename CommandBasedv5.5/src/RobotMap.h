@@ -35,7 +35,8 @@
 
     const int JOYSTICK_LEFT = 0;
     const int JOYSTICK_RIGHT = 1;
-    const int JOYSTICK_BUTTON = 2;
+    const int JOYSTICK_EXTERNAL_CONTROL = 2;
+    const int JOYSTICK_BUTTON_BOX = 3;
 
     const int DIGITAL_LIDAR_ONE = 8;
     const int DIGITAL_LIDAR_TWO= 9;

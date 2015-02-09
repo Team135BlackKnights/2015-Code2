@@ -17,7 +17,7 @@ OI::OI()
 	// Process operator interface input here.
 	sticks[LEFT] = new Joystick(JOYSTICK_LEFT); //Declares new Joysticks
 	sticks[RIGHT] = new Joystick(JOYSTICK_RIGHT);
-	sticks[BUTTON] = new Joystick(JOYSTICK_BUTTON);
+	sticks[EXTERNAL_CONTROL] = new Joystick(JOYSTICK_EXTERNAL_CONTROL);
 
 	for (int i = 0; i < 3; i++) //Declares new buttons for Joysticks max # of buttons is 12
 	{

@@ -16,7 +16,7 @@ private:
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 		//serialCommunication = new SerialCommunication();
-		SmartDashboard::PutString("test", "IT WORKDS");
+		SmartDashboard::PutString("test", "IT WORKS");
 
 		//camera = CameraServer::GetInstance();
 

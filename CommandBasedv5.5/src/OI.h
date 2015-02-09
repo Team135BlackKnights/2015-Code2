@@ -6,6 +6,7 @@
 class OI
 {
 public:
+	static const int NUMBER_O_JOYSTICKS = 4;
 	static const int MAX_JOYSTICK_BUTTONS = 20;
 	Joystick* sticks[3]; //0 is Left, 1 is Right
 	JoystickButton* buttons[3][MAX_JOYSTICK_BUTTONS + 1];
@@ -14,7 +15,9 @@ public:
 	int LEFT = 0;
 	int RIGHT = 1;
 	//static const int BUTTON = 2;
-	int BUTTON = 2;
+	int EXTERNAL_CONTROL = 2;
+	int BUTTON_BOX = 3;
+
 	bool flipped = false;
 
 	static const int BUTTON_OPEN_CLOSE_CLAW = 15;
