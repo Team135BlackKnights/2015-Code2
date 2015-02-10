@@ -25,7 +25,8 @@ private:
 public:
 	static const int 	DRIVE_MODE_A = 0,
 						DRIVE_MODE_B = 1,
-						DRIVE_MODE_C = 2;
+						DRIVE_MODE_C = 2,
+						DRIVE_MODE_D = 3;
 	MecanumDrive();
 	void InitDefaultCommand();
 	void DriveJoysticks(float, float, float);

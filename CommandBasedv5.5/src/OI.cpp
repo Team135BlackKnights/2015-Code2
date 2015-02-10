@@ -32,22 +32,30 @@ OI::OI()
 	}
 
 ///////////////////////////////////INITIALIZE SPECAILTY BUTTONS//////
-	clawOpen = GetSpecialtyButton(EXTERNAL_CONTROL, 11);/////////////
-	clawClose = GetSpecialtyButton(EXTERNAL_CONTROL, 12);////////////
+	//clawOpen = GetSpecialtyButton(EXTERNAL_CONTROL, 11);/////////////
+	//clawClose = GetSpecialtyButton(EXTERNAL_CONTROL, 12);////////////
+	clawControl = GetSpecialtyButton(BUTTON_BOX, 15);////////////////
 	leftyMode = GetSpecialtyButton(LEFT, 12);////////////////////////
 	collectIn = GetSpecialtyButton(EXTERNAL_CONTROL, 1);/////////////
 	collectOut = GetSpecialtyButton(EXTERNAL_CONTROL, 2);////////////
 	collectStop = GetSpecialtyButton(EXTERNAL_CONTROL, 3);///////////
 /////////////////////////////////////////////////////////////////////
 
-	clawOpen->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
-	clawClose->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+	//clawOpen->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
+	//clawClose->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+	clawControl->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+	clawControl->WhenReleased(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
 
 	collectIn->WhenPressed(new InternalCollection(InternalCollect::COLLECT_ENGAGED, .6));
 	collectOut->WhenPressed(new InternalCollection(InternalCollect::COLLECT_DISENGAGED, .8));
 	collectStop->WhenPressed(new InternalCollection(InternalCollect::COLLECT_DISENGAGED, 0));
 
 	leftyMode->WhenPressed(new LeftyModeJustForRiley());
+
+	buttons[LEFT][3]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_A));
+	buttons[LEFT][4]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_B));
+	buttons[LEFT][5]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_C));
+	buttons[LEFT][6]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_D));
 
 
 }
@@ -84,4 +92,9 @@ void OI::LeftyFlip()
 JoystickButton* OI::GetSpecialtyButton(int stick, int button)
 {
 	return this->buttons[stick][button];
+}
+
+bool OI::GetClawButtonValue()
+{
+	return clawControl->Get();
 }
