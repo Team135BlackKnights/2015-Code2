@@ -11,6 +11,8 @@ protected:
 	Joystick* sticks[NUMBER_O_JOYSTICKS]; //0 is Left, 1 is Right
 	JoystickButton* buttons[NUMBER_O_JOYSTICKS][MAX_JOYSTICK_BUTTONS + 1];
 
+	//DriveMode
+
 public:
 	int LEFT = 0;
 	int RIGHT = 1;
@@ -43,9 +45,11 @@ public:
 						MISC_CHANGE_DRIVE_MODE_A = 7, //LEFT
 						MISC_CHANGE_DRIVE_MODE_B = 8, //LEFT
 						MISC_CHANGE_DRIVE_MODE_C = 9, //LEFT
-						MISC_CHANGE_DRIVE_MODE_D = 10; //LEFT
-	//External --> true
-	//Internal --> false
+						MISC_CHANGE_DRIVE_MODE_D = 10, //LEFT
+
+
+						DRIVE_MODE_NORMAL = 0,
+						DRIVE_MODE_ALEX_P = 1;
 
 	bool flipped = false;
 
