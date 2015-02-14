@@ -18,10 +18,7 @@ private:
 		//serialCommunication = new SerialCommunication();
 		SmartDashboard::PutString("test", "IT WORKS");
 
-		//camera = CameraServer::GetInstance();
 
-		//camera->SetQuality(50);
-		//camera->StartAutomaticCapture("cam0");
 	}
 	
 	void DisabledPeriodic()

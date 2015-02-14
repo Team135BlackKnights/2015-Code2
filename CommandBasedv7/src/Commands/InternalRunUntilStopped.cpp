@@ -1,0 +1,40 @@
+#include "InternalRunUntilStopped.h"
+
+InternalRunUntilStopped::InternalRunUntilStopped(float power, DigitalInput* limitSwitch)
+{
+	// Use Requires() here to declare subsystem dependencies
+	Requires(internalCollect);
+	this->power = power;
+	this->limitSwitch = limitSwitch;
+}
+
+// Called just before this Command runs the first time
+void InternalRunUntilStopped::Initialize()
+{
+	internalCollect->GetCurrentCommand()->Cancel();
+}
+
+// Called repeatedly when this Command is scheduled to run
+void InternalRunUntilStopped::Execute()
+{
+	internalCollect->DriveLift(power);
+}
+
+// Make this return true when this Command no longer needs to run execute()
+bool InternalRunUntilStopped::IsFinished()
+{
+	return limitSwitch->Get();
+}
+
+// Called once after isFinished returns true
+void InternalRunUntilStopped::End()
+{
+
+}
+
+// Called when another command which requires one or more of the same
+// subsystems is scheduled to run
+void InternalRunUntilStopped::Interrupted()
+{
+
+}

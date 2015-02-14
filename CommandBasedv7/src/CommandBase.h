@@ -1,14 +1,11 @@
 #ifndef COMMAND_BASE_H
 #define COMMAND_BASE_H
 
-//#include <Commands/DriveJ.h>
 #include <string>
 #include "Commands/Command.h"
-//#include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/MecanumDrive.h"
 #include "Subsystems/InternalCollect.h"
 #include "Subsystems/SerialComs.h"
-#include "Subsystems/AirCompressor.h"
 #include "Subsystems/LIDAR.h"
 #include "Subsystems/ExternalCollect.h"
 #include "OI.h"
@@ -25,14 +22,10 @@ public:
 	CommandBase(char const *name);
 	CommandBase();
 	static void init();
-	// Create a single static instance of all of your subsystems
-	//static ExampleSubsystem *examplesubsystem;
 	static OI *oi;
 	static MecanumDrive *mecanumDrive;
-	//static MecanumDrive *mecanumDrive2;
 	static InternalCollect *internalCollect;
 	static SerialComs *serialComs;
-	static AirCompressor *airCompressor;
 	static LIDAR *lidarOne;
 	static LIDAR *lidarTwo;
 	static ExternalCollect *externalCollect;

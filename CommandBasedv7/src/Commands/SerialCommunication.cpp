@@ -26,10 +26,12 @@ void SerialCommunication::Execute()
 		double value = serialComs->WaitForData();
 		//serialComs->SendData((const char*)mecanumDrive->GetLidarValue(), 1);
 		//double value = NO_DATA;
-		if (value != NO_DATA)
-		{
+		if (value == NO_DATA)
+			value = 0;
+		//if (value != NO_DATA)
+		//{
 			mecanumDrive->SetGyroAngle(value);
-		}
+		//}
 	}
 	i++;
 }

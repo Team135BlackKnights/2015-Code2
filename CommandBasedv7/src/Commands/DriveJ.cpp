@@ -65,7 +65,7 @@ void DriveJ::Execute()
 		rotation = oi->GetStickTwist(oi->RIGHT);
 		break;
 	}
-	mecanumDrive->DriveJoysticks(x, y, rotation * ROTATION_MULTIPLICATION_CONSTANT); //Drives the Robot depending on x-y-z speed values
+	mecanumDrive->Drive(x, y, rotation * ROTATION_MULTIPLICATION_CONSTANT); //Drives the Robot depending on x-y-z speed values
 
 
 }

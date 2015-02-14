@@ -15,7 +15,6 @@ MecanumDrive::MecanumDrive() :
 		chassis->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
 		chassis->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 		gyroAngle = 0;
-		compressor = new Compressor(0);
 		lidarValueOne = 0;
 		lidarValueTwo = 0;
 		chassis->SetSafetyEnabled(false);
@@ -24,19 +23,15 @@ MecanumDrive::MecanumDrive() :
 
 void MecanumDrive::InitDefaultCommand()
 {
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+
 	SetDefaultCommand(new DriveJ());
 
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
-void MecanumDrive::DriveJoysticks(float x, float y, float z)
+
+void MecanumDrive::Drive(float x, float y, float z)
 {
 	chassis->MecanumDrive_Cartesian(x, y, z);//, gyroAngle);
-	//motorCan->Set(y);
-
 }
 
 int MecanumDrive::GetDriveMode()
@@ -48,7 +43,6 @@ int MecanumDrive::SetDriveMode(int mode)
 {
 	return driveMode = mode;
 }
-
 
 double MecanumDrive::GetGyroAngle()
 {
@@ -73,7 +67,6 @@ int MecanumDrive::GetLidarValueTwo()
 
 void MecanumDrive::SetLidarValues(int valueOne, int valueTwo)
 {
-	//SmartDashboard::PutNumber(T_LIDAR_DISTANCE_ONE, value);
 	lidarValueOne = valueOne;
 	lidarValueTwo = valueTwo;
 }

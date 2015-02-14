@@ -3,8 +3,6 @@
 
 RunInternalUpUntilStopped::RunInternalUpUntilStopped(float power)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(internalCollect);
 	this->power = power;
 
@@ -19,7 +17,7 @@ void RunInternalUpUntilStopped::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void RunInternalUpUntilStopped::Execute()
 {
-	//internalCollect->DriveLift(power);
+	internalCollect->DriveLift(power);
 }
 
 // Make this return true when this Command no longer needs to run execute()

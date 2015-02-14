@@ -22,10 +22,11 @@ void DriveInternalCollect::Execute()
 
 	if (oi->MANIPULATOR_CONTROL_MODE == OI::INTERNAL)
 	{
+		/*
 		if (oi->GetButton(oi->MANIPULATOR_CONTROL, OI::INTERNAL_ROLLER_IN))
-			internalCollect->SetCollectPower(1);
+			internalCollect->SetCollectPower(InternalCollect::COLLECT_IN_POWER);
 		else if (oi->GetButton(oi->MANIPULATOR_CONTROL, OI::INTERNAL_ROLLER_OUT))
-			internalCollect->SetCollectPower(-.6);
+			internalCollect->SetCollectPower(InternalCollect::COLLECT_OUT_POWER);
 		else
 			internalCollect->SetCollectPower(0);
 
@@ -33,32 +34,15 @@ void DriveInternalCollect::Execute()
 			internalCollect->SetCollectSolenoid(InternalCollect::COLLECT_ENGAGED);
 		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_SOLENOID_DISENGAGED))
 			internalCollect->SetCollectSolenoid(InternalCollect::COLLECT_DISENGAGED);
+		*/
+		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_WINCH_UP))
+			value = .5;
+		else if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_WINCH_UP))
+			value = -.5;
 	}
 
 	internalCollect->DriveLift(value); //THIS NEEDS TO BE CHANGED
 	internalCollect->DriveCollect();
-	/*
-	if (oi->sticks[oi->LEFT]->GetRawButton(7) == 1)
-		internalCollect->DriveCollectOut();
-	else if (oi->sticks[oi->LEFT]->GetRawButton(8) == 1)
-		internalCollect->DriveCollectIn();
-	else
-		internalCollect->DriveCollect(0);
-	*/
-
-	//internalCollect->DriveCollect(oi->GetStickY(oi->RIGHT));
-
-/*
-	if (oi->sticks[oi->LEFT]->GetRawButton(9))
-		internalCollect->SetLiftSolenoid(true);
-	if (oi->sticks[oi->LEFT]->GetRawButton(10))
-		internalCollect->SetLiftSolenoid(false);
-
-	if (oi->sticks[oi->LEFT]->GetRawButton(11) == 1)
-		internalCollect->SetControlSolenoid(true);
-	if (oi->sticks[oi->LEFT]->GetRawButton(12) == 1)
-		internalCollect->SetControlSolenoid(false);
-		*/
 }
 
 // Make this return true when this Command no longer needs to run execute()

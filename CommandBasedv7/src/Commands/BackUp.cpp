@@ -19,7 +19,7 @@ void BackUp::Initialize()
 void BackUp::Execute()
 {
 	SmartDashboard::PutString(T_BACK_UP_RUNNING, "Running: " + i);
-	mecanumDrive->DriveJoysticks(0, .7, 0);
+	mecanumDrive->Drive(0, .7, 0);
 	i++;
 }
 
@@ -33,7 +33,7 @@ bool BackUp::IsFinished()
 void BackUp::End()
 {
 	SmartDashboard::PutString(T_BACK_UP_RUNNING, "Ended");
-	mecanumDrive->DriveJoysticks(0, 0, 0);
+	mecanumDrive->Drive(0, 0, 0);
 }
 
 // Called when another command which requires one or more of the same
@@ -41,5 +41,5 @@ void BackUp::End()
 void BackUp::Interrupted()
 {
 	SmartDashboard::PutString(T_BACK_UP_RUNNING, "Interrupted");
-	mecanumDrive->DriveJoysticks(0, 0, 0);
+	mecanumDrive->Drive(0, 0, 0);
 }

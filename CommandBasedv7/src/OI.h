@@ -14,7 +14,6 @@ protected:
 public:
 	int LEFT = 0;
 	int RIGHT = 1;
-	//static const int BUTTON = 2;
 	int MANIPULATOR_CONTROL = 2;
 	int BUTTON_BOX = 3;
 

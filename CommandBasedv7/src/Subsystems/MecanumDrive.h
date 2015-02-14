@@ -3,21 +3,18 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-//#include "../Commands/DriveJ.h"
 
 class MecanumDrive: public Subsystem
 {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	//TalonSRX* motorSRX;
 	CANTalon* motors[4];
 	RobotDrive* chassis;
 	int driveMode;
 	double gyroAngle;
 	int lidarValueOne;
 	int lidarValueTwo;
-	Compressor *compressor;
 	static const int 	FRONT_LEFT = 0,
 						REAR_LEFT = 1,
 						FRONT_RIGHT = 2,
@@ -29,7 +26,7 @@ public:
 						DRIVE_MODE_D = 3;
 	MecanumDrive();
 	void InitDefaultCommand();
-	void DriveJoysticks(float, float, float);
+	void Drive(float, float, float);
 	int GetDriveMode();
 	int SetDriveMode(int);
 

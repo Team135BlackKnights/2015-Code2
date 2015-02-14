@@ -1,5 +1,4 @@
 #include "CommandBase.h"
-//#include "Subsystems/ExampleSubsystem.h"
 #include "Commands/Scheduler.h"
 #include "RobotMap.h"
 
@@ -7,10 +6,8 @@
 //ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
 MecanumDrive* CommandBase::mecanumDrive = NULL;
-//MecanumDrive* CommandBase::mecanumDrive2 = NULL;
 InternalCollect* CommandBase::internalCollect = NULL;
 SerialComs* CommandBase::serialComs = NULL;
-AirCompressor* CommandBase::airCompressor = NULL;
 LIDAR* CommandBase::lidarOne = NULL;
 LIDAR* CommandBase::lidarTwo = NULL;
 ExternalCollect* CommandBase::externalCollect = NULL;
@@ -35,13 +32,10 @@ void CommandBase::init()
 	oi = new OI();
 
 	mecanumDrive = new MecanumDrive();
-	//mecanumDrive2 = mecanumDrive;
 
 	internalCollect = new InternalCollect();
 
 	serialComs = new SerialComs();
-
-	airCompressor = new AirCompressor();
 
 	lidarOne = new LIDAR(DIGITAL_LIDAR_ONE);
 	lidarTwo = new LIDAR(DIGITAL_LIDAR_TWO);

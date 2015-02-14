@@ -37,6 +37,10 @@ void InternalCollect::InitDefaultCommand()
 void InternalCollect::DriveLift(float power)
 {
 	power *= WINCH_INVERTED;
+	if (lowerWinchLimit->Get())
+		power = fmax(power, 0);
+	else if (upperWinchLimit->Get())
+		power = fmin(power, 0);
 	//if (lowerWinchLimit != NULL && lowerWinchLimit->Get())
 		//power = fmax(power, 0);
 	liftMotor->Set(power);

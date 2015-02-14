@@ -24,10 +24,8 @@ OI::OI()
 	// Process operator interface input here.
 	sticks[LEFT] = new Joystick(JOYSTICK_LEFT); //Declares new Joysticks
 	sticks[RIGHT] = new Joystick(JOYSTICK_RIGHT);
-	//if (NUMBER_O_JOYSTICKS > 2)
-		sticks[MANIPULATOR_CONTROL] = new Joystick(JOYSTICK_EXTERNAL_CONTROL);
-	//if (NUMBER_O_JOYSTICKS > 3)
-		sticks[BUTTON_BOX] = new Joystick(JOYSTICK_BUTTON_BOX);
+	sticks[MANIPULATOR_CONTROL] = new Joystick(JOYSTICK_MANIPULATOR_CONTROL);
+	sticks[BUTTON_BOX] = new Joystick(JOYSTICK_BUTTON_BOX);
 
 	for (int i = 0; i < NUMBER_O_JOYSTICKS; i++) //Declares new buttons for Joysticks max # of buttons is 12
 	{
@@ -36,45 +34,15 @@ OI::OI()
 			buttons[i][j] = new JoystickButton(sticks[i], j);
 		}
 	}
+	SetManipulatorControlMode(true);
 
-	//SetManipulatorControlMode(EXTERNAL);
-
-
-	//buttons[BUTTON][BUTTON_RUN_WINCH_UNTIL_STOPPED]->WhenPressed(new RunWinchUntilStopped(-1, 0));
-
-
-
-
-	//buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_CLOSED]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
-			//buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_OPEN]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN)); //THIS IS ALL RUINED BECAUSE OF ZACH BEING A DINGALING -OVERLORD MATT
-
-			//buttons[MANIPULATOR_CONTROL][EXTERNAL_WINCH_DOWN]->WhenPressed(new RunInternalDownUntilStopped(-1));
-			//buttons[MANIPULATOR_CONTROL][EXTERNAL_WINCH_UP]->WhenPressed(new RunInternalUpUntilStopped(1));
-			//break;
-
-		//case INTERNAL:
-			SmartDashboard::PutString("Manip mode", "Internal");
-			//buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_IN]->WhenPressed(new InternalRollers(.6));
-			//buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_IN]->WhenReleased(new InternalRollers(0));
-			//buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_OUT]->WhenPressed(new InternalRollers(-.8));
-			//buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_OUT]->WhenReleased(new InternalRollers(0));
-
-			//buttons[MANIPULATOR_CONTROL][INTERNAL_SOLENOID_ENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_ENGAGED));
-			//buttons[MANIPULATOR_CONTROL][INTERNAL_SOLENOID_DISENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_DISENGAGED));
-
-			//buttons[MANIPULATOR_CONTROL][INTERNAL_DRIVE_UP]->WhenPressed(new RunInternalUpUntilStopped(.5));
-			//buttons[MANIPULATOR_CONTROL][INTERNAL_DRIVE_DOWN]->WhenPressed(new RunInternalDownUntilStopped(.5));
 
 	buttons[LEFT][MISC_LEFTY_MODE]->WhenPressed(new LeftyModeJustForRiley());
-
-	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_EXTERNAL]->WhenPressed(new ChangeManipulatorControlMode(EXTERNAL));
-	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_INTERNAL]->WhenPressed(new ChangeManipulatorControlMode(INTERNAL));
 
 	buttons[LEFT][MISC_CHANGE_DRIVE_MODE_A]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_A));
 	buttons[LEFT][MISC_CHANGE_DRIVE_MODE_B]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_B));
 	buttons[LEFT][MISC_CHANGE_DRIVE_MODE_C]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_C));
 	buttons[LEFT][MISC_CHANGE_DRIVE_MODE_D]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_D));
-
 
 }
 
@@ -110,40 +78,28 @@ void OI::LeftyFlip()
 void OI::SetManipulatorControlMode(bool mode)
 {
 	MANIPULATOR_CONTROL_MODE = mode;
-
-	/*
-	for (int i = 1; i <= MAX_JOYSTICK_BUTTONS - 2; i++)
+	sticks[MANIPULATOR_CONTROL] = new Joystick(JOYSTICK_MANIPULATOR_CONTROL);
+	for (int j = 1; j <= MAX_JOYSTICK_BUTTONS; j++)
 	{
-		//buttons[MANIPULATOR_CONTROL][i]->WhenPressed(NULL);
-		//buttons[MANIPULATOR_CONTROL][i]->WhenReleased(NULL);
+		buttons[MANIPULATOR_CONTROL][j] = new JoystickButton(sticks[MANIPULATOR_CONTROL], j);
 	}
-	switch(mode)
+	switch (mode)
 	{
-
-	//case EXTERNAL:
-		SmartDashboard::PutString("Manip mode", "External");
-
+	case EXTERNAL:
+		buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_OPEN]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
 		buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_CLOSED]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
-		buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_OPEN]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN)); //THIS IS ALL RUINED BECAUSE OF ZACH BEING A DINGALING -OVERLORD MATT
-
-		buttons[MANIPULATOR_CONTROL][EXTERNAL_WINCH_DOWN]->WhenPressed(new RunInternalDownUntilStopped(-1));
-		buttons[MANIPULATOR_CONTROL][EXTERNAL_WINCH_UP]->WhenPressed(new RunInternalUpUntilStopped(1));
-		//break;
-
-	//case INTERNAL:
-		SmartDashboard::PutString("Manip mode", "Internal");
-		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_IN]->WhenPressed(new InternalRollers(.6));
+		break;
+	case INTERNAL:
+		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_IN]->WhenPressed(new InternalRollers(InternalCollect::COLLECT_IN_POWER));
 		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_IN]->WhenReleased(new InternalRollers(0));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_OUT]->WhenPressed(new InternalRollers(-.8));
+		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_OUT]->WhenPressed(new InternalRollers(InternalCollect::COLLECT_OUT_POWER));
 		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_OUT]->WhenReleased(new InternalRollers(0));
 
 		buttons[MANIPULATOR_CONTROL][INTERNAL_SOLENOID_ENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_ENGAGED));
 		buttons[MANIPULATOR_CONTROL][INTERNAL_SOLENOID_DISENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_DISENGAGED));
-
-		buttons[MANIPULATOR_CONTROL][INTERNAL_DRIVE_UP]->WhenPressed(new RunInternalUpUntilStopped(.5));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_DRIVE_DOWN]->WhenPressed(new RunInternalDownUntilStopped(.5));
-		//break;
-
+		break;
 	}
-	*/
+
+	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_EXTERNAL]->WhenPressed(new ChangeManipulatorControlMode(EXTERNAL));
+	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_INTERNAL]->WhenPressed(new ChangeManipulatorControlMode(INTERNAL));
 }

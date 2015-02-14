@@ -13,11 +13,7 @@ private:
 	const int LIDAR_ADDR = 0x62;
 	const int LIDAR_CONFIG_REGISTER = 0x00;
 	const int LIDAR_DISTANCE_REGISTER = 0x8f;
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
-	//unsigned char LIDARLite_ADDRESS = 0x62;
 	I2C *I2CPort;
-	//SerialPort *serialPort;
 	unsigned char *distance;
 	DigitalOutput* powerEnable;
 	std::string debugOutputKey;

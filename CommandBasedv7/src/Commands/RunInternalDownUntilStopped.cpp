@@ -3,11 +3,8 @@
 
 RunInternalDownUntilStopped::RunInternalDownUntilStopped(float power)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(internalCollect);
 	this->power = power;
-
 }
 
 // Called just before this Command runs the first time
