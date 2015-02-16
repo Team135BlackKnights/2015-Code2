@@ -35,8 +35,10 @@ OI::OI()
 			buttons[i][j] = new JoystickButton(sticks[i], j);
 		}
 	}
-	SetManipulatorControlMode(true);
+	SetManipulatorControlMode(EXTERNAL);
 
+	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_EXTERNAL]->WhenPressed(new ChangeManipulatorControlMode(EXTERNAL));
+		buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_INTERNAL]->WhenPressed(new ChangeManipulatorControlMode(INTERNAL));
 
 	buttons[LEFT][MISC_LEFTY_MODE]->WhenPressed(new LeftyModeJustForRiley());
 
@@ -79,6 +81,7 @@ void OI::LeftyFlip()
 void OI::SetManipulatorControlMode(bool mode)
 {
 	MANIPULATOR_CONTROL_MODE = mode;
+	/*
 	sticks[MANIPULATOR_CONTROL] = new Joystick(JOYSTICK_MANIPULATOR_CONTROL);
 	for (int j = 1; j <= MAX_JOYSTICK_BUTTONS; j++)
 	{
@@ -87,8 +90,8 @@ void OI::SetManipulatorControlMode(bool mode)
 	switch (mode)
 	{
 	case EXTERNAL:
-		buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_OPEN]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
-		buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_CLOSED]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
+	//	buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_OPEN]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
+	//	buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_CLOSED]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
 		break;
 	case INTERNAL:
 		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_IN]->WhenPressed(new InternalRollers(InternalCollect::COLLECT_IN_POWER));
@@ -98,12 +101,13 @@ void OI::SetManipulatorControlMode(bool mode)
 
 		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_SOLENOID_ENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_ENGAGED));
 		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_SOLENOID_DISENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_DISENGAGED));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_UPPER_STACK_SOLENOID_DISENGAGED]->WhenPressed(new InternalOpenCloseTopStack(InternalCollect::UPPER_STACK_ENGAGED));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_UPPER_STACK_SOLENOID_ENGAGED]->WhenPressed(new InternalOpenCloseTopStack(InternalCollect::UPPER_STACK_DISENGAGED));
+		buttons[MANIPULATOR_CONTROL][INTERNAL_UPPER_STACK_SOLENOID_DISENGAGED]->WhenPressed(new InternalOpenCloseTopStack(InternalCollect::UPPER_STACK_DISENGAGED));
+		buttons[MANIPULATOR_CONTROL][INTERNAL_UPPER_STACK_SOLENOID_ENGAGED]->WhenPressed(new InternalOpenCloseTopStack(InternalCollect::UPPER_STACK_ENGAGED));
 
 		break;
 	}
 
 	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_EXTERNAL]->WhenPressed(new ChangeManipulatorControlMode(EXTERNAL));
 	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_INTERNAL]->WhenPressed(new ChangeManipulatorControlMode(INTERNAL));
+	*/
 }

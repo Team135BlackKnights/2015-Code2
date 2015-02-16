@@ -14,7 +14,7 @@ InternalOpenCloseTopStack::InternalOpenCloseTopStack(bool status)
 // Called just before this Command runs the first time
 void InternalOpenCloseTopStack::Initialize()
 {
-	internalCollect->SetOpenCloseTopStack(status);
+	internalCollect->SetUpperStackSolenoid(status);
 
 }
 

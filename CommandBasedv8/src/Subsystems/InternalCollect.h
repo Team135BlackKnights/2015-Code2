@@ -16,7 +16,7 @@ private:
 	Solenoid *collectSolenoid;
 	Solenoid *upperStackSolenoid;
 	bool collectEngaged;
-	bool upperstackEngaged;
+	bool upperStackEngaged;
 
 	DigitalInput* lowerWinchLimit;
 	DigitalInput* upperWinchLimit;
@@ -31,11 +31,11 @@ public:
 
 	static const int WINCH_INVERTED = -1;
 
-	static constexpr float COLLECT_OUT_POWER = -1.0f;
+	static constexpr float COLLECT_OUT_POWER = -.75f;
 	static constexpr float COLLECT_IN_POWER = .6f;
 
-	static const bool COLLECT_ENGAGED = true;
-	static const bool COLLECT_DISENGAGED = !COLLECT_ENGAGED;
+	static const bool ROLLER_COLLECT_ENGAGED = true;
+	static const bool ROLLER_COLLECT_DISENGAGED = !ROLLER_COLLECT_ENGAGED;
 
 	static const bool UPPER_STACK_ENGAGED = true;
 	static const bool UPPER_STACK_DISENGAGED = !UPPER_STACK_ENGAGED;
@@ -51,8 +51,8 @@ public:
 	//void SetLiftSolenoid(bool);
 	//void ControlLiftSolenoid();
 
-	void SetCollectSolenoid(bool);
-	void SetOpenCloseTopStack(bool);
+	void SetRollerCollectSolenoid(bool);
+	void SetUpperStackSolenoid(bool);
 	bool GetLimitSwitchValueUpper();
 	bool GetLimitSwitchValueLower();
 

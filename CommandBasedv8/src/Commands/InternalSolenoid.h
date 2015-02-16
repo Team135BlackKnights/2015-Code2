@@ -9,7 +9,7 @@ class InternalSolenoid: public CommandBase
 private:
 	bool engageSolenoid;
 public:
-	InternalSolenoid(bool=InternalCollect::COLLECT_DISENGAGED);
+	InternalSolenoid(bool=InternalCollect::ROLLER_COLLECT_DISENGAGED);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

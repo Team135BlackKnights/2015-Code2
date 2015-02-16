@@ -10,7 +10,7 @@ InternalSolenoid::InternalSolenoid(bool engageSolenoid)
 // Called just before this Command runs the first time
 void InternalSolenoid::Initialize()
 {
-	internalCollect->SetCollectSolenoid(engageSolenoid);
+	internalCollect->SetRollerCollectSolenoid(engageSolenoid);
 }
 
 // Called repeatedly when this Command is scheduled to run

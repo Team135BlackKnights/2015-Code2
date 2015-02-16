@@ -15,9 +15,9 @@ InternalCollect::InternalCollect() :
 	collectRightMotor = new VictorSP(MOTOR_INTERNAL_COLLECT_RIGHT);
 
 	collectSolenoid = new Solenoid(SOLENOID_INTERNAL_COLLECT);
-	collectEngaged = COLLECT_DISENGAGED;
+	collectEngaged = ROLLER_COLLECT_DISENGAGED;
 	upperStackSolenoid = new Solenoid(SOLENOID_INTERNAL_UPPER_STACK);
-	upperstackEngaged = UPPER_STACK_DISENGAGED;
+	upperStackEngaged = UPPER_STACK_DISENGAGED;
 
 	lowerWinchLimit = new DigitalInput(DIGITAL_INTERNAL_LOWER);
 	upperWinchLimit = new DigitalInput(DIGITAL_INTERNAL_UPPER);
@@ -56,16 +56,17 @@ void InternalCollect::DriveCollect()
 	collectLeftMotor->Set(collectPower * COLLECT_LEFT_INVERTED);
 	collectRightMotor->Set(collectPower * COLLECT_RIGHT_INVERTED);
 	collectSolenoid->Set(collectEngaged);
+	upperStackSolenoid->Set(upperStackEngaged);
 }
 
-void InternalCollect::SetCollectSolenoid(bool engaged)
+void InternalCollect::SetRollerCollectSolenoid(bool engaged)
 {
 	collectEngaged = engaged;
 }
 
-void InternalCollect::SetOpenCloseTopStack(bool engaged)
+void InternalCollect::SetUpperStackSolenoid(bool engaged)
 {
-	upperstackEngaged = engaged;
+	upperStackEngaged = engaged;
 }
 
 bool InternalCollect::GetLimitSwitchValueUpper()

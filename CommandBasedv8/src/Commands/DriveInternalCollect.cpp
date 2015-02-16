@@ -20,9 +20,8 @@ void DriveInternalCollect::Execute()
 	SmartDashboard::PutString(T_DRIVE_INTERNAL_RUNNING, "Running");
 	float value = oi->MANIPULATOR_CONTROL_MODE == OI::INTERNAL ? oi->GetStickY(oi->MANIPULATOR_CONTROL) : 0;
 
-//	if (oi->MANIPULATOR_CONTROL_MODE == OI::INTERNAL)
-	//{
-		/*
+	if (oi->MANIPULATOR_CONTROL_MODE == OI::INTERNAL)
+	{
 		if (oi->GetButton(oi->MANIPULATOR_CONTROL, OI::INTERNAL_ROLLER_IN))
 			internalCollect->SetCollectPower(InternalCollect::COLLECT_IN_POWER);
 		else if (oi->GetButton(oi->MANIPULATOR_CONTROL, OI::INTERNAL_ROLLER_OUT))
@@ -30,16 +29,20 @@ void DriveInternalCollect::Execute()
 		else
 			internalCollect->SetCollectPower(0);
 
-		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_SOLENOID_ENGAGED))
-			internalCollect->SetCollectSolenoid(InternalCollect::COLLECT_ENGAGED);
-		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_SOLENOID_DISENGAGED))
-			internalCollect->SetCollectSolenoid(InternalCollect::COLLECT_DISENGAGED);
-		*/
+		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_ROLLER_SOLENOID_ENGAGED))
+			internalCollect->SetRollerCollectSolenoid(InternalCollect::ROLLER_COLLECT_ENGAGED);
+		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_ROLLER_SOLENOID_DISENGAGED))
+			internalCollect->SetRollerCollectSolenoid(InternalCollect::ROLLER_COLLECT_DISENGAGED);
+
+		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_UPPER_STACK_SOLENOID_ENGAGED))
+			internalCollect->SetUpperStackSolenoid(InternalCollect::UPPER_STACK_ENGAGED);
+		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_UPPER_STACK_SOLENOID_DISENGAGED))
+			internalCollect->SetUpperStackSolenoid(InternalCollect::UPPER_STACK_DISENGAGED);
 	//	if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_WINCH_UP))
 		//	value = .5;
 		//else if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_WINCH_UP))
 		//	value = -.5;
-//	}
+	}
 
 	internalCollect->DriveLift(value); //THIS NEEDS TO BE CHANGED
 	internalCollect->DriveCollect();
