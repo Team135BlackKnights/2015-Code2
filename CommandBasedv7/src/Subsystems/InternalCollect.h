@@ -29,7 +29,7 @@ public:
 
 	static const int WINCH_INVERTED = -1;
 
-	static constexpr float COLLECT_OUT_POWER = -.4f;
+	static constexpr float COLLECT_OUT_POWER = -1.0f;
 	static constexpr float COLLECT_IN_POWER = .6f;
 
 	static const bool COLLECT_ENGAGED = true;

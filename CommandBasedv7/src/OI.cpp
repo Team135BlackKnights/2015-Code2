@@ -95,8 +95,8 @@ void OI::SetManipulatorControlMode(bool mode)
 		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_OUT]->WhenPressed(new InternalRollers(InternalCollect::COLLECT_OUT_POWER));
 		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_OUT]->WhenReleased(new InternalRollers(0));
 
-		buttons[MANIPULATOR_CONTROL][INTERNAL_SOLENOID_ENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_ENGAGED));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_SOLENOID_DISENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_DISENGAGED));
+		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_SOLENOID_ENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_ENGAGED));
+		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_SOLENOID_DISENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_DISENGAGED));
 		break;
 	}
 
