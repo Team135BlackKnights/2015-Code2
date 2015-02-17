@@ -9,7 +9,7 @@ class AutoMoveRobot: public CommandBase
 {
 private:
 	float power;
-	double time;
+	double timePassed;
 	Timer* timer;
 public:
 	AutoMoveRobot(float power, double time);

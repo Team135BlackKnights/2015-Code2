@@ -1,15 +1,15 @@
-#ifndef LeftyModeJustForRiley_H
-#define LeftyModeJustForRiley_H
+#ifndef SetSafetyEnabled_H
+#define SetSafetyEnabled_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class LeftyModeJustForRiley: public CommandBase
+class SetSafetyEnabled: public CommandBase
 {
 private:
-	bool mode;
+	bool enabled;
 public:
-	LeftyModeJustForRiley(bool);
+	SetSafetyEnabled(bool);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

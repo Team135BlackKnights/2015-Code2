@@ -3,6 +3,7 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "Subsystems/Winch.h"
 
 class ExternalCollect: public Subsystem
 {
@@ -11,13 +12,17 @@ private:
 	// for methods that implement subsystem capabilities
 	Solenoid* openCloseClaw;
 	//Solenoid* hingeClaw;
-	VictorSP* winch;
+	//VictorSP* winch;
 	bool openCloseClawState;
 	//bool hingeClawState;
-	DigitalInput* switches[1];
+	//DigitalInput* upperLimit;
+	//DigitalInput* lowerLimit;
+	Winch* winch;
 public:
 	static const bool CLAW_OPEN = false;
 	static const bool CLAW_CLOSED = true;
+
+	//static const int WINCH_INVERTED = -1;
 
 	//static const bool CLAW_UP = true;
 	//static const bool CLAW_DOWN = false;
@@ -29,8 +34,6 @@ public:
 	void PowerClaw();
 
 	void DriveWinch(float);
-
-	bool GetLimitSwitchValue(int port);
 };
 
 #endif

@@ -23,9 +23,9 @@ void DriveInternalCollect::Execute()
 	if (oi->MANIPULATOR_CONTROL_MODE == OI::INTERNAL)
 	{
 		if (oi->GetButton(oi->MANIPULATOR_CONTROL, OI::INTERNAL_ROLLER_IN))
-			internalCollect->SetCollectPower(InternalCollect::COLLECT_IN_POWER);
+			internalCollect->SetCollectPower(oi->GetStickSlider(oi->MANIPULATOR_CONTROL));//InternalCollect::COLLECT_IN_POWER);
 		else if (oi->GetButton(oi->MANIPULATOR_CONTROL, OI::INTERNAL_ROLLER_OUT))
-			internalCollect->SetCollectPower(InternalCollect::COLLECT_OUT_POWER);
+			internalCollect->SetCollectPower(-oi->GetStickSlider(oi->MANIPULATOR_CONTROL));//InternalCollect::COLLECT_OUT_POWER);
 		else
 			internalCollect->SetCollectPower(0);
 
@@ -38,6 +38,7 @@ void DriveInternalCollect::Execute()
 			internalCollect->SetUpperStackSolenoid(InternalCollect::UPPER_STACK_ENGAGED);
 		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_UPPER_STACK_SOLENOID_DISENGAGED))
 			internalCollect->SetUpperStackSolenoid(InternalCollect::UPPER_STACK_DISENGAGED);
+
 	//	if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_WINCH_UP))
 		//	value = .5;
 		//else if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_WINCH_UP))

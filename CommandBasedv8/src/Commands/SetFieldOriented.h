@@ -1,15 +1,15 @@
-#ifndef LeftyModeJustForRiley_H
-#define LeftyModeJustForRiley_H
+#ifndef SetFieldOriented_H
+#define SetFieldOriented_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class LeftyModeJustForRiley: public CommandBase
+class SetFieldOriented: public CommandBase
 {
 private:
 	bool mode;
 public:
-	LeftyModeJustForRiley(bool);
+	SetFieldOriented(bool);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

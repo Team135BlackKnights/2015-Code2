@@ -21,12 +21,14 @@
     const int MOTOR_INTERNAL_COLLECT_LEFT = 6;
     const int MOTOR_INTERNAL_COLLECT_RIGHT = 5;
     const int MOTOR_INTERNAL_WINCH = 7;
+    const bool INVERTED_INTERNAL_WINCH = false;
 
     const int MOTOR_EXTERNAL_WINCH = 8;
+    const int INVERTED_EXTERNAL_WINCH = false;
 
     const int SOLENOID_INTERNAL_COLLECT = 1;
     const int SOLENOID_EXTERNAL_OPEN_CLOSE_CLAW = 0;
-    const int SOLENOID_INTERNAL_UPPER_STACK = 0;
+    const int SOLENOID_INTERNAL_UPPER_STACK = 2;
     //const int SOLENOID_EXTERNAL_HINGE_CLAW = 2;
 
 // If you are using multiple modules, make sure to define both the port
@@ -39,10 +41,12 @@
 
     const int DIGITAL_LIDAR_ONE = 8;
     const int DIGITAL_LIDAR_TWO= 9;
-    const int DIGITAL_EXTERNAL_LOWER_WINCH = 0;
 
-    const int DIGITAL_INTERNAL_LOWER = 1;
-    const int DIGITAL_INTERNAL_UPPER = 2;
+    const int DIGITAL_EXTERNAL_LOWER = 0;
+    const int DIGITAL_EXTERNAL_UPPER = 8;
+
+    const int DIGITAL_INTERNAL_LOWER = 2;
+    const int DIGITAL_INTERNAL_UPPER = 3;
 
     const std::string 	T_SERIAL_RUNNING = "Serial Command Status",
     					T_DRIVE_J_RUNNING = "DriveJ Command Status",

@@ -4,7 +4,7 @@ ChangeDriveMode::ChangeDriveMode(int mode)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	//Requires(mecanumDrive);
+	Requires(mecanumDrive);
 	driveMode = mode;
 }
 

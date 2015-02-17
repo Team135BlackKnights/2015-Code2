@@ -1,6 +1,6 @@
-#include "LeftyModeJustForRiley.h"
+#include "SetFieldOriented.h"
 
-LeftyModeJustForRiley::LeftyModeJustForRiley(bool mode)
+SetFieldOriented::SetFieldOriented(bool mode)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -8,32 +8,32 @@ LeftyModeJustForRiley::LeftyModeJustForRiley(bool mode)
 }
 
 // Called just before this Command runs the first time
-void LeftyModeJustForRiley::Initialize()
+void SetFieldOriented::Initialize()
 {
-	oi->LeftyFlip(mode);
+	mecanumDrive->SetFieldOriented(mode);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void LeftyModeJustForRiley::Execute()
+void SetFieldOriented::Execute()
 {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool LeftyModeJustForRiley::IsFinished()
+bool SetFieldOriented::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void LeftyModeJustForRiley::End()
+void SetFieldOriented::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void LeftyModeJustForRiley::Interrupted()
+void SetFieldOriented::Interrupted()
 {
 
 }

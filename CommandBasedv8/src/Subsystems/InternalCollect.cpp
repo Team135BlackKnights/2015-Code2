@@ -2,15 +2,13 @@
 #include "InternalCollect.h"
 #include "../RobotMap.h"
 #include "../Commands/DriveInternalCollect.h"
-#include "Commands/RunInternalDownUntilStopped.h"
-#include "Commands/RunInternalUpUntilStopped.h"
 #include <math.h>
 #include "Commands/InternalOpenCloseTopStack.h"
 
 InternalCollect::InternalCollect() :
 		Subsystem("InternalCollect")
 {
-	liftMotor = new VictorSP(MOTOR_INTERNAL_WINCH);
+	//liftMotor = new VictorSP(MOTOR_INTERNAL_WINCH);
 	collectLeftMotor = new VictorSP(MOTOR_INTERNAL_COLLECT_LEFT);
 	collectRightMotor = new VictorSP(MOTOR_INTERNAL_COLLECT_RIGHT);
 
@@ -19,9 +17,11 @@ InternalCollect::InternalCollect() :
 	upperStackSolenoid = new Solenoid(SOLENOID_INTERNAL_UPPER_STACK);
 	upperStackEngaged = UPPER_STACK_DISENGAGED;
 
-	lowerWinchLimit = new DigitalInput(DIGITAL_INTERNAL_LOWER);
-	upperWinchLimit = new DigitalInput(DIGITAL_INTERNAL_UPPER);
+	//lowerWinchLimit = new DigitalInput(DIGITAL_INTERNAL_LOWER);
+	//upperWinchLimit = new DigitalInput(DIGITAL_INTERNAL_UPPER);
 	//lowerWinchLimit = NULL;
+
+	winch = new Winch(MOTOR_INTERNAL_WINCH, DIGITAL_INTERNAL_LOWER, DIGITAL_INTERNAL_UPPER, INVERTED_INTERNAL_WINCH);
 
 	collectPower = 0;
 
@@ -46,7 +46,7 @@ void InternalCollect::DriveLift(float power)
 		//power = fmin(power, 0);
 	//if (lowerWinchLimit != NULL && lowerWinchLimit->Get())
 		//power = fmax(power, 0);
-	liftMotor->Set(power);
+	winch->DriveWinch(power);
 
 
 }
@@ -67,16 +67,6 @@ void InternalCollect::SetRollerCollectSolenoid(bool engaged)
 void InternalCollect::SetUpperStackSolenoid(bool engaged)
 {
 	upperStackEngaged = engaged;
-}
-
-bool InternalCollect::GetLimitSwitchValueUpper()
-{
-	return upperWinchLimit->Get();
-}
-
-bool InternalCollect::GetLimitSwitchValueLower()
-{
-	return lowerWinchLimit->Get();
 }
 
 void InternalCollect::SetCollectPower(float power)

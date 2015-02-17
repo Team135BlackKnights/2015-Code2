@@ -11,14 +11,14 @@ MecanumDrive::MecanumDrive() :
 		motors[REAR_RIGHT] = new CANTalon(MOTOR_REAR_RIGHT);
 
 		chassis = new RobotDrive(motors[FRONT_LEFT], motors[REAR_LEFT], motors[FRONT_RIGHT], motors[REAR_RIGHT]);
-		driveMode = DRIVE_MODE_A;
+		driveMode = DRIVE_MODE_B;
 		chassis->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
 		chassis->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 		gyroAngle = 0;
 		lidarValueOne = 0;
 		lidarValueTwo = 0;
 		chassis->SetSafetyEnabled(false);
-
+		fieldOriented = IS_NOT_FIELD_ORIENTED;
 }
 
 void MecanumDrive::InitDefaultCommand()
@@ -31,7 +31,9 @@ void MecanumDrive::InitDefaultCommand()
 
 void MecanumDrive::Drive(float x, float y, float z)
 {
-	chassis->MecanumDrive_Cartesian(x, y, z);//, gyroAngle);
+	float angle = fieldOriented ? gyroAngle : 0;
+	chassis->MecanumDrive_Cartesian(x, -y, z, angle);
+	//motors[FRONT_LEFT]->get
 }
 
 int MecanumDrive::GetDriveMode()
@@ -74,4 +76,15 @@ void MecanumDrive::SetLidarValues(int valueOne, int valueTwo)
 void MecanumDrive::Rotate(float power)
 {
 	chassis->MecanumDrive_Cartesian(0, 0, power);
+}
+
+void MecanumDrive::SetFieldOriented(bool mode)
+{
+	fieldOriented = mode;
+}
+
+void MecanumDrive::SetSafetyEnabled(bool enabled)
+{
+	SmartDashboard::PutBoolean("Safety enabled", enabled);
+	chassis->SetSafetyEnabled(enabled);
 }

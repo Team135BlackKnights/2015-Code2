@@ -3,12 +3,13 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "Subsystems/Winch.h"
 
 class InternalCollect: public Subsystem
 {
 private:
 
-	VictorSP *liftMotor;
+	//VictorSP *liftMotor;
 
 	VictorSP *collectLeftMotor;
 	VictorSP *collectRightMotor;
@@ -18,8 +19,10 @@ private:
 	bool collectEngaged;
 	bool upperStackEngaged;
 
-	DigitalInput* lowerWinchLimit;
-	DigitalInput* upperWinchLimit;
+	//DigitalInput* lowerWinchLimit;
+	//DigitalInput* upperWinchLimit;
+
+	Winch* winch;
 
 	float collectPower;
 
@@ -31,10 +34,10 @@ public:
 
 	static const int WINCH_INVERTED = -1;
 
-	static constexpr float COLLECT_OUT_POWER = -.75f;
+	static constexpr float COLLECT_OUT_POWER = -1.0f;
 	static constexpr float COLLECT_IN_POWER = .6f;
 
-	static const bool ROLLER_COLLECT_ENGAGED = true;
+	static const bool ROLLER_COLLECT_ENGAGED = false;
 	static const bool ROLLER_COLLECT_DISENGAGED = !ROLLER_COLLECT_ENGAGED;
 
 	static const bool UPPER_STACK_ENGAGED = true;
@@ -53,8 +56,6 @@ public:
 
 	void SetRollerCollectSolenoid(bool);
 	void SetUpperStackSolenoid(bool);
-	bool GetLimitSwitchValueUpper();
-	bool GetLimitSwitchValueLower();
 
 	void SetCollectPower(float);
 

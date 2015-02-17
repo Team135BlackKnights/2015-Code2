@@ -2,6 +2,8 @@
 #include "Commands/Command.h"
 #include "CommandBase.h"
 #include "Commands/SerialCommunication.h"
+#include "Commands/AutoMoveBinToAutoZone.h"
+#include "Commands/LeftyModeJustForRiley.h"
 
 class Robot: public IterativeRobot
 {
@@ -9,15 +11,20 @@ private:
 	//Command *autonomousCommand;
 	LiveWindow *lw;
 	CameraServer* camera;
-
+	CommandGroup *autonomousCommand;
+	SendableChooser *chooser;
 	void RobotInit()
 	{
 		CommandBase::init();
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 		//serialCommunication = new SerialCommunication();
-		SmartDashboard::PutString("test", "IT WORKS");
-
+		//SmartDashboard::PutString("test", "IT WORKS");
+		chooser = new SendableChooser();
+		chooser->AddDefault("Move Bin To Auto Zone", new AutoMoveBinToAutoZone());
+		//chooser->AddObject("Lefty Mode On", new LeftyModeJustForRiley(true));
+		//chooser->AddObject("Lefty Mode Off", new LeftyModeJustForRiley(false));
+		SmartDashboard::PutData("Autonomous modes", chooser);
 
 	}
 	
@@ -30,6 +37,9 @@ private:
 	{
 		//if (autonomousCommand != NULL)
 		//autonomousCommand->Start();
+		autonomousCommand = (CommandGroup *) chooser->GetSelected();
+		SmartDashboard::PutNumber("Auto Command", autonomousCommand->GetID());
+		autonomousCommand->Start();
 	}
 
 	void AutonomousPeriodic()

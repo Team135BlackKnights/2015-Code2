@@ -40,6 +40,7 @@ void DriveJ::Execute()
 		rotation = oi->GetStickTwist(oi->RIGHT);
 		break;
 
+	/*
 	//FORWARDS: Right Y
 	//SIDEWAYS: Right X
 	//ROTATION: Left Twist
@@ -57,7 +58,7 @@ void DriveJ::Execute()
 		y = oi->GetStickX(oi->LEFT);
 		rotation = oi->GetStickTwist(oi->RIGHT);
 		break;
-
+	*/
 	//same as DRIVE_MODE_A
 	default:
 		x = oi->GetStickX(oi->RIGHT);
