@@ -1,10 +1,12 @@
 #include "AutoMoveRobot.h"
 
-AutoMoveRobot::AutoMoveRobot(float power, double timePassed)
+AutoMoveRobot::AutoMoveRobot(float x, float y, float rotate, double timePassed)
 {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(mecanumDrive);
-	this->power = power;
+	this->x = x;
+	this->y = y;
+	this->rotate = rotate;
 	this->timePassed = timePassed;
 	timer = new Timer();
 }
@@ -21,7 +23,7 @@ void AutoMoveRobot::Initialize()
 void AutoMoveRobot::Execute()
 {
 	SmartDashboard::PutString(T_BACK_UP_RUNNING, S_RUNNING);
-	mecanumDrive->Drive(0, power, 0);
+	mecanumDrive->Drive(x, y, rotate);
 }
 
 // Make this return true when this Command no longer needs to run execute()

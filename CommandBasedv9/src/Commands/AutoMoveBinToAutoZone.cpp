@@ -1,6 +1,7 @@
 #include "AutoMoveBinToAutoZone.h"
 #include "ExternalOpenCloseClaw.h"
 #include "AutoMoveRobot.h"
+#include "ExternalMoveWinch.h"
 //#include "DriveJ.h"
 //#include "SetSafetyEnabled.h";
 //#include "../CommandBase.h"
@@ -12,8 +13,10 @@ AutoMoveBinToAutoZone::AutoMoveBinToAutoZone()
 	//SmartDashboard::PutString("Auto Step", "1");
 	AddSequential(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
 	//SmartDashboard::PutString("Auto Step", "2");
-	AddSequential(new AutoMoveRobot(0, 2));
-	AddSequential(new AutoMoveRobot(-.25, 2));
+	AddSequential(new AutoMoveRobot(0, 0, 0, 1));
+	AddSequential(new ExternalMoveWinch(-.5, 1));
+	AddSequential(new AutoMoveRobot(0, -.5, 0, 1.65));
+	AddSequential(new AutoMoveRobot(0, 0, .5, .6));
 	//SmartDashboard::PutString("Auto Step", "3");
 	AddSequential(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
 	//SmartDashboard::PutString("Auto Step", "4");

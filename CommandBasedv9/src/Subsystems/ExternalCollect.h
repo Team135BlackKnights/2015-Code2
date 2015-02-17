@@ -19,8 +19,8 @@ private:
 	//DigitalInput* lowerLimit;
 	Winch* winch;
 public:
-	static const bool CLAW_OPEN = false;
-	static const bool CLAW_CLOSED = true;
+	static const bool CLAW_OPEN = true;
+	static const bool CLAW_CLOSED = !CLAW_OPEN;
 
 	//static const int WINCH_INVERTED = -1;
 

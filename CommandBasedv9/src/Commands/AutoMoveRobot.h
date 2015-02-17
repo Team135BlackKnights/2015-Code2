@@ -8,11 +8,13 @@
 class AutoMoveRobot: public CommandBase
 {
 private:
-	float power;
+	float x;
+	float y;
+	float rotate;
 	double timePassed;
 	Timer* timer;
 public:
-	AutoMoveRobot(float power, double time);
+	AutoMoveRobot(float, float, float, double time);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
