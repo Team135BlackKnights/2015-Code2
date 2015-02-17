@@ -2,12 +2,12 @@
 #include "ExternalOpenCloseClaw.h"
 #include "AutoMoveRobot.h"
 //#include "DriveJ.h"
-#include "SetSafetyEnabled.h";
+//#include "SetSafetyEnabled.h";
 //#include "../CommandBase.h"
 
 AutoMoveBinToAutoZone::AutoMoveBinToAutoZone()
 {
-	AddSequential(new SetSafetyEnabled(false));
+	//AddSequential(new SetSafetyEnabled(false));
 	//AddSequential( new DriveJ());
 	//SmartDashboard::PutString("Auto Step", "1");
 	AddSequential(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
