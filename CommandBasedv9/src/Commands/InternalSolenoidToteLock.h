@@ -4,13 +4,13 @@
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class InternalOpenCloseTopStack: public CommandBase
+class InternalSolenoidToteLock: public CommandBase
 {
 private:
 	bool status;
 public:
 
-	InternalOpenCloseTopStack(bool=InternalCollect::UPPER_STACK_DISENGAGED);
+	InternalSolenoidToteLock(bool=InternalCollect::TOTE_LOCK_DISENGAGED);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

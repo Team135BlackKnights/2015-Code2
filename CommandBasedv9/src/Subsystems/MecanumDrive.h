@@ -8,8 +8,6 @@
 class MecanumDrive: public Subsystem
 {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
 	CANTalon* motors[4];
 	RobotDrive* chassis;
 	int driveMode;
@@ -23,12 +21,10 @@ private:
 						REAR_RIGHT = 3;
 public:
 	static const int 	DRIVE_MODE_A = OI::MISC_CHANGE_DRIVE_MODE_A,
-						DRIVE_MODE_B = OI::MISC_CHANGE_DRIVE_MODE_B,
-						DRIVE_MODE_C = OI::MISC_CHANGE_DRIVE_MODE_C,
-						DRIVE_MODE_D = OI::MISC_CHANGE_DRIVE_MODE_D;
+						DRIVE_MODE_B = OI::MISC_CHANGE_DRIVE_MODE_B;
 
-	static const bool 	IS_FIELD_ORIENTED = true,
-						IS_NOT_FIELD_ORIENTED = !IS_FIELD_ORIENTED;
+	static const bool 	FIELD_ORIENTED_ENABLED = true,
+						FIELD_ORIENTED_DISENABLED = !FIELD_ORIENTED_ENABLED;
 	MecanumDrive();
 	void InitDefaultCommand();
 	void Drive(float, float, float);

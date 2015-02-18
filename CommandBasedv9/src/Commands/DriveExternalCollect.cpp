@@ -22,9 +22,9 @@ void DriveExternalCollect::Execute()
 	if (oi->MANIPULATOR_CONTROL_MODE == oi->EXTERNAL)
 	{
 		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_CLAW_OPEN))
-			externalCollect->SetOpenCloseClawState(externalCollect->CLAW_OPEN);
+			externalCollect->SetClawState(externalCollect->CLAW_OPEN);
 		else if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_CLAW_CLOSED))
-			externalCollect->SetOpenCloseClawState(externalCollect->CLAW_CLOSED);
+			externalCollect->SetClawState(externalCollect->CLAW_CLOSED);
 	}
 
 	externalCollect->DriveWinch(value);

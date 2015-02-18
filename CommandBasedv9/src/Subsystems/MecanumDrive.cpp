@@ -18,7 +18,7 @@ MecanumDrive::MecanumDrive() :
 		lidarValueOne = 0;
 		lidarValueTwo = 0;
 		chassis->SetSafetyEnabled(false);
-		fieldOriented = IS_NOT_FIELD_ORIENTED;
+		fieldOriented = FIELD_ORIENTED_DISENABLED;
 }
 
 void MecanumDrive::InitDefaultCommand()
@@ -33,7 +33,6 @@ void MecanumDrive::Drive(float x, float y, float z)
 {
 	float angle = fieldOriented ? gyroAngle : 0;
 	chassis->MecanumDrive_Cartesian(x, -y, z, angle);
-	//motors[FRONT_LEFT]->get
 }
 
 int MecanumDrive::GetDriveMode()
@@ -85,6 +84,5 @@ void MecanumDrive::SetFieldOriented(bool mode)
 
 void MecanumDrive::SetSafetyEnabled(bool enabled)
 {
-	SmartDashboard::PutBoolean("Safety enabled", enabled);
 	chassis->SetSafetyEnabled(enabled);
 }

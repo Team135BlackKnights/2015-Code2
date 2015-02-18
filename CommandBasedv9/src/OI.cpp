@@ -1,21 +1,18 @@
-#include <Commands/InternalSolenoid.h>
+#include <Commands/ExternalSolenoidClaw.h>
+#include <Commands/InternalSolenoidRoller.h>
+#include <Commands/InternalSolenoidToteLock.h>
 #include "OI.h"
 #include "RobotMap.h"
 #include "Commands/DriveJ.h"
 #include "Commands/ChangeDriveMode.h"
 #include "Commands/AlignRobot.h"
-#include "Commands/ExternalOpenCloseClaw.h"
 #include "Commands/LeftyModeJustForRiley.h"
-#include "Commands/ExternalHingeClaw.h"
-#include "Commands/BackUp.h"
 #include "Subsystems/ExternalCollect.h"
 #include "CommandBase.h"
 #include "Commands/InternalRollers.h"
 #include "Subsystems/InternalCollect.h"
 #include "Commands/ChangeManipulatorControlMode.h"
-#include "Commands/InternalOpenCloseTopStack.h"
 #include "Commands/SetFieldOriented.h"
-//HIIII
 
 OI::OI()
 {
@@ -46,8 +43,8 @@ OI::OI()
 	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_C]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_C));
 	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_D]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_D));
 
-	buttons[RIGHT][MISC_FIELD_ORIENTED_ON]->WhenPressed(new SetFieldOriented(MecanumDrive::IS_FIELD_ORIENTED));
-	buttons[RIGHT][MISC_FIELD_ORIENTED_OFF]->WhenPressed(new SetFieldOriented(MecanumDrive::IS_NOT_FIELD_ORIENTED));
+	buttons[RIGHT][MISC_FIELD_ORIENTED_ON]->WhenPressed(new SetFieldOriented(MecanumDrive::FIELD_ORIENTED_ENABLED));
+	buttons[RIGHT][MISC_FIELD_ORIENTED_OFF]->WhenPressed(new SetFieldOriented(MecanumDrive::FIELD_ORIENTED_DISENABLED));
 }
 
 float OI::GetStickX(int hand)
@@ -79,9 +76,17 @@ void OI::LeftyFlip(bool mode)
 {
 	flipped = mode;
 	SmartDashboard::PutBoolean(T_LEFTY_MODE, flipped);
-	int temp = LEFT;
-	LEFT = RIGHT;
-	RIGHT = temp;
+	switch (mode)
+	{
+	case true:
+		LEFT = 1;
+		RIGHT = 0;
+		break;
+	case false:
+		LEFT = 0;
+		RIGHT = 1;
+		break;
+	}
 }
 
 void OI::SetManipulatorControlMode(bool mode)

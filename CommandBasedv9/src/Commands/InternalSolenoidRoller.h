@@ -4,12 +4,12 @@
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class InternalSolenoid: public CommandBase
+class InternalSolenoidRoller: public CommandBase
 {
 private:
 	bool engageSolenoid;
 public:
-	InternalSolenoid(bool=InternalCollect::ROLLER_COLLECT_DISENGAGED);
+	InternalSolenoidRoller(bool=InternalCollect::ROLLER_COLLECT_DISENGAGED);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

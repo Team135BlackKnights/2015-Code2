@@ -19,14 +19,14 @@ void SerialComs::InitDefaultCommand()
 void SerialComs::SendData(const char* buffer, int32_t count)
 {
 	gyroPort->Write(buffer, count);
-	SmartDashboard::PutString("Lights data output", buffer);
+	//SmartDashboard::PutString("Lights data output", buffer);
 }
 
 double SerialComs::WaitForData()
 {
-	SmartDashboard::PutBoolean("Trying to possibly get potential readings from the gyroscope", true);
+	//SmartDashboard::PutBoolean("Trying to possibly get potential readings from the gyroscope", true);
 	int bytes = gyroPort->GetBytesReceived();
-	SmartDashboard::PutNumber("Bytes Received", bytes);
+	//SmartDashboard::PutNumber("Bytes Received", bytes);
 	if (bytes > 0)
 	{
 		char *incomingData;
@@ -34,7 +34,7 @@ double SerialComs::WaitForData()
 		gyroPort->Read(incomingData, 10);
 		double finalData = atof(incomingData);
 
-		SmartDashboard::PutNumber("gyro Value", finalData);
+		//SmartDashboard::PutNumber("gyro Value", finalData);
 
 		gyroPort->Reset();
 		return finalData;

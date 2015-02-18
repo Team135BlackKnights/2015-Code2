@@ -1,15 +1,15 @@
-#ifndef BackUp_H
-#define BackUp_H
+#ifndef ExternalClaw_H
+#define ExternalClaw_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class BackUp: public CommandBase
+class ExternalSolenoidClaw: public CommandBase
 {
 private:
-	int i;
+	bool status;
 public:
-	BackUp();
+	ExternalSolenoidClaw(bool);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

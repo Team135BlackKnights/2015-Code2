@@ -1,39 +1,44 @@
-#include "SetSafetyEnabled.h"
+#include <Commands/InternalSolenoidToteLock.h>
+#include "RobotMap.h"
 
-SetSafetyEnabled::SetSafetyEnabled(bool enabled)
+
+InternalSolenoidToteLock::InternalSolenoidToteLock(bool status)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	this->enabled = enabled;
+	Requires(internalCollect);
+		//isOpen = status;
+		this->status = status;
 }
 
 // Called just before this Command runs the first time
-void SetSafetyEnabled::Initialize()
+void InternalSolenoidToteLock::Initialize()
 {
-	mecanumDrive->SetSafetyEnabled(enabled);
+	internalCollect->SetToteLockSolenoid(status);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
-void SetSafetyEnabled::Execute()
+void InternalSolenoidToteLock::Execute()
 {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool SetSafetyEnabled::IsFinished()
+bool InternalSolenoidToteLock::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void SetSafetyEnabled::End()
+void InternalSolenoidToteLock::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void SetSafetyEnabled::Interrupted()
+void InternalSolenoidToteLock::Interrupted()
 {
 
 }
