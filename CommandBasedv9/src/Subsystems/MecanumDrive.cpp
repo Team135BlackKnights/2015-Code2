@@ -11,14 +11,17 @@ MecanumDrive::MecanumDrive() :
 		motors[REAR_RIGHT] = new CANTalon(MOTOR_REAR_RIGHT);
 
 		chassis = new RobotDrive(motors[FRONT_LEFT], motors[REAR_LEFT], motors[FRONT_RIGHT], motors[REAR_RIGHT]);
-		driveMode = DRIVE_MODE_B;
+		driveMode = SmartDashboard::GetNumber(T_DRIVE_MODE, DRIVE_MODE_A);
 		chassis->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
 		chassis->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 		gyroAngle = 0;
 		lidarValueOne = 0;
 		lidarValueTwo = 0;
 		chassis->SetSafetyEnabled(false);
-		fieldOriented = FIELD_ORIENTED_DISENABLED;
+		fieldOriented = SmartDashboard::GetBoolean(T_FIELD_ORIENTED, FIELD_ORIENTED_DISABLED);
+
+		useSetRobotAngle = SmartDashboard::GetBoolean(T_USE_SET_ROBOT_ANGLE, false);
+		setRobotAngle = SmartDashboard::GetNumber(T_SET_ROBOT_ANGLE, 0);
 }
 
 void MecanumDrive::InitDefaultCommand()
@@ -42,6 +45,7 @@ int MecanumDrive::GetDriveMode()
 
 int MecanumDrive::SetDriveMode(int mode)
 {
+	SmartDashboard::PutNumber(T_DRIVE_MODE, driveMode);
 	return driveMode = mode;
 }
 
@@ -52,7 +56,7 @@ double MecanumDrive::GetGyroAngle()
 
 double MecanumDrive::SetGyroAngle(double angle)
 {
-	SmartDashboard::PutNumber("MecanumDrive Gyro Angle", angle);
+	SmartDashboard::PutNumber(T_GYRO_Angle, angle);
 	return gyroAngle = angle;
 }
 
@@ -79,6 +83,7 @@ void MecanumDrive::Rotate(float power)
 
 void MecanumDrive::SetFieldOriented(bool mode)
 {
+	SmartDashboard::PutBoolean(T_FIELD_ORIENTED, mode);
 	fieldOriented = mode;
 }
 

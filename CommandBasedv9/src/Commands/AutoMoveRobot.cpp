@@ -14,7 +14,6 @@ AutoMoveRobot::AutoMoveRobot(float x, float y, float rotate, double timePassed)
 // Called just before this Command runs the first time
 void AutoMoveRobot::Initialize()
 {
-	SmartDashboard::PutString(T_BACK_UP_RUNNING, S_INITIALIZED);
 	mecanumDrive->GetDefaultCommand()->Cancel();
 	timer->Start();
 }
@@ -22,7 +21,6 @@ void AutoMoveRobot::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void AutoMoveRobot::Execute()
 {
-	SmartDashboard::PutString(T_BACK_UP_RUNNING, S_RUNNING);
 	mecanumDrive->Drive(x, y, rotate);
 }
 
@@ -35,12 +33,10 @@ bool AutoMoveRobot::IsFinished()
 // Called once after isFinished returns true
 void AutoMoveRobot::End()
 {
-	SmartDashboard::PutString(T_BACK_UP_RUNNING, S_ENDED);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void AutoMoveRobot::Interrupted()
 {
-	SmartDashboard::PutString(T_BACK_UP_RUNNING, S_INTERRUPTED);
 }

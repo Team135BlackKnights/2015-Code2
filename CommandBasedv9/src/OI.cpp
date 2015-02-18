@@ -5,7 +5,6 @@
 #include "RobotMap.h"
 #include "Commands/DriveJ.h"
 #include "Commands/ChangeDriveMode.h"
-#include "Commands/AlignRobot.h"
 #include "Commands/LeftyModeJustForRiley.h"
 #include "Subsystems/ExternalCollect.h"
 #include "CommandBase.h"
@@ -30,6 +29,7 @@ OI::OI()
 			buttons[i][j] = new JoystickButton(sticks[i], j);
 		}
 	}
+
 	SetManipulatorControlMode(EXTERNAL);
 
 	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_EXTERNAL]->WhenPressed(new ChangeManipulatorControlMode(EXTERNAL));
@@ -44,7 +44,7 @@ OI::OI()
 	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_D]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_D));
 
 	buttons[RIGHT][MISC_FIELD_ORIENTED_ON]->WhenPressed(new SetFieldOriented(MecanumDrive::FIELD_ORIENTED_ENABLED));
-	buttons[RIGHT][MISC_FIELD_ORIENTED_OFF]->WhenPressed(new SetFieldOriented(MecanumDrive::FIELD_ORIENTED_DISENABLED));
+	buttons[RIGHT][MISC_FIELD_ORIENTED_OFF]->WhenPressed(new SetFieldOriented(MecanumDrive::FIELD_ORIENTED_DISABLED));
 }
 
 float OI::GetStickX(int hand)

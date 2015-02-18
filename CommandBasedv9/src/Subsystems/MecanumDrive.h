@@ -15,6 +15,10 @@ private:
 	double gyroAngle;
 	int lidarValueOne;
 	int lidarValueTwo;
+
+	bool useSetRobotAngle;
+	double setRobotAngle;
+
 	static const int 	FRONT_LEFT = 0,
 						REAR_LEFT = 1,
 						FRONT_RIGHT = 2,
@@ -24,7 +28,7 @@ public:
 						DRIVE_MODE_B = OI::MISC_CHANGE_DRIVE_MODE_B;
 
 	static const bool 	FIELD_ORIENTED_ENABLED = true,
-						FIELD_ORIENTED_DISENABLED = !FIELD_ORIENTED_ENABLED;
+						FIELD_ORIENTED_DISABLED = !FIELD_ORIENTED_ENABLED;
 	MecanumDrive();
 	void InitDefaultCommand();
 	void Drive(float, float, float);

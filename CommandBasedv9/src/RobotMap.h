@@ -57,12 +57,18 @@
 						T_LIDAR_DISTANCE_ONE = "LIDAR One Distance",
 						T_LIDAR_DISTANCE_TWO = "LIDAR Two Distance",
 						T_LIDAR_STEP = "LIDAR Step",
+						T_GYRO_Angle = "Gyro Angle",
 
+						T_CLAW_STATE_ENGAGED = "External Claw Engaged",
+						T_TOTE_LOCK_ENGAGED = "External Tote Lock Engaged",
+						T_ROLLER_COLLECT_ENGAGED = "Internal Roller Collect Engaged",
+
+    					T_USE_SET_ROBOT_ANGLE = "Use Set Robot Angle",
+						T_SET_ROBOT_ANGLE = "Set Robot Angle",
+
+						T_FIELD_ORIENTED = "Field Oriented Enabled",
 						T_LEFTY_MODE = "Lefty Mode Enabled",
-						T_CLAW_OPEN_CLOSE = "External Claw Status",
-
-    					T_SET_ROBOT_ANGLE = "Set Robot Angle",
-						T_ROBOT_ANGLE = "Robot Angle";
+    					T_DRIVE_MODE = "Drive Mode";
 
     const std::string 	S_INITIALIZED = "Initialized",
     					S_RUNNING = "Running",

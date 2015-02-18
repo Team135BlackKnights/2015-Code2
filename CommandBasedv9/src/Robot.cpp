@@ -20,8 +20,8 @@ private:
 		chooser->AddDefault("Move Bin To Auto Zone", new AutoMoveBinToAutoZone());
 		SmartDashboard::PutData("Autonomous modes", chooser);
 
-		SmartDashboard::PutBoolean(T_SET_ROBOT_ANGLE, false);
-		SmartDashboard::PutNumber(T_ROBOT_ANGLE, 0);
+		//SmartDashboard::PutBoolean(T_SET_ROBOT_ANGLE, false);
+		//SmartDashboard::PutNumber(T_ROBOT_ANGLE, 0);
 
 	}
 	

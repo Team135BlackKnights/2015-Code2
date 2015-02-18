@@ -2,8 +2,6 @@
 
 ChangeDriveMode::ChangeDriveMode(int mode)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(mecanumDrive);
 	driveMode = mode;
 }
@@ -11,7 +9,6 @@ ChangeDriveMode::ChangeDriveMode(int mode)
 // Called just before this Command runs the first time
 void ChangeDriveMode::Initialize()
 {
-	SmartDashboard::PutNumber("DriveMode", driveMode);
 	mecanumDrive->SetDriveMode(driveMode);
 }
 

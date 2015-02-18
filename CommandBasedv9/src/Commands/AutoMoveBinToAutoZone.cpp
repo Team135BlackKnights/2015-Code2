@@ -2,9 +2,6 @@
 #include "AutoMoveBinToAutoZone.h"
 #include "AutoMoveRobot.h"
 #include "ExternalMoveWinch.h"
-//#include "DriveJ.h"
-//#include "SetSafetyEnabled.h";
-//#include "../CommandBase.h"
 
 AutoMoveBinToAutoZone::AutoMoveBinToAutoZone()
 {
