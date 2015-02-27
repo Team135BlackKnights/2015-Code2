@@ -19,13 +19,14 @@ void DriveJ::Initialize()
 void DriveJ::Execute()
 {
 	SmartDashboard::PutString(T_DRIVE_J_RUNNING, "Running");
+
 	float x = 0, y = 0, rotation = 0;
-	switch (mecanumDrive->GetDriveMode()) //Different forms of Driving used in the Change Drive Mode
+	switch (oi->GetDriveMode()) //Different forms of Driving used in the Change Drive Mode
 	{									  //command not currently implemented
 	//FORWARDS: Right Y
 	//SIDEWAYS: Right X
 	//ROTATION: RIGHT Twist
-	case MecanumDrive::DRIVE_MODE_A:
+	case OI::MISC_CHANGE_DRIVE_MODE_A:
 		x = oi->GetStickX(oi->RIGHT);
 		y = oi->GetStickY(oi->RIGHT);
 		rotation = oi->GetStickTwist(oi->RIGHT);
@@ -34,7 +35,7 @@ void DriveJ::Execute()
 	//FORWARDS: Right Y
 	//SIDEWAYS: Left X
 	//ROTATION: RIGHT Twist
-	case MecanumDrive::DRIVE_MODE_B:
+	case OI::MISC_CHANGE_DRIVE_MODE_B:
 		x = oi->GetStickX(oi->LEFT);
 		y = oi->GetStickY(oi->RIGHT);
 		rotation = oi->GetStickTwist(oi->RIGHT);

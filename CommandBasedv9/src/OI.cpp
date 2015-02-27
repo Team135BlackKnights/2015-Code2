@@ -30,6 +30,9 @@ OI::OI()
 		}
 	}
 
+	SetDriveMode(MISC_CHANGE_DRIVE_MODE_A);
+	LeftyFlip(SmartDashboard::GetBoolean(T_LEFTY_MODE, false));
+
 	SetManipulatorControlMode(EXTERNAL);
 
 	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_EXTERNAL]->WhenPressed(new ChangeManipulatorControlMode(EXTERNAL));
@@ -38,8 +41,8 @@ OI::OI()
 	buttons[RIGHT][MISC_LEFTY_MODE_ENABLED]->WhenPressed(new LeftyModeJustForRiley(true));
 	buttons[RIGHT][MISC_LEFTY_MODE_DISABLED]->WhenPressed(new LeftyModeJustForRiley(false));
 
-	buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_A]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_A));
-	buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_B]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_B));
+	buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_A]->WhenPressed(new ChangeDriveMode(OI::MISC_CHANGE_DRIVE_MODE_A));
+	buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_B]->WhenPressed(new ChangeDriveMode(OI::MISC_CHANGE_DRIVE_MODE_B));
 	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_C]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_C));
 	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_D]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_D));
 
@@ -54,7 +57,7 @@ float OI::GetStickX(int hand)
 
 float OI::GetStickY(int hand)
 {
-	return -sticks[hand]->GetY(); // Returns Y axis value of Joysticks
+	return sticks[hand]->GetY(); // Returns Y axis value of Joysticks
 }
 
 float OI::GetStickTwist(int hand)
@@ -74,8 +77,8 @@ bool OI::GetButton(int stick, int button)
 
 void OI::LeftyFlip(bool mode)
 {
-	flipped = mode;
-	SmartDashboard::PutBoolean(T_LEFTY_MODE, flipped);
+	leftyMode = mode;
+	SmartDashboard::PutBoolean(T_LEFTY_MODE, leftyMode);
 	switch (mode)
 	{
 	case true:
@@ -91,34 +94,17 @@ void OI::LeftyFlip(bool mode)
 
 void OI::SetManipulatorControlMode(bool mode)
 {
+	SmartDashboard::PutBoolean(T_LEFTY_MODE, mode);
 	MANIPULATOR_CONTROL_MODE = mode;
-	/*
-	sticks[MANIPULATOR_CONTROL] = new Joystick(JOYSTICK_MANIPULATOR_CONTROL);
-	for (int j = 1; j <= MAX_JOYSTICK_BUTTONS; j++)
-	{
-		buttons[MANIPULATOR_CONTROL][j] = new JoystickButton(sticks[MANIPULATOR_CONTROL], j);
-	}
-	switch (mode)
-	{
-	case EXTERNAL:
-	//	buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_OPEN]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_OPEN));
-	//	buttons[MANIPULATOR_CONTROL][EXTERNAL_CLAW_CLOSED]->WhenPressed(new ExternalOpenCloseClaw(ExternalCollect::CLAW_CLOSED));
-		break;
-	case INTERNAL:
-		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_IN]->WhenPressed(new InternalRollers(InternalCollect::COLLECT_IN_POWER));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_IN]->WhenReleased(new InternalRollers(0));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_OUT]->WhenPressed(new InternalRollers(InternalCollect::COLLECT_OUT_POWER));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_OUT]->WhenReleased(new InternalRollers(0));
+}
 
-		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_SOLENOID_ENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_ENGAGED));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_ROLLER_SOLENOID_DISENGAGED]->WhenPressed(new InternalSolenoid(InternalCollect::COLLECT_DISENGAGED));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_UPPER_STACK_SOLENOID_DISENGAGED]->WhenPressed(new InternalOpenCloseTopStack(InternalCollect::UPPER_STACK_DISENGAGED));
-		buttons[MANIPULATOR_CONTROL][INTERNAL_UPPER_STACK_SOLENOID_ENGAGED]->WhenPressed(new InternalOpenCloseTopStack(InternalCollect::UPPER_STACK_ENGAGED));
+int OI::GetDriveMode()
+{
+	return this->driveMode;
+}
 
-		break;
-	}
-
-	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_EXTERNAL]->WhenPressed(new ChangeManipulatorControlMode(EXTERNAL));
-	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_INTERNAL]->WhenPressed(new ChangeManipulatorControlMode(INTERNAL));
-	*/
+void OI::SetDriveMode(int mode)
+{
+	SmartDashboard::PutNumber(T_DRIVE_MODE, mode);
+	driveMode = mode;
 }

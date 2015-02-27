@@ -11,6 +11,9 @@ protected:
 	Joystick* sticks[NUMBER_O_JOYSTICKS]; //0 is Left, 1 is Right
 	JoystickButton* buttons[NUMBER_O_JOYSTICKS][MAX_JOYSTICK_BUTTONS + 1];
 
+	int driveMode;
+	bool leftyMode;
+
 	//DriveMode
 
 public:
@@ -49,8 +52,6 @@ public:
 
 						MISC_CHANGE_DRIVE_MODE_A = 7, //RIGHT
 						MISC_CHANGE_DRIVE_MODE_B = 8, //RIGHT
-						MISC_CHANGE_DRIVE_MODE_C = 9, //RIGHT
-						MISC_CHANGE_DRIVE_MODE_D = 10, //RIGHT
 
 						MISC_FIELD_ORIENTED_ON = 9, //RIGHT
 						MISC_FIELD_ORIENTED_OFF = 10, //RIGHT
@@ -59,8 +60,6 @@ public:
 						DRIVE_MODE_NORMAL = 0,
 						DRIVE_MODE_ALEX_P = 1;
 
-	bool flipped = false;
-
 	OI();
 	float GetStickX(int);
 	float GetStickY(int);
@@ -68,6 +67,8 @@ public:
 	float GetStickSlider(int);
 	bool GetButton(int stick, int);
 	void LeftyFlip(bool);
+	int GetDriveMode();
+	void SetDriveMode(int);
 
 	void SetManipulatorControlMode(bool);
 };

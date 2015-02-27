@@ -3,6 +3,8 @@
 #include "CommandBase.h"
 #include "Commands/SerialCommunication.h"
 #include "Commands/AutoMoveBinToAutoZone.h"
+#include "Commands/AutoMoveBinToAutoZoneRamp.h"
+#include "Commands/AutoBinToteToAutoZone.h"
 #include "Commands/LeftyModeJustForRiley.h"
 
 class Robot: public IterativeRobot
@@ -18,6 +20,8 @@ private:
 		lw = LiveWindow::GetInstance();
 		chooser = new SendableChooser();
 		chooser->AddDefault("Move Bin To Auto Zone", new AutoMoveBinToAutoZone());
+		chooser->AddObject("Move Bin To Auto Zone RAMP", new AutoMoveBinToAutoZoneRamp());
+		chooser ->AddObject("Move Bin and Tote to Auto Zone ", new AutoBinToteToAutoZone());
 		SmartDashboard::PutData("Autonomous modes", chooser);
 
 		//SmartDashboard::PutBoolean(T_SET_ROBOT_ANGLE, false);

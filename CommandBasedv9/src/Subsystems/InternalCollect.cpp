@@ -38,6 +38,10 @@ void InternalCollect::DriveCollect()
 {
 	collectLeftMotor->Set(collectPower * COLLECT_LEFT_INVERTED);
 	collectRightMotor->Set(collectPower * COLLECT_RIGHT_INVERTED);
+}
+
+void InternalCollect::PowerSolenoids()
+{
 	rollerCollectSolenoid->Set(rollerCollectEngaged);
 	toteLockSolenoid->Set(toteLockEngaged);
 }
@@ -45,11 +49,13 @@ void InternalCollect::DriveCollect()
 void InternalCollect::SetRollerCollectSolenoid(bool engaged)
 {
 	rollerCollectEngaged = engaged;
+	PowerSolenoids();
 }
 
 void InternalCollect::SetToteLockSolenoid(bool engaged)
 {
 	toteLockEngaged = engaged;
+	PowerSolenoids();
 }
 
 void InternalCollect::SetCollectPower(float power)
