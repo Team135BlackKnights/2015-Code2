@@ -8,7 +8,8 @@
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-#define FILE_PATH  "C:\\Users\\robotics\\Desktop\\PIDTuningData\\"
+#define FILE_PATH  "/home/lvuser/pidtune/"
+#define HEADER "m1,m2,m3,m4"
 
 class AutoPIDTest: public CommandBase
 {

@@ -10,16 +10,18 @@ AutoPIDTest::AutoPIDTest()
 	char formattedTime[80];
 	//std::string formattedTime;//(std::string)asctime(now) + ".csv";
 	//formattedTime = std::string::
-	sprintf(formattedTime, "%s%d_%d_%d-%d-%d.csv", FILE_PATH, now->tm_mon, now->tm_mday, now->tm_hour, now->tm_min, now->tm_sec);
+	sprintf(formattedTime, "%s%d_%d_%d_%d_%d.csv", FILE_PATH, now->tm_mon, now->tm_mday, now->tm_hour, now->tm_min, now->tm_sec);
 	fileName = (std::string)formattedTime;
 	SmartDashboard::PutString("Data File name", fileName);
 	velocities = new float[4];
+
 }
 
 // Called just before this Command runs the first time
 void AutoPIDTest::Initialize()
 {
-	file.open(fileName.c_str(), std::ios_base::out);
+	file.open(fileName.c_str(), std::ios_base::out | std::ios_base::trunc);
+	file << HEADER << std::endl;
 	timer->Start();
 }
 

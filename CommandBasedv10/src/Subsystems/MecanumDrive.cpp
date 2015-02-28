@@ -20,6 +20,11 @@ MecanumDrive::MecanumDrive() :
 
 		useSetRobotAngle = SmartDashboard::GetBoolean(T_USE_SET_ROBOT_ANGLE, false);
 		setRobotAngle = SmartDashboard::GetNumber(T_SET_ROBOT_ANGLE, 0);
+
+		for (int i = 0; i < NUM_MOTORS; i++)
+		{
+			motors[i]->SetPID(PIDValues[i][0], PIDValues[i][1], PIDValues[i][2]);
+		}
 }
 
 void MecanumDrive::InitDefaultCommand()
@@ -90,3 +95,4 @@ void MecanumDrive::GetDriveVelocties(float* velocityArray)
 		velocityArray[i] = motors[i]->GetEncVel();
 	}
 }
+

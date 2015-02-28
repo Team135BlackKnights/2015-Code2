@@ -13,7 +13,7 @@ InternalCollect::InternalCollect() :
 
 	rollerCollectSolenoid = new Solenoid(SOLENOID_INTERNAL_COLLECT);
 	rollerCollectEngaged = SmartDashboard::GetBoolean(T_ROLLER_COLLECT_ENGAGED, ROLLER_COLLECT_DISENGAGED);
-	toteLockSolenoid = new Solenoid(SOLENOID_INTERNAL_UPPER_STACK);
+	toteLockSolenoid = new Solenoid(SOLENOID_INTERNAL_TOTE_LOCK);
 	toteLockEngaged = SmartDashboard::GetBoolean(T_TOTE_LOCK_ENGAGED, TOTE_LOCK_ENGAGED);
 
 	winch = new Winch(MOTOR_INTERNAL_WINCH, DIGITAL_INTERNAL_LOWER, DIGITAL_INTERNAL_UPPER, INVERTED_INTERNAL_WINCH);

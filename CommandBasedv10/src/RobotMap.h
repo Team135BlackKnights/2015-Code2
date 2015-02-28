@@ -28,7 +28,7 @@
 
     const int SOLENOID_INTERNAL_COLLECT = 1;
     const int SOLENOID_EXTERNAL_OPEN_CLOSE_CLAW = 0;
-    const int SOLENOID_INTERNAL_UPPER_STACK = 2;
+    const int SOLENOID_INTERNAL_TOTE_LOCK = 2;
     //const int SOLENOID_EXTERNAL_HINGE_CLAW = 2;
 
 // If you are using multiple modules, make sure to define both the port

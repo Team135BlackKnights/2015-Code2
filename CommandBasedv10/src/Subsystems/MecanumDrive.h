@@ -17,6 +17,7 @@ private:
 	int lidarValueOne;
 	int lidarValueTwo;
 
+
 	bool useSetRobotAngle;
 	double setRobotAngle;
 
@@ -24,6 +25,14 @@ private:
 						REAR_LEFT = 1,
 						FRONT_RIGHT = 2,
 						REAR_RIGHT = 3;
+
+	int PIDValues[4][3] = {
+			{0, 0, 0},
+			{0, 0, 0},
+			{0, 0, 0},
+			{0, 0, 0}
+	};
+
 public:
 	MecanumDrive();
 	void InitDefaultCommand();
