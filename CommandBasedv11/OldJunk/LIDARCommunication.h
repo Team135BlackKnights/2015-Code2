@@ -1,7 +1,7 @@
 #ifndef LIDARCommunication_H
 #define LIDARCommunication_H
 
-#include "../CommandBase.h"
+#include "CommandBase.h"
 #include "WPILib.h"
 
 class LIDARCommunication: public CommandBase

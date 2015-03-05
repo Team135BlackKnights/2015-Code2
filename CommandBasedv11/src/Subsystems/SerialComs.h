@@ -7,14 +7,12 @@
 class SerialComs: public Subsystem
 {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
 	SerialPort *gyroPort;
 	const int BAUD_RATE = 9600;
 public:
 	SerialComs();
 	void InitDefaultCommand();
-	void SendData(const char*, int32_t);
+	void SendData(const char* buffer, int32_t count);
 	double WaitForData();
 };
 

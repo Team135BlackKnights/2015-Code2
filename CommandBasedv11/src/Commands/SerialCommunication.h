@@ -3,7 +3,6 @@
 
 #include "../CommandBase.h"
 #include "WPILib.h"
-//#include <string.h>
 
 class SerialCommunication: public CommandBase
 {

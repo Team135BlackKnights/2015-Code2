@@ -5,6 +5,7 @@ AutoMoveRobotToZone::AutoMoveRobotToZone()
 
 	AddSequential(new AutoMoveRobot(0, 0, 0, 1));//wait
 	AddSequential(new AutoMoveRobot(-1, 0, 0, 1.2));//wait
+
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

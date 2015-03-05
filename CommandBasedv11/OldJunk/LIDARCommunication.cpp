@@ -4,7 +4,7 @@
 LIDARCommunication::LIDARCommunication()
 {
 	// Use Requires() here to declare subsystem dependencies
-	Requires(lidarOne);
+	//Requires(lidarOne);
 	//Requires(lidarTwo);
 	i = 0;
 	step = 1;
@@ -15,12 +15,13 @@ LIDARCommunication::LIDARCommunication()
 // Called just before this Command runs the first time
 void LIDARCommunication::Initialize()
 {
-	SmartDashboard::PutString(T_LIDAR_RUNNING, "Initialized");
+	//SmartDashboard::PutString(T_LIDAR_RUNNING, "Initialized");
 }
 
 // Called repeatedly when this Command is scheduled to run
 void LIDARCommunication::Execute()
 {
+	/*
 	SmartDashboard::PutString(T_LIDAR_RUNNING, "Running");
 	if (i % FRAMES_PER_STEP == FRAMES_PER_STEP - 1)
 	{
@@ -78,6 +79,7 @@ void LIDARCommunication::Execute()
 		//}
 	}
 	i++;
+	*/
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -89,15 +91,17 @@ bool LIDARCommunication::IsFinished()
 // Called once after isFinished returns true
 void LIDARCommunication::End()
 {
-	SmartDashboard::PutString(T_LIDAR_RUNNING, "Ended");
+	//SmartDashboard::PutString(T_LIDAR_RUNNING, "Ended");
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void LIDARCommunication::Interrupted()
 {
+	/*
 	SmartDashboard::PutString(T_LIDAR_RUNNING, "Interrupted");
 	SmartDashboard::PutNumber(T_LIDAR_DISTANCE_ONE, 0);
 	SmartDashboard::PutNumber(T_LIDAR_DISTANCE_TWO, 0);
 	SmartDashboard::PutNumber(T_LIDAR_STEP, 0);
+	*/
 }

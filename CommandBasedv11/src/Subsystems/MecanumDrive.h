@@ -15,12 +15,10 @@ private:
 
 	RobotDrive* chassis;
 	double gyroAngle;
-	int lidarValueOne;
-	int lidarValueTwo;
 
 
-	bool useSetRobotAngle;
-	double setRobotAngle;
+	//bool useSetRobotAngle;
+	//double setRobotAngle;
 
 	double PIDValues[4][3] = {
 			{0, 0, 0},
@@ -38,22 +36,15 @@ public:
 
 	MecanumDrive();
 	void InitDefaultCommand();
-	void Drive(float, float, float, float=0);
+	void Drive(float x, float y, float z, float angle=0);
 
 	double GetGyroAngle();
-	double SetGyroAngle(double);
+	double SetGyroAngle(double angle);
 
-	int GetLidarValueOne();
-	int GetLidarValueTwo();
-	void SetLidarValues(int, int);
+	void Rotate(float power);
 
-	void Rotate(float);
-
-	void SetSafetyEnabled(bool);
-
-	void GetDriveVelocties(float*);
-
-	void GetMotorPIDValues(int, double*);
+	//void GetDriveVelocties(float*);
+	//void GetMotorPIDValues(int, double*);
 };
 
 #endif

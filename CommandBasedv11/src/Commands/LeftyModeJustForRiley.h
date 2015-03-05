@@ -9,7 +9,7 @@ class LeftyModeJustForRiley: public CommandBase
 private:
 	bool mode;
 public:
-	LeftyModeJustForRiley(bool);
+	LeftyModeJustForRiley(bool mode);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

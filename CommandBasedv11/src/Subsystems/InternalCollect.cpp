@@ -12,18 +12,17 @@ InternalCollect::InternalCollect() :
 	collectRightMotor = new VictorSP(MOTOR_INTERNAL_COLLECT_RIGHT);
 
 	rollerCollectSolenoid = new Solenoid(SOLENOID_INTERNAL_COLLECT);
-	rollerCollectEngaged = false;//SmartDashboard::GetBoolean(T_ROLLER_COLLECT_ENGAGED, ROLLER_COLLECT_DISENGAGED);
+	rollerCollectState = ROLLER_COLLECT_OPEN;
 	toteLockSolenoid = new Solenoid(SOLENOID_INTERNAL_TOTE_LOCK);
-	toteLockEngaged = false;//SmartDashboard::GetBoolean(T_TOTE_LOCK_ENGAGED, TOTE_LOCK_ENGAGED);
+	toteLockState = TOTE_LOCK_OPEN;
 
-	winch = new Winch(MOTOR_INTERNAL_WINCH, DIGITAL_INTERNAL_LOWER, DIGITAL_INTERNAL_UPPER, INVERTED_INTERNAL_WINCH);
+	winch = new Winch(MOTOR_INTERNAL_WINCH,/* DIGITAL_INTERNAL_LOWER, DIGITAL_INTERNAL_UPPER, */INVERTED_INTERNAL_WINCH);
 
 	collectPower = 0;
 }
 
 void InternalCollect::InitDefaultCommand()
 {
-
 	SetDefaultCommand(new DriveInternalCollect());
 }
 
@@ -34,25 +33,28 @@ void InternalCollect::DriveLift(float power)
 
 void InternalCollect::DriveCollect()
 {
+	SmartDashboard::PutNumber(T_INTERNAL_ROLLER_POWER, collectPower);
 	collectLeftMotor->Set(collectPower * COLLECT_LEFT_INVERTED);
 	collectRightMotor->Set(collectPower * COLLECT_RIGHT_INVERTED);
 }
 
 void InternalCollect::PowerSolenoids()
 {
-	rollerCollectSolenoid->Set(rollerCollectEngaged);
-	toteLockSolenoid->Set(toteLockEngaged);
+	SmartDashboard::PutString(T_INTERNAL_ROLLER_COLLECT_STATE, rollerCollectState == ROLLER_COLLECT_OPEN ? S_OPEN : S_CLOSED);
+	SmartDashboard::PutString(T_INTERNAL_TOTE_LOCK_STATE, toteLockState == TOTE_LOCK_OPEN ? S_OPEN: S_CLOSED);
+	rollerCollectSolenoid->Set(rollerCollectState);
+	toteLockSolenoid->Set(toteLockState);
 }
 
-void InternalCollect::SetRollerCollectSolenoid(bool engaged)
+void InternalCollect::SetRollerCollectSolenoid(bool state)
 {
-	rollerCollectEngaged = engaged;
+	rollerCollectState = state;
 	PowerSolenoids();
 }
 
-void InternalCollect::SetToteLockSolenoid(bool engaged)
+void InternalCollect::SetToteLockSolenoid(bool state)
 {
-	toteLockEngaged = engaged;
+	toteLockState = state;
 	PowerSolenoids();
 }
 

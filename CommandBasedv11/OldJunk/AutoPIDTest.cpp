@@ -2,22 +2,18 @@
 
 AutoPIDTest::AutoPIDTest()
 {
-	// Use Requires() here to declare subsystem dependencies
 	Requires(mecanumDrive);
 	timer = new Timer();
 	time_t t = time(0);   // get time now
 	struct tm * now = localtime( & t );
 	char formattedTime[80];
-	//std::string formattedTime;//(std::string)asctime(now) + ".csv";
-	//formattedTime = std::string::
 	sprintf(formattedTime, "%s%02d_%02d_%02d_%02d_%02d.csv", FILE_PATH, now->tm_mon, now->tm_mday, now->tm_hour, now->tm_min, now->tm_sec);
 	fileName = (std::string)formattedTime;
-	SmartDashboard::PutString("Data File name", fileName);
+	//SmartDashboard::PutString("Data File name", fileName);
 	velocities = new float[4];
 
 }
 
-// Called just before this Command runs the first time
 void AutoPIDTest::Initialize()
 {
 	file.open(fileName.c_str(), std::ios_base::out | std::ios_base::trunc);
@@ -25,7 +21,7 @@ void AutoPIDTest::Initialize()
 
 	double* values;
 	values = new double[3];
-	mecanumDrive->GetMotorPIDValues(MecanumDrive::FRONT_LEFT, values);
+	//mecanumDrive->GetMotorPIDValues(MecanumDrive::FRONT_LEFT, values);
 	SmartDashboard::PutNumber("P value for Front left motor", values[0]);
 	//file << mecanumDrive->GetMotorPIDValues(MecanumDrive::FRONT_LEFT, values)[0];
 	timer->Start();
@@ -35,7 +31,7 @@ void AutoPIDTest::Initialize()
 void AutoPIDTest::Execute()
 {
 	mecanumDrive->Drive(0, SPEED, 0, 0);
-	mecanumDrive->GetDriveVelocties(velocities);
+	//mecanumDrive->GetDriveVelocties(velocities);
 	for (int i = 0; i < MecanumDrive::NUM_MOTORS; i++)
 	{
 		//char vel[40];

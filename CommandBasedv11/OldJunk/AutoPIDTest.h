@@ -5,7 +5,7 @@
 #include <fstream>
 #include <ctime>
 #include <string>
-#include "../CommandBase.h"
+#include "CommandBase.h"
 #include "WPILib.h"
 
 #define FILE_PATH  "/home/lvuser/pidtune/"

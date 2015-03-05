@@ -2,13 +2,13 @@
 #include "Commands/Command.h"
 #include "CommandBase.h"
 #include "Commands/SerialCommunication.h"
-#include "Commands/AutoMoveBinToAutoZone.h"
-#include "Commands/AutoMoveRobotToZone.h"
-#include "Commands/AutoMoveBinToAutoZoneRamp.h"
-#include "Commands/AutoBinToteToAutoZone.h"
-#include "Commands/AutoAlignToDriverWall.h"
+#include "Commands/Auto/AutoMoveBinToAutoZone.h"
+#include "Commands/Auto/AutoMoveRobotToZone.h"
+#include "Commands/Auto/AutoMoveBinToAutoZoneRamp.h"
+#include "Commands/Auto/AutoBinToteToAutoZone.h"
+#include "Commands/Auto/AutoAlignToDriverWall.h"
+//#include "Commands/Auto/AutoPIDTest.h"
 #include "Commands/LeftyModeJustForRiley.h"
-#include "Commands/AutoPIDTest.h"
 
 class Robot: public IterativeRobot
 {
@@ -22,16 +22,13 @@ private:
 		CommandBase::init();
 		lw = LiveWindow::GetInstance();
 		chooser = new SendableChooser();
-		chooser->AddDefault("PID Test", new AutoPIDTest());
-		chooser->AddObject("Move Bin To Auto Zone", new AutoMoveBinToAutoZone());
+		//chooser->AddDefault("PID Test", new AutoPIDTest());
+		chooser->AddDefault("Move Bin To Auto Zone", new AutoMoveBinToAutoZone());
 		chooser->AddObject("Move Bin To Auto Zone RAMP", new AutoMoveBinToAutoZoneRamp());
 		chooser ->AddObject("Move Bin and Tote to Auto Zone ", new AutoBinToteToAutoZone());
 		chooser ->AddObject("Move Roboto To Zone", new AutoMoveRobotToZone);
 		chooser ->AddObject("Align Robot to Driver Wall", new AutoAlignToDriverWall);
 		SmartDashboard::PutData("Autonomous modes", chooser);
-
-		//SmartDashboard::PutBoolean(T_SET_ROBOT_ANGLE, false);
-		//SmartDashboard::PutNumber(T_ROBOT_ANGLE, 0);
 
 	}
 	
@@ -62,8 +59,8 @@ private:
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		//if (autonomousCommand != NULL)
-			//autonomousCommand->Cancel();
+		if (autonomousCommand != NULL)
+			autonomousCommand->Cancel();
 	}
 
 	void TeleopPeriodic()

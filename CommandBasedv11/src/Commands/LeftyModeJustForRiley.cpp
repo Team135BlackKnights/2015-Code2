@@ -1,39 +1,13 @@
 #include "LeftyModeJustForRiley.h"
 
-LeftyModeJustForRiley::LeftyModeJustForRiley(bool mode)
-{
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
-	this->mode = mode;
-}
+LeftyModeJustForRiley::LeftyModeJustForRiley(bool mode) {this->mode = mode;}
 
-// Called just before this Command runs the first time
-void LeftyModeJustForRiley::Initialize()
-{
-	oi->LeftyFlip(mode);
-}
+void LeftyModeJustForRiley::Initialize() {oi->LeftyFlip(mode);}
 
-// Called repeatedly when this Command is scheduled to run
-void LeftyModeJustForRiley::Execute()
-{
+void LeftyModeJustForRiley::Execute() {}
 
-}
+bool LeftyModeJustForRiley::IsFinished() {return true;}
 
-// Make this return true when this Command no longer needs to run execute()
-bool LeftyModeJustForRiley::IsFinished()
-{
-	return true;
-}
+void LeftyModeJustForRiley::End() {}
 
-// Called once after isFinished returns true
-void LeftyModeJustForRiley::End()
-{
-
-}
-
-// Called when another command which requires one or more of the same
-// subsystems is scheduled to run
-void LeftyModeJustForRiley::Interrupted()
-{
-
-}
+void LeftyModeJustForRiley::Interrupted() {}

@@ -9,7 +9,7 @@ class ChangeManipulatorControlMode: public CommandBase
 private:
 	bool mode;
 public:
-	ChangeManipulatorControlMode(bool);
+	ChangeManipulatorControlMode(bool mode);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

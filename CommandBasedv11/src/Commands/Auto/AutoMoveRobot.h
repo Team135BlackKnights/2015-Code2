@@ -1,7 +1,7 @@
 #ifndef AutoMoveRobot_H
 #define AutoMoveRobot_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 #include "WPILib.h"
 #include "RobotMap.h"
 

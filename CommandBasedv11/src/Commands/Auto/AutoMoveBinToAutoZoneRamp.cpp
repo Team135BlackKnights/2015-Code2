@@ -1,7 +1,7 @@
 #include "AutoMoveBinToAutoZoneRamp.h"
 #include <Commands/ExternalSolenoidClaw.h>
 #include "AutoMoveRobot.h"
-#include "ExternalMoveWinch.h"
+#include "../ExternalMoveWinch.h"
 AutoMoveBinToAutoZoneRamp::AutoMoveBinToAutoZoneRamp()
 {
 

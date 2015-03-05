@@ -7,28 +7,25 @@ ExternalCollect::ExternalCollect() :
 		Subsystem("ExternalCollect")
 {
 	claw = new Solenoid(SOLENOID_EXTERNAL_OPEN_CLOSE_CLAW);
-	//clawState = SmartDashboard::GetBoolean(T_CLAW_STATE_ENGAGED, CLAW_OPEN);
 	SetClawState(CLAW_OPEN);
 
-	winch = new Winch(MOTOR_EXTERNAL_WINCH, DIGITAL_EXTERNAL_LOWER, DIGITAL_EXTERNAL_UPPER, INVERTED_EXTERNAL_WINCH);
+	winch = new Winch(MOTOR_EXTERNAL_WINCH,/* DIGITAL_EXTERNAL_LOWER, DIGITAL_EXTERNAL_UPPER, */INVERTED_EXTERNAL_WINCH);
 }
 
 void ExternalCollect::InitDefaultCommand()
 {
-	// Set the default command for a subsystem here.
 	SetDefaultCommand(new DriveExternalCollect());
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
-void ExternalCollect::SetClawState(bool states)
+void ExternalCollect::SetClawState(bool state)
 {
-	clawState = states;
+	clawState = state;
 	PowerClaw();
 }
 
 void ExternalCollect::PowerClaw()
 {
+	SmartDashboard::PutString(T_EXTERNAL_CLAW_STATE, clawState == CLAW_OPEN ? S_OPEN : S_CLOSED);
 	claw->Set(clawState);
 }
 

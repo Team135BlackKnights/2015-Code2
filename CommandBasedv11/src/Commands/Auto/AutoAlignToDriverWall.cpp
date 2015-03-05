@@ -2,16 +2,14 @@
 #include <Commands/ExternalSolenoidClaw.h>
 #include "AutoMoveBinToAutoZone.h"
 #include "AutoMoveRobot.h"
-#include "ExternalMoveWinch.h"
-#include "DriveInternalCollect.h"
-#include "InternalSolenoidRoller.h"
-#include "InternalSolenoidToteLock.h"
+#include "../InternalSolenoidRoller.h"
+#include "../InternalSolenoidToteLock.h"
 
 AutoAlignToDriverWall::AutoAlignToDriverWall()
 {
 	AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED)); //claw closes
 	AddSequential( new InternalSolenoidRoller(true));
-	AddParallel (new InternalSolenoidToteLock(InternalCollect::TOTE_LOCK_DISENGAGED));
+	AddParallel (new InternalSolenoidToteLock(InternalCollect::TOTE_LOCK_OPEN));
 	AddSequential(new AutoMoveRobot(0, 0, 0, 1));//wait
 	AddSequential(new AutoMoveRobot(0, -.5,0,.16));
 	AddSequential(new AutoMoveRobot(0, 0,-.5,1.5));

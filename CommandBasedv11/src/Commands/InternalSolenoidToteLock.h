@@ -9,8 +9,7 @@ class InternalSolenoidToteLock: public CommandBase
 private:
 	bool status;
 public:
-
-	InternalSolenoidToteLock(bool=InternalCollect::TOTE_LOCK_DISENGAGED);
+	InternalSolenoidToteLock(bool status=InternalCollect::TOTE_LOCK_OPEN);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

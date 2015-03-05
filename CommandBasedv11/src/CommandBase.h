@@ -6,7 +6,6 @@
 #include "Subsystems/MecanumDrive.h"
 #include "Subsystems/InternalCollect.h"
 #include "Subsystems/SerialComs.h"
-#include "Subsystems/LIDAR.h"
 #include "Subsystems/ExternalCollect.h"
 #include "OI.h"
 #include "WPILib.h"
@@ -26,8 +25,6 @@ public:
 	static MecanumDrive *mecanumDrive;
 	static InternalCollect *internalCollect;
 	static SerialComs *serialComs;
-	static LIDAR *lidarOne;
-	//static LIDAR *lidarTwo;
 	static ExternalCollect *externalCollect;
 };
 

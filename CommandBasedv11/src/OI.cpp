@@ -1,11 +1,9 @@
-#include <Commands/ChangeFieldOriented.h>
 #include <Commands/ExternalSolenoidClaw.h>
 #include <Commands/InternalSolenoidRoller.h>
 #include <Commands/InternalSolenoidToteLock.h>
 #include "OI.h"
 #include "RobotMap.h"
 #include "Commands/DriveJ.h"
-#include "Commands/ChangeDriveMode.h"
 #include "Commands/LeftyModeJustForRiley.h"
 #include "Subsystems/ExternalCollect.h"
 #include "CommandBase.h"
@@ -30,25 +28,26 @@ OI::OI()
 		}
 	}
 
-	SetDriveMode(MISC_CHANGE_DRIVE_MODE_A);
-	SetFieldOriented(false);
-	LeftyFlip(false);//SmartDashboard::GetBoolean(T_LEFTY_MODE, false));
+	//SetDriveMode(MISC_CHANGE_DRIVE_MODE_A);
+	//SetFieldOriented(false);
 
+	//Manipulator Control
 	SetManipulatorControlMode(EXTERNAL);
+	buttons[MANIPULATOR_CONTROL][CHANGE_MANIPULATOR_CONTROL_MODE_EXTERNAL]->WhenPressed(new ChangeManipulatorControlMode(EXTERNAL));
+	buttons[MANIPULATOR_CONTROL][CHANGE_MANIPULATOR_CONTROL_MODE_INTERNAL]->WhenPressed(new ChangeManipulatorControlMode(INTERNAL));
 
-	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_EXTERNAL]->WhenPressed(new ChangeManipulatorControlMode(EXTERNAL));
-	buttons[MANIPULATOR_CONTROL][MISC_CHANGE_MANIPULATOR_CONTROL_MODE_INTERNAL]->WhenPressed(new ChangeManipulatorControlMode(INTERNAL));
+	//Lefty Mode
+	LeftyFlip(ALEX);
+	buttons[RIGHT][CHANGE_LEFTY_MODE_ALEX]->WhenPressed(new LeftyModeJustForRiley(ALEX));
+	buttons[RIGHT][CHANGE_LEFTY_MODE_RILEY]->WhenPressed(new LeftyModeJustForRiley(RILEY));
 
-	buttons[RIGHT][MISC_LEFTY_MODE_ENABLED]->WhenPressed(new LeftyModeJustForRiley(true));
-	buttons[RIGHT][MISC_LEFTY_MODE_DISABLED]->WhenPressed(new LeftyModeJustForRiley(false));
-
-	buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_A]->WhenPressed(new ChangeDriveMode(OI::MISC_CHANGE_DRIVE_MODE_A));
-	buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_B]->WhenPressed(new ChangeDriveMode(OI::MISC_CHANGE_DRIVE_MODE_B));
+	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_A]->WhenPressed(new ChangeDriveMode(OI::MISC_CHANGE_DRIVE_MODE_A));
+	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_B]->WhenPressed(new ChangeDriveMode(OI::MISC_CHANGE_DRIVE_MODE_B));
 	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_C]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_C));
 	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_D]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_D));
 
-	buttons[RIGHT][MISC_FIELD_ORIENTED_ON]->WhenPressed(new ChangeFieldOriented(true));
-	buttons[RIGHT][MISC_FIELD_ORIENTED_OFF]->WhenPressed(new ChangeFieldOriented(false));
+	//buttons[RIGHT][MISC_FIELD_ORIENTED_ON]->WhenPressed(new ChangeFieldOriented(true));
+	//buttons[RIGHT][MISC_FIELD_ORIENTED_OFF]->WhenPressed(new ChangeFieldOriented(false));
 }
 
 float OI::GetStickX(int hand)
@@ -88,14 +87,14 @@ bool OI::GetButton(int stick, int button)
 void OI::LeftyFlip(bool mode)
 {
 	leftyMode = mode;
-	SmartDashboard::PutBoolean(T_LEFTY_MODE, leftyMode);
+	SmartDashboard::PutString(T_LEFTY_MODE, mode == RILEY ? S_RILEY : S_ALEX);
 	switch (mode)
 	{
-	case true:
+	case RILEY:
 		LEFT = 1;
 		RIGHT = 0;
 		break;
-	case false:
+	case ALEX:
 		LEFT = 0;
 		RIGHT = 1;
 		break;
@@ -110,11 +109,12 @@ bool OI::GetManipulatorControlMode()
 
 void OI::SetManipulatorControlMode(bool mode)
 {
-	SmartDashboard::PutBoolean(T_LEFTY_MODE, mode);
+	SmartDashboard::PutString(T_MANIPULATOR_CONTROL_MODE, mode == EXTERNAL ? S_EXTERNAL : S_INTERNAL);
 	manipulatorControlMode = mode;
 }
 
 
+/*
 int OI::GetDriveMode()
 {
 	return this->driveMode;
@@ -137,3 +137,4 @@ void OI::SetFieldOriented(bool oriented)
 	SmartDashboard::PutBoolean(T_FIELD_ORIENTED, oriented);
 	fieldOriented = oriented;
 }
+*/

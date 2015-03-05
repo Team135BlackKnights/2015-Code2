@@ -1,6 +1,6 @@
 #include "LIDAR.h"
-#include "../RobotMap.h"
-#include "../Commands/LIDARCommunication.h"
+#include "RobotMap.h"
+#include "LIDARCommunication.h"
 
 LIDAR::LIDAR(int port) :
 		Subsystem("LIDAR")
@@ -9,10 +9,10 @@ LIDAR::LIDAR(int port) :
 	I2CPort = new I2C(I2C::kMXP, LIDAR_ADDR);; // Opens & joins the irc bus as master
 	//serialPort = new SerialPort(9600, SerialPort::kMXP);
 	powerEnable = new DigitalOutput(port);
-	if (port == DIGITAL_LIDAR_ONE)
-		debugOutputKey = T_LIDAR_DISTANCE_ONE;
-	else
-		debugOutputKey = T_LIDAR_DISTANCE_TWO;
+	//if (port == DIGITAL_LIDAR_ONE)
+		//debugOutputKey = T_LIDAR_DISTANCE_ONE;
+	//else
+		debugOutputKey = 4;
 }
 
 void LIDAR::InitDefaultCommand()

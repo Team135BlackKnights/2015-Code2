@@ -15,17 +15,12 @@ public:
 	static const bool CLAW_OPEN = false;
 	static const bool CLAW_CLOSED = !CLAW_OPEN;
 
-	//static const int WINCH_INVERTED = -1;
-
-	//static const bool CLAW_UP = true;
-	//static const bool CLAW_DOWN = false;
-
 	ExternalCollect();
 	void InitDefaultCommand();
-	void SetClawState(bool);
+	void SetClawState(bool state);
 	void PowerClaw();
 
-	void DriveWinch(float);
+	void DriveWinch(float power);
 };
 
 #endif
