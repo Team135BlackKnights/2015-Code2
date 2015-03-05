@@ -3,8 +3,10 @@
 #include "CommandBase.h"
 #include "Commands/SerialCommunication.h"
 #include "Commands/AutoMoveBinToAutoZone.h"
+#include "Commands/AutoMoveRobotToZone.h"
 #include "Commands/AutoMoveBinToAutoZoneRamp.h"
 #include "Commands/AutoBinToteToAutoZone.h"
+#include "Commands/AutoAlignToDriverWall.h"
 #include "Commands/LeftyModeJustForRiley.h"
 #include "Commands/AutoPIDTest.h"
 
@@ -24,6 +26,8 @@ private:
 		chooser->AddObject("Move Bin To Auto Zone", new AutoMoveBinToAutoZone());
 		chooser->AddObject("Move Bin To Auto Zone RAMP", new AutoMoveBinToAutoZoneRamp());
 		chooser ->AddObject("Move Bin and Tote to Auto Zone ", new AutoBinToteToAutoZone());
+		chooser ->AddObject("Move Roboto To Zone", new AutoMoveRobotToZone);
+		chooser ->AddObject("Align Robot to Driver Wall", new AutoAlignToDriverWall);
 		SmartDashboard::PutData("Autonomous modes", chooser);
 
 		//SmartDashboard::PutBoolean(T_SET_ROBOT_ANGLE, false);

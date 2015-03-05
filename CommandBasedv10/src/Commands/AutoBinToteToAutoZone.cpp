@@ -5,7 +5,7 @@
 #include "ExternalMoveWinch.h"
 AutoBinToteToAutoZone::AutoBinToteToAutoZone()
 {
-	AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED)); //claw closes
+		AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED)); //claw closes
 		AddSequential(new AutoMoveRobot(0, 0, 0, 1));//wait
 		AddSequential(new ExternalMoveWinch(-.75, .5));//winch up
 		AddSequential(new AutoMoveRobot(.5, 0, 0, .8));//strafe right

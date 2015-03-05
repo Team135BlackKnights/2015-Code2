@@ -9,7 +9,7 @@ AutoMoveBinToAutoZone::AutoMoveBinToAutoZone()
 	AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED));
 	AddSequential(new AutoMoveRobot(0, 0, 0, 2));
 	AddSequential(new ExternalMoveWinch(-.75, 2.1));
-	AddSequential(new AutoMoveRobot(0, -.5, 0, 1.7));
+	AddSequential(new AutoMoveRobot(0, .5, 0, 1.7));
 	AddSequential(new AutoMoveRobot(0, 0, -.5, .9));
 	AddSequential(new AutoMoveRobot(0, 0, 0, 1));
 	//AddSequential(new AutoMoveRobot(0, 0, 0, 2));

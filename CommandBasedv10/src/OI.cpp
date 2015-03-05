@@ -17,12 +17,13 @@ OI::OI()
 {
 
 	// Process operator interface input here.
-	sticks[LEFT] = new Joystick(JOYSTICK_LEFT); //Declares new Joysticks
+	sticks[LEFT] = new Joystick(JOYSTICK_LEFT); //Declares new Joystick
 	sticks[RIGHT] = new Joystick(JOYSTICK_RIGHT);
 	sticks[MANIPULATOR_CONTROL] = new Joystick(JOYSTICK_MANIPULATOR_CONTROL);
 
 	for (int i = 0; i < NUMBER_O_JOYSTICKS; i++) //Declares new buttons for Joysticks max # of buttons is 12
 	{
+
 		for (int j = 1; j <= MAX_JOYSTICK_BUTTONS; j++)
 		{
 			buttons[i][j] = new JoystickButton(sticks[i], j);
@@ -30,8 +31,8 @@ OI::OI()
 	}
 
 	SetDriveMode(MISC_CHANGE_DRIVE_MODE_A);
-	SetFieldOriented(true);
-	LeftyFlip(SmartDashboard::GetBoolean(T_LEFTY_MODE, false));
+	SetFieldOriented(false);
+	LeftyFlip(false);//SmartDashboard::GetBoolean(T_LEFTY_MODE, false));
 
 	SetManipulatorControlMode(EXTERNAL);
 
@@ -52,17 +53,26 @@ OI::OI()
 
 float OI::GetStickX(int hand)
 {
-	return sticks[hand]->GetX(); //Returns X axis value of Joysticks
+	float value = sticks[hand]->GetX(); // Returns X axis value of Joysticks
+	//if (abs(value) > DEAD_BAND)
+		return value;
+	//return 0;
 }
 
 float OI::GetStickY(int hand)
 {
-	return sticks[hand]->GetY(); // Returns Y axis value of Joysticks
+	float value = sticks[hand]->GetY(); // Returns Y axis value of Joysticks
+	//if (abs(value) > DEAD_BAND)
+		return value;
+	//return 0;
 }
 
 float OI::GetStickTwist(int hand)
 {
-	return sticks[hand]->GetTwist(); // Returns Twist or Z Axis of Joysticks
+	float value = sticks[hand]->GetTwist(); // Returns Twist axis value of Joysticks
+	//if (abs(value) > DEAD_BAND)
+		return value;
+	//return 0;
 }
 
 float OI::GetStickSlider(int hand)

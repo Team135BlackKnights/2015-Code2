@@ -9,7 +9,7 @@
 #include "WPILib.h"
 
 #define FILE_PATH  "/home/lvuser/pidtune/"
-#define HEADER "m1,m2,m3,m4"
+#define HEADER "frLt,RLft,frRt,RRt"
 
 class AutoPIDTest: public CommandBase
 {
@@ -19,7 +19,8 @@ private:
 	std::string fileName;
 	float* velocities;
 
-	static constexpr double END_TIME = 2;
+	static constexpr double END_TIME = 4;
+	static constexpr float SPEED = -.4f;
 public:
 	AutoPIDTest();
 	void Initialize();

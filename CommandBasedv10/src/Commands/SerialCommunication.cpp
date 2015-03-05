@@ -21,19 +21,21 @@ void SerialCommunication::Initialize()
 void SerialCommunication::Execute()
 {
 	SmartDashboard::PutString(T_SERIAL_RUNNING, "Running");
+	/*
 	if (i % FRAMES == FRAMES - 1) {
 		i = 0;
 		double value = serialComs->WaitForData();
 		//serialComs->SendData((const char*)mecanumDrive->GetLidarValue(), 1);
 		//double value = NO_DATA;
 		if (value == NO_DATA)
-			value = 0;
+			value = 90;
 		//if (value != NO_DATA)
 		//{
-			mecanumDrive->SetGyroAngle(value);
+			//mecanumDrive->SetGyroAngle(value);
 		//}
 	}
 	i++;
+	*/
 }
 
 // Make this return true when this Command no longer needs to run execute()

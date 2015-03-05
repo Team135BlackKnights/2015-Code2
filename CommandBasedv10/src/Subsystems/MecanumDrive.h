@@ -12,6 +12,7 @@ public:
 	static const int NUM_MOTORS = 4;
 private:
 	CANTalon* motors[NUM_MOTORS];
+
 	RobotDrive* chassis;
 	double gyroAngle;
 	int lidarValueOne;
@@ -21,12 +22,7 @@ private:
 	bool useSetRobotAngle;
 	double setRobotAngle;
 
-	static const int 	FRONT_LEFT = 0,
-						REAR_LEFT = 1,
-						FRONT_RIGHT = 2,
-						REAR_RIGHT = 3;
-
-	int PIDValues[4][3] = {
+	double PIDValues[4][3] = {
 			{0, 0, 0},
 			{0, 0, 0},
 			{0, 0, 0},
@@ -34,6 +30,12 @@ private:
 	};
 
 public:
+
+	static const int 	FRONT_LEFT = 0,
+						REAR_LEFT = 1,
+						FRONT_RIGHT = 2,
+						REAR_RIGHT = 3;
+
 	MecanumDrive();
 	void InitDefaultCommand();
 	void Drive(float, float, float, float=0);
@@ -51,6 +53,7 @@ public:
 
 	void GetDriveVelocties(float*);
 
+	void GetMotorPIDValues(int, double*);
 };
 
 #endif

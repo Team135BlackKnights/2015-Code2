@@ -5,7 +5,7 @@ LIDARCommunication::LIDARCommunication()
 {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(lidarOne);
-	Requires(lidarTwo);
+	//Requires(lidarTwo);
 	i = 0;
 	step = 1;
 	valueOne = 0;
@@ -47,24 +47,24 @@ void LIDARCommunication::Execute()
 		case 5:	// disable the LIDAR
 			//dio->Write(OFF, ..);
 			lidarOne->SetPowerEnable(false);
-			lidarTwo->SetPowerEnable(true);
+			//lidarTwo->SetPowerEnable(true);
 			SmartDashboard::PutNumber(T_LIDAR_STEP, 5);
 			break;
 		case 6:
-			lidarTwo->Write();
+			//lidarTwo->Write();
 			SmartDashboard::PutNumber(T_LIDAR_STEP, 6);
 			break;
 		case 7:
-			lidarTwo->Read();
+			//lidarTwo->Read();
 			SmartDashboard::PutNumber(T_LIDAR_STEP, 7);
 			break;
 		case 8:
-			valueTwo = lidarTwo->GetData();
+			//valueTwo = lidarTwo->GetData();
 			SmartDashboard::PutNumber(T_LIDAR_STEP, 8);
 			break;
 		case 9:
 			step = 0;
-			lidarTwo->SetPowerEnable(false);
+			//lidarTwo->SetPowerEnable(false);
 			//lidar->WriteToLights((const char*)value, 2);
 			mecanumDrive->SetLidarValues(valueOne, valueTwo);
 			SmartDashboard::PutNumber(T_LIDAR_STEP, 9);

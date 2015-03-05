@@ -1,6 +1,7 @@
 #include "MecanumDrive.h"
 #include "../RobotMap.h"
 #include "../Commands/DriveJ.h"
+#include <cmath>
 
 MecanumDrive::MecanumDrive() :
 	Subsystem("MecanumDrive")
@@ -18,12 +19,13 @@ MecanumDrive::MecanumDrive() :
 		lidarValueTwo = 0;
 		chassis->SetSafetyEnabled(false);
 
-		useSetRobotAngle = SmartDashboard::GetBoolean(T_USE_SET_ROBOT_ANGLE, false);
-		setRobotAngle = SmartDashboard::GetNumber(T_SET_ROBOT_ANGLE, 0);
+		useSetRobotAngle = false;//SmartDashboard::GetBoolean(T_USE_SET_ROBOT_ANGLE, false);
+		setRobotAngle = 0;//SmartDashboard::GetNumber(T_SET_ROBOT_ANGLE, 0);
 
 		for (int i = 0; i < NUM_MOTORS; i++)
 		{
 			motors[i]->SetPID(PIDValues[i][0], PIDValues[i][1], PIDValues[i][2]);
+
 		}
 }
 
@@ -44,11 +46,11 @@ void MecanumDrive::Drive(float x, float y, float z, float angle)
 	//float angle = oi. ? gyroAngle : 0;
 	SmartDashboard::PutNumber("ANGLE FIELD THING", angle);
 	chassis->MecanumDrive_Cartesian(x, y, z, angle);
-  std::ofstream outfile ("EncoderTest.txt",std::ofstream::out);
+  //std::ofstream outfile ("EncoderTest.txt",std::ofstream::out);
 
-  outfile.write((const char*)motors[FRONT_LEFT]->GetEncVel() + '\n', 5);
+  //outfile.write((const char*)motors[FRONT_LEFT]->GetEncVel() + '\n', 5);
 
-  outfile.close();
+  //outfile.close();
 }
 
 double MecanumDrive::GetGyroAngle()
@@ -58,7 +60,7 @@ double MecanumDrive::GetGyroAngle()
 
 double MecanumDrive::SetGyroAngle(double angle)
 {
-	//SmartDashboard::PutNumber(T_GYRO_ANGLE, angle);
+	SmartDashboard::PutNumber(T_GYRO_ANGLE, angle);
 	return gyroAngle = angle;
 }
 
@@ -92,7 +94,13 @@ void MecanumDrive::GetDriveVelocties(float* velocityArray)
 {
 	for (int i = 0; i < NUM_MOTORS; i++)
 	{
-		velocityArray[i] = motors[i]->GetEncVel();
+		velocityArray[i] = abs(motors[i]->GetEncVel());
 	}
 }
 
+void MecanumDrive::GetMotorPIDValues(int index, double* values)
+{
+		values[0] = motors[index]->GetP();
+		values[1] = motors[index]->GetI();
+		values[2] = motors[index]->GetD();
+}

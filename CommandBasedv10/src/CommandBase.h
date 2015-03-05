@@ -27,7 +27,7 @@ public:
 	static InternalCollect *internalCollect;
 	static SerialComs *serialComs;
 	static LIDAR *lidarOne;
-	static LIDAR *lidarTwo;
+	//static LIDAR *lidarTwo;
 	static ExternalCollect *externalCollect;
 };
 

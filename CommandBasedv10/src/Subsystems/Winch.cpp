@@ -6,8 +6,8 @@ Winch::Winch(int motorPort, int lowerLimitPort, int upperLimitPort, bool isInver
 {
 	this->motor = new VictorSP(motorPort);
 	//this->motor->SetZeroLatch();
-	this->lowerLimit = new DigitalInput(lowerLimitPort);
-	this->upperLimit = new DigitalInput(upperLimitPort);
+	//this->lowerLimit = new DigitalInput(lowerLimitPort);
+//	this->upperLimit = new DigitalInput(upperLimitPort);
 	this->inverted = isInverted ? -1 : 1;
 }
 
