@@ -1,7 +1,11 @@
 #include <Commands/DriveInternalCollect.h>
 #include "RobotMap.h"
 
-DriveInternalCollect::DriveInternalCollect() {Requires(internalCollect);}
+DriveInternalCollect::DriveInternalCollect()
+{
+	Requires(internalCollect);
+	//SmartDashboard::PutString(T_DRIVE_INTERNAL_RUNNING, S_CONSTRUCTED);
+}
 
 void DriveInternalCollect::Initialize()
 {

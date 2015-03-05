@@ -1,7 +1,11 @@
 #include <Commands/DriveJ.h>
 #include "RobotMap.h"
 
-DriveJ::DriveJ() {Requires(mecanumDrive);}
+DriveJ::DriveJ()
+{
+	Requires(mecanumDrive);
+	//SmartDashboard::PutString(T_DRIVE_J_RUNNING, S_CONSTRUCTED);
+}
 
 void DriveJ::Initialize()
 {

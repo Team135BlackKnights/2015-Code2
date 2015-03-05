@@ -7,7 +7,7 @@
 OI* CommandBase::oi = NULL;
 MecanumDrive* CommandBase::mecanumDrive = NULL;
 InternalCollect* CommandBase::internalCollect = NULL;
-SerialComs* CommandBase::serialComs = NULL;
+//SerialComs* CommandBase::serialComs = NULL;
 ExternalCollect* CommandBase::externalCollect = NULL;
 
 CommandBase::CommandBase(char const *name) : Command(name) {}
@@ -22,7 +22,7 @@ void CommandBase::init()
 
 	internalCollect = new InternalCollect();
 
-	serialComs = new SerialComs();
+	//serialComs = new SerialComs();
 
 	externalCollect = new ExternalCollect();
 }

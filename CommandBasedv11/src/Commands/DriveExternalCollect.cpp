@@ -1,7 +1,11 @@
 #include "DriveExternalCollect.h"
 #include "RobotMap.h"
 
-DriveExternalCollect::DriveExternalCollect() {Requires(externalCollect);}
+DriveExternalCollect::DriveExternalCollect()
+{
+	Requires(externalCollect);
+	//SmartDashboard::PutString(T_DRIVE_EXTERNAL_RUNNING, S_CONSTRUCTED);
+}
 
 void DriveExternalCollect::Initialize()
 {

@@ -10,10 +10,6 @@
  * floating around.
  */
 
-// For example to map the left and right motors, you could define the
-// following variables to use with your drivetrain subsystem.
-
-
 	//Drive Train
     const int MOTOR_FRONT_LEFT	= 10;
     const int MOTOR_REAR_LEFT	= 11;
@@ -81,6 +77,7 @@
     					S_RUNNING = "Running",
 						S_ENDED = "Ended",
 						S_INTERRUPTED = "Interrupted",
+						S_CONSTRUCTED = "Constructed",
 
 						//Solenoid Values
     					S_OPEN = "OPEN",

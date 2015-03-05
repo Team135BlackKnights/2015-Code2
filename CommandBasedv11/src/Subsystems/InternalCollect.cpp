@@ -12,9 +12,9 @@ InternalCollect::InternalCollect() :
 	collectRightMotor = new VictorSP(MOTOR_INTERNAL_COLLECT_RIGHT);
 
 	rollerCollectSolenoid = new Solenoid(SOLENOID_INTERNAL_COLLECT);
-	rollerCollectState = ROLLER_COLLECT_OPEN;
+	SetRollerCollectSolenoid(ROLLER_COLLECT_OPEN);
 	toteLockSolenoid = new Solenoid(SOLENOID_INTERNAL_TOTE_LOCK);
-	toteLockState = TOTE_LOCK_OPEN;
+	SetToteLockSolenoid(TOTE_LOCK_OPEN);
 
 	winch = new Winch(MOTOR_INTERNAL_WINCH,/* DIGITAL_INTERNAL_LOWER, DIGITAL_INTERNAL_UPPER, */INVERTED_INTERNAL_WINCH);
 

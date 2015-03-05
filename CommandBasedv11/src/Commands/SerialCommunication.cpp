@@ -4,8 +4,9 @@
 
 SerialCommunication::SerialCommunication()
 {
-	Requires(serialComs);
+	//Requires(serialComs);
 	i = 0;
+	//SmartDashboard::PutString(T_SERIAL_RUNNING, S_CONSTRUCTED);
 }
 
 void SerialCommunication::Initialize()
@@ -15,6 +16,7 @@ void SerialCommunication::Initialize()
 
 void SerialCommunication::Execute()
 {
+	/*
 	SmartDashboard::PutString(T_SERIAL_RUNNING, S_RUNNING);
 	if (i % FRAMES == FRAMES - 1) {
 		i = 0;
@@ -24,6 +26,7 @@ void SerialCommunication::Execute()
 		mecanumDrive->SetGyroAngle(value);
 	}
 	i++;
+	*/
 }
 
 bool SerialCommunication::IsFinished() {return false;}

@@ -24,7 +24,7 @@ public:
 	static OI *oi;
 	static MecanumDrive *mecanumDrive;
 	static InternalCollect *internalCollect;
-	static SerialComs *serialComs;
+	//static SerialComs *serialComs;
 	static ExternalCollect *externalCollect;
 };
 

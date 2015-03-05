@@ -2,7 +2,8 @@
 #include <Commands/ExternalSolenoidClaw.h>
 
 #include "AutoMoveRobot.h"
-#include "../ExternalMoveWinch.h">
+#include "../ExternalMoveWinch.h"
+
 AutoBinToteToAutoZone::AutoBinToteToAutoZone()
 {
 		AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED)); //claw closes
