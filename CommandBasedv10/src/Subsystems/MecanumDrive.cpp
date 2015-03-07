@@ -22,11 +22,15 @@ MecanumDrive::MecanumDrive() :
 		useSetRobotAngle = false;//SmartDashboard::GetBoolean(T_USE_SET_ROBOT_ANGLE, false);
 		setRobotAngle = 0;//SmartDashboard::GetNumber(T_SET_ROBOT_ANGLE, 0);
 
+		/*
 		for (int i = 0; i < NUM_MOTORS; i++)
 		{
 			motors[i]->SetPID(PIDValues[i][0], PIDValues[i][1], PIDValues[i][2]);
 
 		}
+		*/
+		gyro = new Gyro(ANALOG_GYRO_A);
+		gyro->Reset();
 }
 
 void MecanumDrive::InitDefaultCommand()
@@ -39,6 +43,7 @@ void MecanumDrive::InitDefaultCommand()
 
 void MecanumDrive::Drive(float x, float y, float z, float angle)
 {
+	gyroAngle = gyro->GetAngle();
 	SmartDashboard::PutNumber(T_GYRO_ANGLE, gyroAngle);
 	SmartDashboard::PutBoolean(T_USE_SET_ROBOT_ANGLE, useSetRobotAngle);
 	SmartDashboard::PutBoolean(T_SET_ROBOT_ANGLE, setRobotAngle);
@@ -53,31 +58,25 @@ void MecanumDrive::Drive(float x, float y, float z, float angle)
   //outfile.close();
 }
 
-double MecanumDrive::GetGyroAngle()
+float MecanumDrive::GetGyroAngle()
 {
+	gyroAngle = gyro->GetAngle();
 	return gyroAngle;
 }
 
-double MecanumDrive::SetGyroAngle(double angle)
+float MecanumDrive::SetGyroAngle(float angle)
 {
-	SmartDashboard::PutNumber(T_GYRO_ANGLE, angle);
+	//SmartDashboard::PutNumber(T_GYRO_ANGLE, angle);
 	return gyroAngle = angle;
 }
 
-int MecanumDrive::GetLidarValueOne()
+int MecanumDrive::GetLidarValue()
 {
 	return lidarValueOne;
 }
-
-int MecanumDrive::GetLidarValueTwo()
-{
-	return lidarValueTwo;
-}
-
-void MecanumDrive::SetLidarValues(int valueOne, int valueTwo)
+void MecanumDrive::SetLidarValue(int valueOne)
 {
 	lidarValueOne = valueOne;
-	lidarValueTwo = valueTwo;
 }
 
 void MecanumDrive::Rotate(float power)

@@ -10,10 +10,11 @@
 AutoAlignToDriverWall::AutoAlignToDriverWall()
 {
 	AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED)); //claw closes
-	AddSequential( new InternalSolenoidRoller(true));
-	AddParallel (new InternalSolenoidToteLock(InternalCollect::TOTE_LOCK_DISENGAGED));
+	AddSequential(new ExternalMoveWinch(-.5, 2.25));
+	//AddSequential( new InternalSolenoidRoller(true));
+	//AddParallel (new InternalSolenoidToteLock(InternalCollect::TOTE_LOCK_DISENGAGED));
 	AddSequential(new AutoMoveRobot(0, 0, 0, 1));//wait
-	AddSequential(new AutoMoveRobot(0, -.5,0,.16));
+	AddSequential(new AutoMoveRobot(0, -.5,0,.2));
 	AddSequential(new AutoMoveRobot(0, 0,-.5,1.5));
 	AddSequential(new AutoMoveRobot(0, .5,0,.35));
 	AddSequential(new AutoMoveRobot(.5,0,0,1.3));

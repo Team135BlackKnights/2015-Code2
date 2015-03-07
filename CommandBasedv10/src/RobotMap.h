@@ -50,6 +50,9 @@
     const int DIGITAL_INTERNAL_LOWER = 2;
     const int DIGITAL_INTERNAL_UPPER = 3;
 
+    const int ANALOG_GYRO_A = 0;
+    const int ANALOG_GYRO_B = 1;
+
     const std::string 	T_SERIAL_RUNNING = "Serial Command Status",
     					T_DRIVE_J_RUNNING = "DriveJ Command Status",
 						T_DRIVE_INTERNAL_RUNNING = "Drive Internal Status",
@@ -73,7 +76,8 @@
     					T_DRIVE_MODE = "Drive Mode",
 
     					T_EXTERNAL_OPEN_CLOSE_CLAW = "Claw Status",
-    					T_EXTERNAL_MOVE_WINCH = "External Winch Status";
+    					T_EXTERNAL_MOVE_WINCH = "External Winch Status",
+    					T_AUTO_ROTATE_ROBOT = "Auto Rotate Robot";
 
     const std::string 	S_INITIALIZED = "Initialized",
     					S_RUNNING = "Running",

@@ -15,6 +15,8 @@ public:
 	static const bool CLAW_OPEN = false;
 	static const bool CLAW_CLOSED = !CLAW_OPEN;
 
+	static constexpr float MAX_GRAVITY_COMPENSATION = .1f;
+
 	//static const int WINCH_INVERTED = -1;
 
 	//static const bool CLAW_UP = true;

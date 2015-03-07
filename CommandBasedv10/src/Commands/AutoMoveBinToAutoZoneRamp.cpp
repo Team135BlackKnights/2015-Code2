@@ -7,11 +7,11 @@ AutoMoveBinToAutoZoneRamp::AutoMoveBinToAutoZoneRamp()
 
 	AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED));
 			AddSequential(new AutoMoveRobot(0, 0, 0, 1));
-			AddSequential(new ExternalMoveWinch(-.5, 1));
-			AddSequential(new AutoMoveRobot(0, .5, 0, 2.35));
+			AddSequential(new ExternalMoveWinch(-.5, 2.25));
+			AddSequential(new AutoMoveRobot(0, .45, 0, 2));
 			AddSequential(new AutoMoveRobot(0, 0, .75, .6));
-			AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_OPEN));
-			AddSequential(new AutoMoveRobot(0, 0, 0, 0));
+			//AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_OPEN));
+			//AddSequential(new AutoMoveRobot(0, 0, 0, 0));
 	// To run multiple commands at the same time,
 	// use AddParallel()
 	// e.g. AddParallel(new Command1());

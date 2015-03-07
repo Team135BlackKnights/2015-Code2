@@ -18,7 +18,7 @@ private:
 	DigitalOutput* powerEnable;
 	std::string debugOutputKey;
 public:
-	LIDAR(int port);
+	LIDAR();
 	void InitDefaultCommand();
 	void Write();
 	void Read();

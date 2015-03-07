@@ -2,17 +2,17 @@
 #include "../RobotMap.h"
 #include "../Commands/LIDARCommunication.h"
 
-LIDAR::LIDAR(int port) :
+LIDAR::LIDAR() :
 		Subsystem("LIDAR")
 {
-	distance = new unsigned char();
-	I2CPort = new I2C(I2C::kMXP, LIDAR_ADDR);; // Opens & joins the irc bus as master
+	distance = new unsigned char[2];
+	I2CPort = new I2C(I2C::kMXP, LIDAR_ADDR); // Opens & joins the irc bus as master
 	//serialPort = new SerialPort(9600, SerialPort::kMXP);
-	powerEnable = new DigitalOutput(port);
-	if (port == DIGITAL_LIDAR_ONE)
+	powerEnable = new DigitalOutput(0);
+	//if (port == DIGITAL_LIDAR_ONE)
 		debugOutputKey = T_LIDAR_DISTANCE_ONE;
-	else
-		debugOutputKey = T_LIDAR_DISTANCE_TWO;
+	//else
+		//debugOutputKey = T_LIDAR_DISTANCE_TWO;
 }
 
 void LIDAR::InitDefaultCommand()
@@ -42,6 +42,9 @@ int LIDAR::GetData()
 }
 
 int LIDAR::GetDistance() {
+	SmartDashboard::PutBoolean("GETTING DISTANCE", true);
+	SmartDashboard::PutNumber("LIDAR High", distance[0]);
+	SmartDashboard::PutNumber("LIDAR Low", distance[1]);
 	return (int)((unsigned long)(distance[0] << 8) + (unsigned int)(distance[1]));
 }
 

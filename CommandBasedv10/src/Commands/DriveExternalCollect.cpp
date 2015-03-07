@@ -18,6 +18,7 @@ void DriveExternalCollect::Execute()
 {
 	SmartDashboard::PutString(T_DRIVE_EXTERNAL_RUNNING, "Running");
 	float value = oi->GetManipulatorControlMode() == OI::EXTERNAL ? oi->GetStickY(oi->MANIPULATOR_CONTROL) : 0;
+	value = fmax(-1, value - oi->GetStickSlider(OI::STATIC_RIGHT) * ExternalCollect::MAX_GRAVITY_COMPENSATION);
 
 	if (oi->GetManipulatorControlMode() == oi->EXTERNAL)
 	{

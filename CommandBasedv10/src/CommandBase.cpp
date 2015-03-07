@@ -8,9 +8,10 @@ OI* CommandBase::oi = NULL;
 MecanumDrive* CommandBase::mecanumDrive = NULL;
 InternalCollect* CommandBase::internalCollect = NULL;
 SerialComs* CommandBase::serialComs = NULL;
-LIDAR* CommandBase::lidarOne = NULL;
+//LIDAR* CommandBase::lidarOne = NULL;
 //LIDAR* CommandBase::lidarTwo = NULL;
 ExternalCollect* CommandBase::externalCollect = NULL;
+LIDAR* CommandBase::lidar = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -37,8 +38,10 @@ void CommandBase::init()
 
 	serialComs = new SerialComs();
 
-	lidarOne = new LIDAR(DIGITAL_LIDAR_ONE);
+	//lidarOne = new LIDAR(DIGITAL_LIDAR_ONE);
 	//lidarTwo = new LIDAR(DIGITAL_LIDAR_TWO);
 
 	externalCollect = new ExternalCollect();
+
+	lidar = new LIDAR();
 }

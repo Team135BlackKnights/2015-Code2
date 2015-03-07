@@ -21,7 +21,10 @@ protected:
 public:
 	int LEFT = 0;
 	int RIGHT = 1;
-	int MANIPULATOR_CONTROL = 2;
+	static const int MANIPULATOR_CONTROL = 2;
+
+	static const int STATIC_LEFT = 0;
+	static const int STATIC_RIGHT = 1;
 
 	static constexpr float DEAD_BAND = .05f;
 

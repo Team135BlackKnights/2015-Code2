@@ -18,9 +18,12 @@ private:
 	int lidarValueOne;
 	int lidarValueTwo;
 
+	Gyro* gyro;
+
 
 	bool useSetRobotAngle;
-	double setRobotAngle;
+	float setRobotAngle;
+
 
 	double PIDValues[4][3] = {
 			{0, 0, 0},
@@ -40,12 +43,11 @@ public:
 	void InitDefaultCommand();
 	void Drive(float, float, float, float=0);
 
-	double GetGyroAngle();
-	double SetGyroAngle(double);
+	float GetGyroAngle();
+	float SetGyroAngle(float);
 
-	int GetLidarValueOne();
-	int GetLidarValueTwo();
-	void SetLidarValues(int, int);
+	int GetLidarValue();
+	void SetLidarValue(int);
 
 	void Rotate(float);
 

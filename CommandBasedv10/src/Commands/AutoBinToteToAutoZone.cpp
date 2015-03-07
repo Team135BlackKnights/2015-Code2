@@ -1,25 +1,24 @@
 #include "AutoBinToteToAutoZone.h"
 #include <Commands/ExternalSolenoidClaw.h>
+#include <Commands/InternalSolenoidRoller.h>
+#include "../Subsystems/ExternalCollect.h"
+#include "../Subsystems/InternalCollect.h"
 
 #include "AutoMoveRobot.h"
 #include "ExternalMoveWinch.h"
 AutoBinToteToAutoZone::AutoBinToteToAutoZone()
 {
-		AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED)); //claw closes
-		AddSequential(new AutoMoveRobot(0, 0, 0, 1));//wait
-		AddSequential(new ExternalMoveWinch(-.75, .5));//winch up
-		AddSequential(new AutoMoveRobot(.5, 0, 0, .8));//strafe right
-		AddSequential(new AutoMoveRobot(0, 0, -.5, 1));//rotate left
-		AddSequential(new AutoMoveRobot(.5, 0, 0, .7));//strafe right
-		AddSequential(new ExternalMoveWinch(.5, .75));//winch down
-		AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED));//claw open
-		AddSequential(new AutoMoveRobot(0, 0, 0, 7));//wait
-		AddSequential(new AutoMoveRobot(0, 0.25, 0, 1));//drive forward
-		AddSequential(new AutoMoveRobot(0, 0, 0, 1));//wait
-		//AddSequential(new ExternalMoveWinch(.5, .25));//winch all down
-		AddSequential(new AutoMoveRobot(0, -0.3, 0, 1));//backwards
-		//AddSequential(new ExternalMoveWinch(.5, .25));//
-		//AddSequential(new ExternalOpenCloseClaw(false));
+	//AddParallel(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED));
+	AddParallel(new InternalSolenoidRoller(InternalCollect::ROLLER_COLLECT_ENGAGED));
+	AddParallel(new AutoMoveRobot(0, 0, 2.0, AutoMoveRobot::TIME, false));
+	//AddSequential(new ExternalMoveWinch(-.75, 1.5));
+	//AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_OPEN));
+	AddSequential(new AutoMoveRobot(.4, 0, DISTANCE_BIN, AutoMoveRobot::DISTANCE, true));
+	AddSequential(new ExternalMoveWinch(.75, 1.5));
+	AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED));
+	AddSequential(new AutoMoveRobot(.67, 0, DISTANCE_RAMP, AutoMoveRobot::DISTANCE, true));
+	AddSequential(new AutoMoveRobot(.9, 0, DISTANCE_END, AutoMoveRobot::DISTANCE, false));
+	//AddSequential(new AutoMoveRobot(.85, 0, 0, 4, false));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

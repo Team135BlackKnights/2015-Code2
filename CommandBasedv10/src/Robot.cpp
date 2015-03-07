@@ -9,6 +9,7 @@
 #include "Commands/AutoAlignToDriverWall.h"
 #include "Commands/LeftyModeJustForRiley.h"
 #include "Commands/AutoPIDTest.h"
+#include "Commands/AutoTwoBinTote.h"
 
 class Robot: public IterativeRobot
 {
@@ -22,12 +23,14 @@ private:
 		CommandBase::init();
 		lw = LiveWindow::GetInstance();
 		chooser = new SendableChooser();
-		chooser->AddDefault("PID Test", new AutoPIDTest());
+		chooser->AddDefault("Two Bin Tote", new AutoTwoBinTote());
+		chooser->AddObject("PID Test", new AutoPIDTest());
 		chooser->AddObject("Move Bin To Auto Zone", new AutoMoveBinToAutoZone());
 		chooser->AddObject("Move Bin To Auto Zone RAMP", new AutoMoveBinToAutoZoneRamp());
 		chooser ->AddObject("Move Bin and Tote to Auto Zone ", new AutoBinToteToAutoZone());
 		chooser ->AddObject("Move Roboto To Zone", new AutoMoveRobotToZone);
-		chooser ->AddObject("Align Robot to Driver Wall", new AutoAlignToDriverWall);
+		chooser ->AddObject("Align Robot to Driver Wall", new AutoAlignToDriverWall());
+
 		SmartDashboard::PutData("Autonomous modes", chooser);
 
 		//SmartDashboard::PutBoolean(T_SET_ROBOT_ANGLE, false);
@@ -42,16 +45,16 @@ private:
 
 	void AutonomousInit()
 	{
-		//if (autonomousCommand != NULL)
-		//autonomousCommand->Start();
 		autonomousCommand = (CommandGroup *) chooser->GetSelected();
 		//SmartDashboard::PutNumber("Auto Command", autonomousCommand->GetID());
+		//autonomousCommand = new AutoTwoBinTote();
 		autonomousCommand->Start();
 	}
 
 	void AutonomousPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
+		//lw->Run();
 	}
 
 	void TeleopInit()

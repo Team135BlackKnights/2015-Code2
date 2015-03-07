@@ -4,7 +4,7 @@
 LIDARCommunication::LIDARCommunication()
 {
 	// Use Requires() here to declare subsystem dependencies
-	Requires(lidarOne);
+	Requires(lidar);
 	//Requires(lidarTwo);
 	i = 0;
 	step = 1;
@@ -25,6 +25,22 @@ void LIDARCommunication::Execute()
 	if (i % FRAMES_PER_STEP == FRAMES_PER_STEP - 1)
 	{
 		i = 0;
+		switch (step) {
+		case 1:
+			lidar->Write();
+			step++;
+			break;
+		case 2:
+			lidar->Read();
+			step++;
+			break;
+		case 3:
+			mecanumDrive->SetLidarValue(lidar->GetData());
+			step = 1;
+			break;
+		}
+		SmartDashboard::PutNumber(T_LIDAR_STEP, step);
+		/*
 		switch(step)
 		{
 		case 1:	// enable the LIDAR
@@ -70,7 +86,7 @@ void LIDARCommunication::Execute()
 			SmartDashboard::PutNumber(T_LIDAR_STEP, 9);
 			break;
 		}
-		step++;
+		*/
 		//double value = NO_DATA;
 		//if (value != NO_DATA)
 		//{
