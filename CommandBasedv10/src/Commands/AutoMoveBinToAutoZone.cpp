@@ -6,6 +6,10 @@
 AutoMoveBinToAutoZone::AutoMoveBinToAutoZone()
 {
 // This is side with no ramp
+	AddSequential(new AutoMoveRobot(0, 0, 0, 1));
+	AddSequential(new ExternalMoveWinch(-.5, 2.25));
+	AddSequential(new AutoMoveRobot(0, .8, 3.5f, AutoMoveRobot::TIME, true));
+	/*
 	AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED));
 	AddSequential(new AutoMoveRobot(0, 0, 0, 2));
 	AddSequential(new ExternalMoveWinch(-.75, 2.1));
@@ -14,6 +18,7 @@ AutoMoveBinToAutoZone::AutoMoveBinToAutoZone()
 	AddSequential(new AutoMoveRobot(0, 0, 0, 1));
 	//AddSequential(new AutoMoveRobot(0, 0, 0, 2));
 	AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_OPEN));
+	*/
 	//AddSequential(new ExternalMoveWinch(-.5, 3));
 	//AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_OPEN));
 	//AddSequential(new AutoMoveRobot(0, 0, 0, 4));

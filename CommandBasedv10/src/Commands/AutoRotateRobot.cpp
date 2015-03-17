@@ -29,7 +29,7 @@ void AutoRotateRobot::Execute()
 	currentAngle = mecanumDrive->GetGyroAngle();
 	//float offset = angle - targetAngle;
 	newRotate = fmax(-MAX_ROTATION_POWER, fmin(MAX_ROTATION_POWER, (targetAngle - currentAngle) / 90));
-	newRotate = fmax(-MIN_ROTATION_POWER, fmin(MIN_ROTATION_POWER, newRotate));
+	//newRotate = fmax(-MIN_ROTATION_POWER, fmin(MIN_ROTATION_POWER, newRotate));
 	SmartDashboard::PutNumber("Rotation fix thing", newRotate);
 	mecanumDrive->Drive(0, 0, newRotate);
 }

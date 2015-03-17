@@ -31,19 +31,28 @@ MecanumDrive::MecanumDrive() :
 		*/
 		gyro = new Gyro(ANALOG_GYRO_A);
 		gyro->Reset();
+
+		accel = new BuiltInAccelerometer(Accelerometer::kRange_8G);
+		timer = new Timer();
+		lastVelocityX = 0;
+		distanceX = 0;
+
+		lidar = new AnalogInput(ANALOG_LIDAR);
 }
 
 void MecanumDrive::InitDefaultCommand()
 {
 
 	SetDefaultCommand(new DriveJ());
-
+	timer->Start();
+	gyro->Reset();
 }
 
 
 void MecanumDrive::Drive(float x, float y, float z, float angle)
 {
-	gyroAngle = gyro->GetAngle();
+	GetSensorValues();
+	//SynthesizeAccel();
 	SmartDashboard::PutNumber(T_GYRO_ANGLE, gyroAngle);
 	SmartDashboard::PutBoolean(T_USE_SET_ROBOT_ANGLE, useSetRobotAngle);
 	SmartDashboard::PutBoolean(T_SET_ROBOT_ANGLE, setRobotAngle);
@@ -56,6 +65,32 @@ void MecanumDrive::Drive(float x, float y, float z, float angle)
   //outfile.write((const char*)motors[FRONT_LEFT]->GetEncVel() + '\n', 5);
 
   //outfile.close();
+	SmartDashboard::PutNumber("Delta Time Max", 0);
+}
+
+void MecanumDrive::GetSensorValues()
+{
+	gyroAngle = gyro->GetAngle();
+	lidarValueOne = lidar->GetValue();
+}
+
+void MecanumDrive::SynthesizeAccel()
+{
+	double currentVelocityX, accelerationX;
+	double deltaTime;
+
+	//X DISTANCE
+	deltaTime = timer->Get();
+	SmartDashboard::PutNumber("Delta Time Max", fmax(SmartDashboard::GetNumber("Delta Time Max", 0), deltaTime));
+	timer->Stop();
+	timer->Reset();
+	timer->Start();
+	accelerationX = accel->GetX();
+	//distanceX = (lastVelocityX * deltaTime) + (.5 * accelerationX * deltaTime * deltaTime);
+	currentVelocityX = lastVelocityX + accelerationX * deltaTime;
+	distanceX = (currentVelocityX + lastVelocityX) * deltaTime / 2;
+	SmartDashboard::PutNumber("Distance X", distanceX);
+	lastVelocityX = currentVelocityX;
 }
 
 float MecanumDrive::GetGyroAngle()
@@ -67,7 +102,8 @@ float MecanumDrive::GetGyroAngle()
 float MecanumDrive::SetGyroAngle(float angle)
 {
 	//SmartDashboard::PutNumber(T_GYRO_ANGLE, angle);
-	return gyroAngle = angle;
+	return 0;
+	//gyroAngle = angle;
 }
 
 int MecanumDrive::GetLidarValue()
@@ -76,6 +112,8 @@ int MecanumDrive::GetLidarValue()
 }
 void MecanumDrive::SetLidarValue(int valueOne)
 {
+	int jump = valueOne - lidarValueOne;
+	SmartDashboard::PutNumber("LIDAR Jump", fmax(SmartDashboard::GetNumber("LIDAR Jump", 0), jump));
 	lidarValueOne = valueOne;
 }
 

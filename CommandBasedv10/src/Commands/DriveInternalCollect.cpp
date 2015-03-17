@@ -39,6 +39,11 @@ void DriveInternalCollect::Execute()
 		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_UPPER_STACK_SOLENOID_DISENGAGED))
 			internalCollect->SetToteLockSolenoid(InternalCollect::TOTE_LOCK_DISENGAGED);
 
+		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_ROLLER_SOLENOID_ENGAGED_ALEX))
+			internalCollect->SetRollerCollectSolenoid(InternalCollect::ROLLER_COLLECT_ENGAGED);
+		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->INTERNAL_ROLLER_SOLENOID_DISENGAGED_ALEX))
+			internalCollect->SetRollerCollectSolenoid(InternalCollect::ROLLER_COLLECT_DISENGAGED);
+
 	//	if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_WINCH_UP))
 		//	value = .5;
 		//else if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_WINCH_UP))

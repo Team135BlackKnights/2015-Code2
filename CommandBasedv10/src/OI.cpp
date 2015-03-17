@@ -44,11 +44,12 @@ OI::OI()
 
 	buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_A]->WhenPressed(new ChangeDriveMode(OI::MISC_CHANGE_DRIVE_MODE_A));
 	buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_B]->WhenPressed(new ChangeDriveMode(OI::MISC_CHANGE_DRIVE_MODE_B));
+	buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_C]->WhenPressed(new ChangeDriveMode(OI::MISC_CHANGE_DRIVE_MODE_C));
 	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_C]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_C));
 	//buttons[RIGHT][MISC_CHANGE_DRIVE_MODE_D]->WhenPressed(new ChangeDriveMode(MecanumDrive::DRIVE_MODE_D));
 
-	buttons[RIGHT][MISC_FIELD_ORIENTED_ON]->WhenPressed(new ChangeFieldOriented(true));
-	buttons[RIGHT][MISC_FIELD_ORIENTED_OFF]->WhenPressed(new ChangeFieldOriented(false));
+	//buttons[RIGHT][MISC_FIELD_ORIENTED_ON]->WhenPressed(new ChangeFieldOriented(true));
+	//buttons[RIGHT][MISC_FIELD_ORIENTED_OFF]->WhenPressed(new ChangeFieldOriented(false));
 }
 
 float OI::GetStickX(int hand)
@@ -91,11 +92,11 @@ void OI::LeftyFlip(bool mode)
 	SmartDashboard::PutBoolean(T_LEFTY_MODE, leftyMode);
 	switch (mode)
 	{
-	case true:
+	case RILEY:
 		LEFT = 1;
 		RIGHT = 0;
 		break;
-	case false:
+	case ALEX:
 		LEFT = 0;
 		RIGHT = 1;
 		break;

@@ -10,14 +10,17 @@
 #include "Commands/LeftyModeJustForRiley.h"
 #include "Commands/AutoPIDTest.h"
 #include "Commands/AutoTwoBinTote.h"
-
+#include "Commands/AUTOMATT.h"
+#include "Commands/ChangeDriveMode.h"
 class Robot: public IterativeRobot
 {
 private:
 	LiveWindow *lw;
 	CameraServer* camera;
 	CommandGroup *autonomousCommand;
+	Command *driverModeCommand;
 	SendableChooser *chooser;
+	SendableChooser *driverMode;
 	void RobotInit()
 	{
 		CommandBase::init();
@@ -30,9 +33,14 @@ private:
 		chooser ->AddObject("Move Bin and Tote to Auto Zone ", new AutoBinToteToAutoZone());
 		chooser ->AddObject("Move Roboto To Zone", new AutoMoveRobotToZone);
 		chooser ->AddObject("Align Robot to Driver Wall", new AutoAlignToDriverWall());
-
+		chooser ->AddDefault("autMatt", new AUTOMATT());
 		SmartDashboard::PutData("Autonomous modes", chooser);
+		SmartDashboard::PutNumber("LIDAR Jump", 0);
 
+		driverMode = new SendableChooser();
+		driverMode->AddDefault("RILEY MODe", new ChangeDriveMode(OI::RILEY));
+		driverMode->AddObject("ALEX MODe", new ChangeDriveMode(OI::ALEX));
+		SmartDashboard::PutData("Driver Modes", driverMode);
 		//SmartDashboard::PutBoolean(T_SET_ROBOT_ANGLE, false);
 		//SmartDashboard::PutNumber(T_ROBOT_ANGLE, 0);
 
@@ -45,7 +53,7 @@ private:
 
 	void AutonomousInit()
 	{
-		autonomousCommand = (CommandGroup *) chooser->GetSelected();
+		autonomousCommand = (CommandGroup*) chooser->GetSelected();
 		//SmartDashboard::PutNumber("Auto Command", autonomousCommand->GetID());
 		//autonomousCommand = new AutoTwoBinTote();
 		autonomousCommand->Start();
@@ -59,6 +67,8 @@ private:
 
 	void TeleopInit()
 	{
+		driverModeCommand = (Command*)driverMode->GetSelected();
+		driverModeCommand->Start();
 		//if (serialCommunication != NULL)
 			//serialCommunication->Start();
 		// This makes sure that the autonomous stops running when
