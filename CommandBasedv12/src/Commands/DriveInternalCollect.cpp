@@ -49,6 +49,10 @@ void DriveInternalCollect::Execute()
 		//else if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_WINCH_UP))
 		//	value = -.5;
 	}
+	else
+	{
+		internalCollect->SetCollectPower(0);
+	}
 
 	internalCollect->DriveLift(value); //THIS NEEDS TO BE CHANGED
 	internalCollect->DriveCollect();
