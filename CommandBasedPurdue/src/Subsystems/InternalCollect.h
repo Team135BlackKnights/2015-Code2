@@ -25,7 +25,7 @@ public:
 	static const int COLLECT_RIGHT_INVERTED = -COLLECT_LEFT_INVERTED;
 
 	static constexpr float COLLECT_OUT_POWER = -1.0f;
-	static constexpr float COLLECT_IN_POWER = .9f;
+	static constexpr float COLLECT_IN_POWER = 1.0f;
 
 	static const bool ROLLER_COLLECT_ENGAGED = false;
 	static const bool ROLLER_COLLECT_DISENGAGED = !ROLLER_COLLECT_ENGAGED;

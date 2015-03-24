@@ -21,7 +21,7 @@ private:
 	static constexpr float MAX_ROTATION_POWER = .4f;
 	static constexpr float MIN_ROTATION_POWER = .15f;
 public:
-	AutoRotateRobot(float targetAngle, float power=.4, float bailOutTime=5.0f);
+	AutoRotateRobot(float targetAngle, float power=.4f, float bailOutTime=5.0f);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

@@ -14,6 +14,12 @@
 #include "Commands/ChangeDriveMode.h"
 #include "Commands/AutoTwoBin.h"
 #include "Commands/AutoThreeTote.h"
+#include "Commands/AutoDoNothing.h"
+#include "Commands/AutoTwoBinV2.h"
+#include "Commands/AutoBinTwoTote.h"
+#include "Commands/AutoThreeBin.h"
+#include "Commands/AutoBinPurdueFinals.h"
+
 class Robot: public IterativeRobot
 {
 private:
@@ -30,14 +36,20 @@ private:
 		chooser = new SendableChooser();
 		//chooser->AddDefault("Two Bin Tote", new AutoTwoBinTote());
 		//chooser->AddObject("PID Test", new AutoPIDTest());
-		chooser->AddDefault("Move Bin To Auto Zone RAMP", new AutoMoveBinToAutoZoneRamp());
+		chooser->AddObject("Move Bin To Auto Zone RAMP", new AutoMoveBinToAutoZoneRamp());
 		chooser->AddObject("Move Bin To Auto Zone", new AutoMoveBinToAutoZone());
 		//chooser ->AddObject("Move Bin and Tote to Auto Zone ", new AutoBinToteToAutoZone());
 		chooser ->AddObject("Move Roboto To Zone", new AutoMoveRobotToZone);
 		chooser ->AddObject("Align Robot to Driver Wall", new AutoAlignToDriverWall());
 		chooser ->AddObject("autMatt", new AUTOMATT());
 		chooser ->AddObject("Auto Two Bin", new AutoTwoBin());
-		chooser->AddObject("Auto Three Tote", new AutoThreeTote());
+		chooser->AddDefault("Auto Two Bin V2", new AutoTwoBinV2());
+		//chooser->AddObject("Auto Three Tote", new AutoThreeTote());
+		chooser->AddObject("DO NOTHING", new AutoDoNothing());
+		chooser->AddObject("Auto Bin Two Tote UNTESTED", new AutoBinTwoTote());
+		chooser->AddObject("Auto Three Bin UNTESTED", new AutoThreeBin());
+		chooser->AddObject("Auto Bin Purdue Finals", new AutoBinPurdueFinals());
+
 		SmartDashboard::PutData("Autonomous modes", chooser);
 		SmartDashboard::PutNumber("LIDAR Jump", 0);
 

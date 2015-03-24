@@ -1,17 +1,17 @@
-#ifndef InternalRollers_H
-#define InternalRollers_H
+#ifndef ExternalMoveWinch_H
+#define ExternalMoveWinch_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class InternalRollers: public CommandBase
+class ExternalMoveWinch: public CommandBase
 {
 private:
 	float power;
-	float targetTime;
+	double targetTime;
 	Timer* timer;
 public:
-	InternalRollers(float power, float targetTime=0);
+	ExternalMoveWinch(float, double);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
