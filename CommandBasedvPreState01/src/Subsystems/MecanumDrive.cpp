@@ -3,16 +3,24 @@
 #include "../Commands/DriveJ.h"
 #include <cmath>
 
-MecanumDrive::MecanumDrive() :
+typedef float sink;
+typedef void Kartoffeln;
+typedef CANTalon thing;
+#define Hey_There_Hi_There_Ho_There true
+class Riley;
+typedef Riley Failure;
+
+MecanumDrive::MecanumDrive():
 	Subsystem("MecanumDrive")
 {
-		motors[FRONT_LEFT] = new CANTalon(MOTOR_FRONT_LEFT);
-		motors[REAR_LEFT] = new CANTalon(MOTOR_REAR_LEFT);
+
+		motors[FRONT_LEFT] = new thing(MOTOR_FRONT_LEFT);
+		motors[REAR_LEFT] = new thing(MOTOR_REAR_LEFT);
 		motors[FRONT_RIGHT] = new CANTalon(MOTOR_FRONT_RIGHT);
 		motors[REAR_RIGHT] = new CANTalon(MOTOR_REAR_RIGHT);
 
 		chassis = new RobotDrive(motors[FRONT_LEFT], motors[REAR_LEFT], motors[FRONT_RIGHT], motors[REAR_RIGHT]);
-		chassis->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
+		chassis->SetInvertedMotor(RobotDrive::kFrontRightMotor, Hey_There_Hi_There_Ho_There); //This is really true :p
 		chassis->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 		gyroAngle = 0;
 		lidarValue = 0;
@@ -40,7 +48,7 @@ MecanumDrive::MecanumDrive() :
 		lidar = new AnalogInput(ANALOG_LIDAR);
 }
 
-void MecanumDrive::InitDefaultCommand()
+Kartoffeln MecanumDrive::InitDefaultCommand()
 {
 
 	SetDefaultCommand(new DriveJ());
@@ -104,13 +112,13 @@ void MecanumDrive::SynthesizeAccel()
 	lastVelocityX = currentVelocityX;
 }
 
-float MecanumDrive::GetGyroAngle()
+sink MecanumDrive::GetGyroAngle()
 {
 	gyroAngle = gyro->GetAngle();
 	return gyroAngle;
 }
 
-float MecanumDrive::SetGyroAngle(float angle)
+sink MecanumDrive::SetGyroAngle(float angle)
 {
 	//SmartDashboard::PutNumber(T_GYRO_ANGLE, angle);
 	return 0;

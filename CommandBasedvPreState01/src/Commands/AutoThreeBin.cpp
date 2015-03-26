@@ -24,7 +24,7 @@ AutoThreeBin::AutoThreeBin()
 	//Line up with other bin
 	AddSequential(new AutoMoveRobot(.6f, 0, DISTANCE_CLOSE_TO_WALL, AutoMoveRobot::DISTANCE, true, .8f));
 	AddSequential(new AutoMoveRobot(0,  0, .25f, AutoMoveRobot::TIME, true));
-	AddSequential(new AutoMoveRobot(0, .45f, 2.5f, AutoMoveRobot::TIME, true));
+	AddSequential(new AutoMoveRobot(0, .45f, 2.2f, AutoMoveRobot::TIME, true));
 	AddSequential(new AutoMoveRobot(0,  0, .25f, AutoMoveRobot::TIME, true));
 
 	//Strafe with other bin
