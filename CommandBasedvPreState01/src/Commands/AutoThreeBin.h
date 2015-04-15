@@ -7,10 +7,10 @@
 class AutoThreeBin: public CommandGroup
 {
 private:
-	const static int DISTANCE_CLOSE_TO_WALL = 475;
-	const static int DISTANCE_END = 1600;
+	const static int DISTANCE_CLOSE_TO_WALL = 360;
+	const static int DISTANCE_END = 1650;
 public:
-	AutoThreeBin();
+	AutoThreeBin(bool ramp=false);
 };
 
 #endif

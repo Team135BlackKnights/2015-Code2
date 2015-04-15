@@ -41,6 +41,7 @@ private:
 		chooser->AddObject("Move Bin To Auto Zone RAMP", new AutoMoveBinToAutoZoneRamp());
 		chooser->AddObject("Auto Two Bin V2", new AutoTwoBinV2());
 		chooser->AddObject("Auto Three Bin UNTESTED", new AutoThreeBin());
+		//chooser->AddObject("Auto Three Bin YES RAMP UNTESTED", new AutoThreeBin(true));
 
 		//chooser->AddDefault("Two Bin Tote", new AutoTwoBinTote());
 		//chooser->AddObject("PID Test", new AutoPIDTest());
@@ -72,8 +73,7 @@ private:
 	void AutonomousInit()
 	{
 		autonomousCommand = (CommandGroup*) chooser->GetSelected();
-		//SmartDashboard::PutNumber("Auto Command", autonomousCommand->GetID());
-		//autonomousCommand = new AutoTwoBinTote();
+		//autonomousCommand = new AutoThreeBin();
 		autonomousCommand->Start();
 	}
 
