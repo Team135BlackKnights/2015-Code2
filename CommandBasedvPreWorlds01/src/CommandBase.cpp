@@ -34,14 +34,14 @@ void CommandBase::init()
 
 	mecanumDrive = new MecanumDrive();
 
-	internalCollect = new InternalCollect();
+	//internalCollect = new InternalCollect();
 
-	serialComs = new SerialComs();
+	//serialComs = new SerialComs();
 
 	//lidarOne = new LIDAR(DIGITAL_LIDAR_ONE);
 	//lidarTwo = new LIDAR(DIGITAL_LIDAR_TWO);
 
-	externalCollect = new ExternalCollect();
+	//externalCollect = new ExternalCollect();
 
-	lidar = new LIDAR();
+	//lidar = new LIDAR();
 }
