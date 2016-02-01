@@ -38,8 +38,8 @@ MecanumDrive::MecanumDrive():
 
 		}
 		*/
-		gyro = new Gyro(ANALOG_GYRO_A);
-		gyro->Reset();
+		//gyro = new Gyro(ANALOG_GYRO_A);
+		//gyro->Reset();
 
 		accel = new BuiltInAccelerometer(Accelerometer::kRange_8G);
 		timer = new Timer();
@@ -56,7 +56,7 @@ Kartoffeln MecanumDrive::InitDefaultCommand()
 
 	SetDefaultCommand(new DriveJ());
 	timer->Start();
-	gyro->Reset();
+	//gyro->Reset();
 	lidar->ResetAccumulator();
 	lidarValue = lidar->GetValue();
 	lidarVoltage = lidar->GetVoltage();
@@ -80,7 +80,7 @@ void MecanumDrive::Drive(float x, float y, float z, float angle)
 	y = fmax(-1, fmin(1, y));
 	z = fmax(-1, fmin(1, z));
 
-	chassis->MecanumDrive_Cartesian(x, y, z, angle);
+	chassis->MecanumDrive_Cartesian(x, y, z, 0);
   //std::ofstream outfile ("EncoderTest.txt",std::ofstream::out);
 
   //outfile.write((const char*)motors[FRONT_LEFT]->GetEncVel() + '\n', 5);
@@ -91,7 +91,7 @@ void MecanumDrive::Drive(float x, float y, float z, float angle)
 
 void MecanumDrive::GetSensorValues()
 {
-	gyroAngle = gyro->GetAngle();
+	//gyroAngle = gyro->GetAngle();
 
 	int oldValue = lidarValue;
 	lidarValue = lidar->GetValue();
@@ -123,8 +123,8 @@ void MecanumDrive::SynthesizeAccel()
 
 sink MecanumDrive::GetGyroAngle()
 {
-	gyroAngle = gyro->GetAngle();
-	return gyroAngle;
+	//gyroAngle = gyro->GetAngle();
+	return 0;
 }
 
 sink MecanumDrive::SetGyroAngle(float angle)

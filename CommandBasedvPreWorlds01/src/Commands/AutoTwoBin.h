@@ -7,7 +7,7 @@
 class AutoTwoBin: public CommandGroup
 {
 public:
-	AutoTwoBin();
+	AutoTwoBin(bool ramp=false);
 };
 
 #endif

@@ -86,6 +86,10 @@ bool OI::GetButton(int stick, int button)
 	return buttons[stick][button]->Get();
 }
 
+bool OI::GetTrigger(int stick) {
+	return sticks[stick]->GetTrigger();
+}
+
 void OI::LeftyFlip(bool mode)
 {
 	leftyMode = mode;

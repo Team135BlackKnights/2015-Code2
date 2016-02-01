@@ -7,8 +7,11 @@
 #include "InternalRollers.h"
 
 
-AutoTwoBinV2::AutoTwoBinV2()
+AutoTwoBinV2::AutoTwoBinV2(bool ramp)
 {
+	//To Ramp, or not to Ramp
+	int value = ramp ? -1 : 1;
+
 	//Setup things
 	AddSequential(new InternalSolenoidRoller(InternalCollect::ROLLER_COLLECT_DISENGAGED));
 	AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED));
@@ -23,7 +26,7 @@ AutoTwoBinV2::AutoTwoBinV2()
 	AddSequential(new AutoMoveRobot(0, 0, .5f, AutoMoveRobot::TIME, false));
 
 	//ROTATE perpendicular to driver station
-	AddSequential(new AutoRotateRobot(-90, .4f, 6.0f));
+	AddSequential(new AutoRotateRobot(-90 * value, .4f, 6.0f));
 	AddSequential(new AutoMoveRobot(0, 0, .5f, AutoMoveRobot::TIME, false));
 
 	//Move to Zone
@@ -31,7 +34,7 @@ AutoTwoBinV2::AutoTwoBinV2()
 	AddSequential(new AutoMoveRobot(0, 0, .5f, AutoMoveRobot::TIME, false));
 
 	//Rotate parallel to driver wall
-	AddSequential(new AutoRotateRobot(90, .4f, 7.0f));
+	AddSequential(new AutoRotateRobot(90 * value, .4f, 7.0f));
 
 	//Back up a bit
 	AddSequential(new AutoMoveRobot(0, .35, 1.35f, AutoMoveRobot::TIME, true));

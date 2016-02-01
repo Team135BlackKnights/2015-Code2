@@ -6,8 +6,10 @@
 #include "AutoMoveBinToAutoZone.h"
 #include "InternalRollers.h"
 
-AutoTwoBin::AutoTwoBin()
+AutoTwoBin::AutoTwoBin(bool ramp)
 {
+	int value = ramp ? -1 : 1;
+
 	AddSequential(new InternalSolenoidRoller(InternalCollect::ROLLER_COLLECT_ENGAGED));
 	AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_OPEN));
 	AddParallel(new InternalRollers(InternalCollect::COLLECT_IN_POWER, 13.0f));
@@ -20,11 +22,11 @@ AutoTwoBin::AutoTwoBin()
 	//AddSequential(new AutoMoveRobot(.45, 0, 5.5f, AutoMoveRobot::TIME, true));
 
 	//OLD ROTATIION METHOD
-	AddSequential(new AutoRotateRobot(90, .35f, 5.23461632f));
+	AddSequential(new AutoRotateRobot(90 * value, .35f, 5.23461632f));
 	AddSequential(new AutoMoveRobot(0, 0, .5f, AutoMoveRobot::TIME, false));
 	AddSequential(new AutoMoveRobot(0, .45, 3.4f, AutoMoveRobot::TIME, true, .6f));
 	AddSequential(new AutoMoveRobot(0, 0, .5f, AutoMoveRobot::TIME, false));
-	AddSequential(new AutoRotateRobot(90, .45f, 6.0f));
+	AddSequential(new AutoRotateRobot(90 * value, .45f, 6.0f));
 
 	AddSequential(new AutoMoveRobot(0, .3f, 2.0f, AutoMoveRobot::TIME, true, .6f));
 	//AddSequential(new ExternalSolenoidClaw(ExternalCollect::CLAW_CLOSED));

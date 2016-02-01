@@ -17,16 +17,27 @@ void DriveExternalCollect::Initialize()
 void DriveExternalCollect::Execute()
 {
 	SmartDashboard::PutString(T_DRIVE_EXTERNAL_RUNNING, "Running");
-	float value = oi->GetManipulatorControlMode() == OI::EXTERNAL ? oi->GetStickY(oi->MANIPULATOR_CONTROL) : 0;
-	value = fmax(-1, value - oi->GetStickSlider(OI::STATIC_RIGHT) * ExternalCollect::MAX_GRAVITY_COMPENSATION);
+	float value;
 
 	if (oi->GetManipulatorControlMode() == oi->EXTERNAL)
 	{
+		value = oi->GetStickY(oi->MANIPULATOR_CONTROL);
 		if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_CLAW_OPEN))
 			externalCollect->SetClawState(externalCollect->CLAW_OPEN);
 		else if (oi->GetButton(oi->MANIPULATOR_CONTROL, oi->EXTERNAL_CLAW_CLOSED))
 			externalCollect->SetClawState(externalCollect->CLAW_CLOSED);
 	}
+	else if (oi->GetManipulatorControlMode() == oi->INTERNAL)
+	{
+		if (oi->GetTrigger(oi->LEFT))
+			value = -.5f;
+		else if (oi->GetTrigger(oi->RIGHT))
+			value = .5f;
+		else
+			value = 0;
+	}
+
+	value = fmin(1, fmax(-1, value - oi->GetStickSlider(OI::STATIC_RIGHT) * ExternalCollect::MAX_GRAVITY_COMPENSATION));
 
 	externalCollect->DriveWinch(value);
 	//externalCollect->PowerClaw();

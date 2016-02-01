@@ -46,12 +46,13 @@ private:
 		chooser = new SendableChooser();
 		//testChooser = new NamedSendable();
 
-		chooser->AddDefault("DO NOTHING", new AutoDoNothing());
-		chooser ->AddObject("Move Robot To Zone", new AutoMoveRobotToZone());
-		chooser->AddObject("Move Bin To Auto Zone", new AutoMoveBinToAutoZone());
-		chooser->AddObject("Move Bin To Auto Zone RAMP", new AutoMoveBinToAutoZoneRamp());
-		chooser->AddObject("Auto Two Bin V2", new AutoTwoBinV2());
-		chooser->AddObject("Auto Three Bin", new AutoThreeBin());
+		chooser->AddDefault("0 Bin DO NOTHING", new AutoDoNothing());
+		chooser ->AddObject("0 Bin Move Robot To Zone", new AutoMoveRobotToZone());
+		chooser->AddObject("1 Bin To Auto Zone", new AutoMoveBinToAutoZone());
+		chooser->AddObject("1 Bin To Auto Zone RAMP", new AutoMoveBinToAutoZoneRamp());
+		chooser->AddObject("2 Bin", new AutoTwoBinV2(false));
+		chooser->AddObject("2 Bin RAMP", new AutoTwoBinV2(true));
+		chooser->AddObject("3 Bin", new AutoThreeBin());
 
 		//chooser->AddObject("Auto Two Bin RAMP UNTESTED", new AutoTwoBinRAMP());
 		//chooser->AddObject("Auto Two Bin Ramp Right Side", new AutoTwoBinRampRightSide());

@@ -74,6 +74,7 @@ public:
 	float GetStickY(int);
 	float GetStickTwist(int);
 	float GetStickSlider(int);
+	bool GetTrigger(int stick);
 	bool GetButton(int stick, int);
 	void LeftyFlip(bool);
 
